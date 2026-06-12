@@ -68,10 +68,10 @@
                     "description": "If this field is omitted or set to `false`, the system will treat the card number as a traditional PAN."
                   },
                   "networkToken": {
-                    "$ref": "#/components/schemas/networkToken"
+                    "$ref": "#/components/schemas/networkToken1"
                   },
                   "currency": {
-                    "$ref": "#/components/schemas/currency"
+                    "$ref": "#/components/schemas/currency-old"
                   },
                   "totalAmount": {
                     "type": "number",
@@ -568,7 +568,7 @@
                     "$ref": "#/components/schemas/Deferred"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   },
                   "fullResponse": {
                     "enum": [
@@ -600,7 +600,7 @@
                     "$ref": "#/components/schemas/threeDomainSecure"
                   },
                   "webhooks": {
-                    "$ref": "#/components/schemas/webhooks"
+                    "$ref": "#/components/schemas/webhooks-old"
                   },
                   "webhooksChargeback": {
                     "$ref": "#/components/schemas/webhooksChargeback"
@@ -2104,7 +2104,7 @@
                 "type": "object",
                 "properties": {
                   "card": {
-                    "$ref": "#/components/schemas/Card"
+                    "$ref": "#/components/schemas/Card-old-old"
                   },
                   "amount": {
                     "$ref": "#/components/schemas/Amount"
@@ -2120,7 +2120,7 @@
                     "$ref": "#/components/schemas/Deferred"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   },
                   "contactDetails": {
                     "$ref": "#/components/schemas/ContactDetails"
@@ -2166,7 +2166,7 @@
                     "$ref": "#/components/schemas/threeDomainSecure"
                   },
                   "webhooks": {
-                    "$ref": "#/components/schemas/webhooks"
+                    "$ref": "#/components/schemas/webhooks-old"
                   },
                   "webhooksChargeback": {
                     "$ref": "#/components/schemas/webhooksChargeback"
@@ -3474,7 +3474,7 @@
                     ]
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   },
                   "externalReferenceId": {
                     "type": "string",
@@ -3919,16 +3919,16 @@
                         "type": "integer"
                       },
                       "currency": {
-                        "$ref": "#/components/schemas/currency"
+                        "$ref": "#/components/schemas/currency-old"
                       }
                     }
                   },
                   "webhooks": {
-                    "$ref": "#/components/schemas/webhooks",
+                    "$ref": "#/components/schemas/webhooks-old",
                     "description": "Send this object as another transactional notification option. In case you have a **Webhook** created through the Console, the notification will be sent to both the **API** and the **Console** channels. It means they will not be mutually exclusive.\n\nThe notifications will be seen in the Webhooks Notifications dashboard, and they will have a new field called Configuration, which will identify the source of the notification.\n\n**Example:**\n\n```Example\n{\n  \"webhooks\": [\n    {\n      \"events\": [\n        \"approvedTransaction\"\n      ],\n      \"headers\": [\n        {\n          \"label\": \"json\",\n          \"value\": \"12\"\n        }\n      ],\n      \"urls\": [\n        \"https://eof2hhkrta4ooo1.m.pipedream.net\"\n      ]\n    }\n  ]\n}\n```"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   },
                   "externalReferenceId": {
                     "type": "string",
@@ -4632,7 +4632,7 @@
                     "$ref": "#/components/schemas/threeDomainSecure"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   },
                   "months": {
                     "type": "integer",
@@ -5508,7 +5508,7 @@
                 "type": "object",
                 "properties": {
                   "card": {
-                    "$ref": "#/components/schemas/Card"
+                    "$ref": "#/components/schemas/Card-old-old"
                   },
                   "amount": {
                     "$ref": "#/components/schemas/Amount"
@@ -5524,7 +5524,7 @@
                     "description": ""
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   },
                   "contactDetails": {
                     "$ref": "#/components/schemas/ContactDetails"
@@ -6855,7 +6855,7 @@
                     ]
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   },
                   "externalReferenceId": {
                     "type": "string",
@@ -7820,7 +7820,7 @@
                     ]
                   },
                   "currency": {
-                    "$ref": "#/components/schemas/currency"
+                    "$ref": "#/components/schemas/currency-old"
                   },
                   "jwt": {
                     "type": "string",
@@ -8079,7 +8079,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Subscription"
+                "$ref": "#/components/schemas/Subscription-old"
               },
               "examples": {
                 "application/json": {
@@ -8645,7 +8645,7 @@
                     "$ref": "#/components/schemas/Language"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   },
                   "cvv": {
                     "type": "string",
@@ -9215,7 +9215,7 @@
                           "type": "string"
                         },
                         "metadata": {
-                          "$ref": "#/components/schemas/Metadata"
+                          "$ref": "#/components/schemas/Metadata-old"
                         },
                         "approvedTransactionAmount": {
                           "type": "integer"
@@ -11396,7 +11396,7 @@
                     }
                   },
                   "webhooks": {
-                    "$ref": "#/components/schemas/webhooks"
+                    "$ref": "#/components/schemas/webhooks-old"
                   },
                   "recipient": {
                     "type": "object",
@@ -12031,7 +12031,7 @@
                     "example": "v2"
                   },
                   "webhooks": {
-                    "$ref": "#/components/schemas/webhooks"
+                    "$ref": "#/components/schemas/webhooks-old"
                   }
                 },
                 "required": [
@@ -13025,7 +13025,7 @@
                     ]
                   },
                   "webhooks": {
-                    "$ref": "#/components/schemas/webhooks"
+                    "$ref": "#/components/schemas/webhooks-old"
                   }
                 },
                 "required": [
@@ -15276,13 +15276,13 @@
                     ]
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   },
                   "webhooks": {
                     "type": "array",
                     "description": "List of webhook configurations for this transaction. Each item specifies the events, target URLs, and optional headers. Sending this object does not replace webhooks configured in the Console — both channels receive the notification.",
                     "items": {
-                      "$ref": "#/components/schemas/webhooksItem"
+                      "$ref": "#/components/schemas/webhooksItem-old"
                     }
                   },
                   "fullResponse": {
@@ -16176,7 +16176,7 @@
                     "$ref": "#/components/schemas/Amount-cash-in"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   },
                   "webhooks": {
                     "type": "object",
@@ -17435,7 +17435,7 @@
                           }
                         },
                         "currency": {
-                          "$ref": "#/components/schemas/currency"
+                          "$ref": "#/components/schemas/currency-old"
                         },
                         "taxEnabled": {
                           "type": "boolean"
@@ -18377,7 +18377,7 @@
                         }
                       },
                       "currency": {
-                        "$ref": "#/components/schemas/currency"
+                        "$ref": "#/components/schemas/currency-old"
                       },
                       "taxEnabled": {
                         "type": "boolean"
@@ -19129,7 +19129,7 @@
                         }
                       },
                       "currency": {
-                        "$ref": "#/components/schemas/currency"
+                        "$ref": "#/components/schemas/currency-old"
                       },
                       "taxEnabled": {
                         "type": "boolean"
@@ -20124,7 +20124,7 @@
                             "x-nullable": true
                           },
                           "currency_code": {
-                            "$ref": "#/components/schemas/currency"
+                            "$ref": "#/components/schemas/currency-old"
                           },
                           "description": {
                             "type": "string"
@@ -20182,7 +20182,7 @@
                                   "x-nullable": true
                                 },
                                 "currency_code": {
-                                  "$ref": "#/components/schemas/currency"
+                                  "$ref": "#/components/schemas/currency-old"
                                 },
                                 "email": {
                                   "type": "string"
@@ -20332,7 +20332,7 @@
                             "type": "string"
                           },
                           "metadata": {
-                            "$ref": "#/components/schemas/Metadata"
+                            "$ref": "#/components/schemas/Metadata-old"
                           },
                           "method": {
                             "type": "string"
@@ -21473,7 +21473,7 @@
                             "format": "date"
                           },
                           "converted_currency": {
-                            "$ref": "#/components/schemas/currency"
+                            "$ref": "#/components/schemas/currency-old"
                           },
                           "contact_details": {
                             "type": "object",
@@ -21519,7 +21519,7 @@
                             "description": "Displays the metadata that the customer sends in the request."
                           },
                           "currency_code": {
-                            "$ref": "#/components/schemas/currency"
+                            "$ref": "#/components/schemas/currency-old"
                           },
                           "credit_type": {
                             "type": "string",
@@ -24359,7 +24359,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ChargebackListResponse"
+                  "$ref": "#/components/schemas/ChargebackListResponse-old"
                 },
                 "examples": {
                   "default": {
@@ -24425,7 +24425,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse400"
+                  "$ref": "#/components/schemas/ErrorResponse400-old"
                 }
               }
             },
@@ -24778,7 +24778,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse400"
+                  "$ref": "#/components/schemas/ErrorResponse400-old"
                 }
               }
             },
@@ -24954,7 +24954,7 @@
                     "type": "string"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   }
                 },
                 "required": [
@@ -24979,7 +24979,7 @@
                       "type": "string"
                     },
                     "metadata": {
-                      "$ref": "#/components/schemas/Metadata"
+                      "$ref": "#/components/schemas/Metadata-old"
                     },
                     "private_credential_id": {
                       "type": "string"
@@ -25804,7 +25804,7 @@
                     "type": "string"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   }
                 },
                 "required": [
@@ -26106,7 +26106,7 @@
                             "type": "number"
                           },
                           "currency": {
-                            "$ref": "#/components/schemas/currency"
+                            "$ref": "#/components/schemas/currency-old"
                           },
                           "iva": {
                             "type": "number"
@@ -26317,14 +26317,14 @@
                       "type": "array",
                       "description": "List of Kushki platform components and their current operational status.",
                       "items": {
-                        "$ref": "#/components/schemas/StatusComponent"
+                        "$ref": "#/components/schemas/StatusComponent-old"
                       }
                     },
                     "billpocket": {
                       "type": "array",
                       "description": "List of BillPocket platform components and their current operational status.",
                       "items": {
-                        "$ref": "#/components/schemas/StatusComponent"
+                        "$ref": "#/components/schemas/StatusComponent-old"
                       }
                     }
                   },
@@ -26430,7 +26430,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/ErrorResponse-old"
                 },
                 "examples": {
                   "GL - K002 - Unexpected error": {
@@ -26525,7 +26525,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubscriptionTransactionsResponse"
+                  "$ref": "#/components/schemas/SubscriptionTransactionsResponse-old"
                 },
                 "examples": {
                   "GL - Subscription with transactions": {
@@ -26671,7 +26671,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/ErrorResponse-old"
                 },
                 "examples": {
                   "GL - K001 - The request body is invalid": {
@@ -26691,7 +26691,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/ErrorResponse-old"
                 },
                 "examples": {
                   "GL - K004 - Invalid merchant ID": {
@@ -26711,7 +26711,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/ErrorResponse-old"
                 },
                 "examples": {
                   "GL - K037 - Subscription not found": {
@@ -26731,7 +26731,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/ErrorResponse-old"
                 },
                 "examples": {
                   "GL - K002 - Unexpected error": {
@@ -26803,10 +26803,10 @@
               "schema": {
                 "oneOf": [
                   {
-                    "$ref": "#/components/schemas/SettlementDateRangeRequest"
+                    "$ref": "#/components/schemas/SettlementDateRangeRequest-old"
                   },
                   {
-                    "$ref": "#/components/schemas/SettlementTicketRequest"
+                    "$ref": "#/components/schemas/SettlementTicketRequest-old"
                   }
                 ]
               },
@@ -26837,7 +26837,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SettlementResponse"
+                  "$ref": "#/components/schemas/SettlementResponse-old"
                 },
                 "examples": {
                   "GL - Response (date range)": {
@@ -26976,7 +26976,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/ErrorResponse-old"
                 },
                 "examples": {
                   "GL - K001 - The request body is invalid": {
@@ -26996,7 +26996,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/ErrorResponse-old"
                 },
                 "examples": {
                   "GL - K004 - Invalid merchant ID": {
@@ -27016,7 +27016,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/ErrorResponse-old"
                 },
                 "examples": {
                   "GL - K037 - Settlement record not found": {
@@ -27036,7 +27036,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/ErrorResponse-old"
                 },
                 "examples": {
                   "GL - K002 - Unexpected error": {
@@ -27093,10 +27093,10 @@
                 "type": "object",
                 "properties": {
                   "card": {
-                    "$ref": "#/components/schemas/card"
+                    "$ref": "#/components/schemas/card-old"
                   },
                   "amount": {
-                    "$ref": "#/components/schemas/amount",
+                    "$ref": "#/components/schemas/amount-old",
                     "description": "Send the amount in `O`"
                   },
                   "country": {
@@ -27583,11 +27583,11 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/amount",
+                    "$ref": "#/components/schemas/amount-old",
                     "description": "<!-- theme: warning -->"
                   },
                   "card": {
-                    "$ref": "#/components/schemas/card"
+                    "$ref": "#/components/schemas/card-old"
                   },
                   "card_details": {
                     "$ref": "#/components/schemas/card_details"
@@ -28991,7 +28991,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/AmountWithTaxes"
+                    "$ref": "#/components/schemas/AmountWithTaxes-old"
                   },
                   "client_transaction_id": {
                     "type": "string",
@@ -29000,7 +29000,7 @@
                     "example": "c5a3f3be-9d6f-4d39-8af5-58dbb589af79"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   }
                 },
                 "required": [
@@ -29124,7 +29124,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/AmountWithTaxes"
+                    "$ref": "#/components/schemas/AmountWithTaxes-old"
                   },
                   "client_transaction_id": {
                     "type": "string",
@@ -29132,7 +29132,7 @@
                     "example": "c5a3f3be-9d6f-4d39-8af5-58dbb589af30"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   }
                 },
                 "required": [
@@ -29255,7 +29255,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/AmountCore"
+                    "$ref": "#/components/schemas/AmountCore-old"
                   },
                   "client_transaction_id": {
                     "type": "string",
@@ -29373,7 +29373,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/AmountCore"
+                    "$ref": "#/components/schemas/AmountCore-old"
                   },
                   "client_transaction_id": {
                     "type": "string",
@@ -29512,7 +29512,7 @@
                     "example": 0
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   }
                 },
                 "required": [
@@ -29629,7 +29629,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/AmountCore"
+                    "$ref": "#/components/schemas/AmountCore-old"
                   },
                   "client_transaction_id": {
                     "type": "string",
@@ -29747,7 +29747,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/AmountCore"
+                    "$ref": "#/components/schemas/AmountCore-old"
                   },
                   "client_transaction_id": {
                     "type": "string",
@@ -30087,7 +30087,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PrintJobRequest"
+                "$ref": "#/components/schemas/PrintJobRequest-old"
               },
               "examples": {
                 "minimal": {
@@ -30450,7 +30450,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/AmountWithTaxes"
+                    "$ref": "#/components/schemas/AmountWithTaxes-old"
                   },
                   "client_transaction_id": {
                     "type": "string",
@@ -30459,7 +30459,7 @@
                     "example": "c5a3f3be-9d6f-4d39-8af5-58dbb589af79"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   }
                 },
                 "required": [
@@ -30572,7 +30572,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/AmountWithTaxes"
+                    "$ref": "#/components/schemas/AmountWithTaxes-old"
                   },
                   "client_transaction_id": {
                     "type": "string",
@@ -30580,7 +30580,7 @@
                     "example": "c5a3f3be-9d6f-4d39-8af5-58dbb589af30"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   }
                 },
                 "required": [
@@ -30692,7 +30692,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/AmountCore"
+                    "$ref": "#/components/schemas/AmountCore-old"
                   },
                   "client_transaction_id": {
                     "type": "string",
@@ -30800,7 +30800,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/AmountCore"
+                    "$ref": "#/components/schemas/AmountCore-old"
                   },
                   "client_transaction_id": {
                     "type": "string",
@@ -30929,7 +30929,7 @@
                     "example": 50
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata-old"
                   }
                 },
                 "required": [
@@ -31035,7 +31035,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/AmountCore"
+                    "$ref": "#/components/schemas/AmountCore-old"
                   },
                   "client_transaction_id": {
                     "type": "string",
@@ -31142,7 +31142,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/AmountCore"
+                    "$ref": "#/components/schemas/AmountCore-old"
                   },
                   "client_transaction_id": {
                     "type": "string",
@@ -31416,7 +31416,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PrintJobRequest"
+                "$ref": "#/components/schemas/PrintJobRequest-old"
               },
               "examples": {
                 "minimal": {
@@ -31798,7 +31798,7 @@
   },
   "components": {
     "schemas": {
-      "Metadata": {
+      "Metadata-old": {
         "type": "object",
         "description": "Free-form merchant data for tracking and reconciliation.",
         "properties": {
@@ -31817,18 +31817,18 @@
           }
         }
       },
-      "one-and-two-step-payment": {
+      "one-and-two-step-payment-old": {
         "type": "object",
         "properties": {
           "card": {
-            "$ref": "#/components/schemas/card"
+            "$ref": "#/components/schemas/card-old"
           },
           "card_details": {
             "$ref": "#/components/schemas/card_details",
             "description": "Optional for [cardless operations](#cardless-operations)."
           },
           "amount": {
-            "$ref": "#/components/schemas/amount"
+            "$ref": "#/components/schemas/amount-old"
           },
           "client_transaction_id": {
             "type": "string",
@@ -32652,7 +32652,7 @@
         "title": "documentType",
         "description": "* **DNI**: Documento Nacional de Identidad 🇵🇪\n* **CE**: Carné de Extranjería 🇵🇪\n* **PAS**: Pasaporte 🇵🇪\n* **RUC**: Registro Único de Contribuyentes 🇵🇪"
       },
-      "currency": {
+      "currency-old": {
         "type": "string",
         "enum": [
           "PEN",
@@ -32867,7 +32867,7 @@
         "type": "object",
         "properties": {
           "currency": {
-            "$ref": "#/components/schemas/currency"
+            "$ref": "#/components/schemas/currency-old"
           },
           "subtotalIva": {
             "type": "number",
@@ -32910,13 +32910,13 @@
           }
         ]
       },
-      "ChargebackListResponse": {
+      "ChargebackListResponse-old": {
         "type": "object",
         "properties": {
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ChargebackItem"
+              "$ref": "#/components/schemas/ChargebackItem-old"
             }
           },
           "page": {
@@ -32941,7 +32941,7 @@
           }
         }
       },
-      "ChargebackItem": {
+      "ChargebackItem-old": {
         "type": "object",
         "description": "Represents a chargeback record. The set of fields returned depends on whether the `fields` array is included in the request.\n\nFields listed under **Default fields** are always returned. Fields listed under **Optional fields** are only included when explicitly requested via the `fields` parameter.",
         "properties": {
@@ -33158,7 +33158,7 @@
           }
         }
       },
-      "ErrorResponse400": {
+      "ErrorResponse400-old": {
         "type": "object",
         "description": "Error response for bad request (400).",
         "properties": {
@@ -33364,7 +33364,7 @@
           ]
         }
       },
-      "webhooks": {
+      "webhooks-old": {
         "type": "object",
         "title": "webhooks",
         "description": "Send this object as another transactional notification option. In case you have a **Webhook** created through the Console, the notification will be sent to both the **API** and the **Console** channels. It means they will not be mutually exclusive.\n\nThe notifications will be seen in the Webhooks Notifications dashboard, and they will have a new field called Configuration, which will identify the source of the notification.\n\n**Example:**\n\n```Example\n{\n  \"webhooks\": [\n    {\n      \"events\": [\n        \"approvedTransaction\",\n        \"declinedTransaction\"\n      ],\n      \"headers\": [\n        {\n          \"label\": \"json\",\n          \"value\": \"12\"\n        }\n      ],\n      \"urls\": [\n        \"https://eof2hhkrta4ooo1.m.pipedream.net\"\n      ]\n    }\n  ]\n}\n```",
@@ -33675,7 +33675,7 @@
           "months": 3
         }
       },
-      "Card": {
+      "Card-old-old": {
         "type": "object",
         "properties": {
           "name": {
@@ -33731,7 +33731,7 @@
         "type": "object",
         "properties": {
           "currency": {
-            "$ref": "#/components/schemas/currency"
+            "$ref": "#/components/schemas/currency-old"
           },
           "subtotalIva": {
             "type": "number",
@@ -33820,7 +33820,7 @@
             "$ref": "#/components/schemas/Language"
           },
           "metadata": {
-            "$ref": "#/components/schemas/Metadata"
+            "$ref": "#/components/schemas/Metadata-old"
           },
           "retryConfiguration": {
             "type": "object",
@@ -33929,7 +33929,7 @@
             "type": "object",
             "properties": {
               "currency": {
-                "$ref": "#/components/schemas/currency"
+                "$ref": "#/components/schemas/currency-old"
               },
               "subtotalIva": {
                 "type": "number",
@@ -34004,7 +34004,7 @@
           "periods": 1
         }
       },
-      "Subscription": {
+      "Subscription-old": {
         "type": "object",
         "properties": {
           "token": {
@@ -34086,7 +34086,7 @@
             }
           },
           "metadata": {
-            "$ref": "#/components/schemas/Metadata"
+            "$ref": "#/components/schemas/Metadata-old"
           },
           "processorTransactionType": {
             "description": "Only for Oneclick Mall Captura Diferida. Is used to identify when a capture is made.",
@@ -34195,7 +34195,7 @@
         "title": "Language",
         "example": "es"
       },
-      "Currency": {
+      "Currency-old": {
         "type": "string",
         "enum": [
           "USD"
@@ -34231,7 +34231,7 @@
           "transactionIdentifier": "1231234561234"
         }
       },
-      "webhooksItem": {
+      "webhooksItem-old": {
         "type": "object",
         "title": "webhooksItem",
         "description": "Send this array as another transactional notification option. Each element in the array is a webhook configuration object. In case you have a **Webhook** created through the Console, the notification will be sent to both the **API** and the **Console** channels. It means they will not be mutually exclusive.\n\nThe notifications will be seen in the Webhooks Notifications dashboard, and they will have a new field called Configuration, which will identify the source of the notification.\n\n\n**Example:**\n\n```Example\n{\n  \"webhooks\": [\n    {\n      \"events\": [\n        \"approvedTransaction\",\n        \"declinedTransaction\"\n      ],\n      \"headers\": [\n        {\n          \"label\": \"json\",\n          \"value\": \"12\"\n        }\n      ],\n      \"urls\": [\n        \"https://eof2hhkrta4ooo1.m.pipedream.net\"\n      ]\n    }\n  ]\n}\n```",
@@ -34290,7 +34290,7 @@
           }
         ]
       },
-      "StatusComponent": {
+      "StatusComponent-old": {
         "type": "object",
         "title": "StatusComponent",
         "description": "Represents a single platform component and its current operational status, along with uptime metrics for the reported date range.",
@@ -34401,7 +34401,7 @@
           "partial_outage"
         ]
       },
-      "ErrorResponse": {
+      "ErrorResponse-old": {
         "type": "object",
         "title": "ErrorResponse",
         "properties": {
@@ -34425,7 +34425,7 @@
         "type": "object",
         "properties": {
           "currency": {
-            "$ref": "#/components/schemas/currency"
+            "$ref": "#/components/schemas/currency-old"
           },
           "subtotalIva": {
             "type": "number",
@@ -34520,7 +34520,7 @@
           "authenticationLevel": "02"
         }
       },
-      "SettlementDateRangeRequest": {
+      "SettlementDateRangeRequest-old": {
         "type": "object",
         "title": "SettlementDateRangeRequest",
         "description": "Request body for querying settlement records by date range.",
@@ -34555,7 +34555,7 @@
           "endDate"
         ]
       },
-      "SettlementTicketRequest": {
+      "SettlementTicketRequest-old": {
         "type": "object",
         "title": "SettlementTicketRequest",
         "description": "Request body for querying a settlement record by ticket number. Returns a single record in the `data` array.",
@@ -34570,7 +34570,7 @@
           "ticketNumber"
         ]
       },
-      "SettlementResponse": {
+      "SettlementResponse-old": {
         "type": "object",
         "title": "SettlementResponse",
         "description": "Settlement records matching the query. When querying by `ticketNumber`, `data` contains exactly one element.",
@@ -34887,7 +34887,7 @@
           }
         }
       },
-      "SubscriptionTransactionsResponse": {
+      "SubscriptionTransactionsResponse-old": {
         "type": "object",
         "title": "SubscriptionTransactionsResponse",
         "description": "Full details of a subscription, including card and plan metadata, plus the list of transactions charged within the requested date range.",
@@ -35141,7 +35141,7 @@
             "type": "array",
             "description": "List of transactions charged under this subscription within the requested date range.",
             "items": {
-              "$ref": "#/components/schemas/SubscriptionTransaction"
+              "$ref": "#/components/schemas/SubscriptionTransaction-old"
             }
           }
         },
@@ -35160,7 +35160,7 @@
           "transactions"
         ]
       },
-      "SubscriptionTransaction": {
+      "SubscriptionTransaction-old": {
         "type": "object",
         "title": "SubscriptionTransaction",
         "description": "Details of a single transaction executed under a subscription.",
@@ -35522,7 +35522,7 @@
           }
         }
       },
-      "extra_taxes": {
+      "extra_taxes-old": {
         "type": "object",
         "properties": {
           "airport_tax": {
@@ -35557,7 +35557,7 @@
           "travel_agency": 0
         }
       },
-      "card": {
+      "card-old": {
         "type": "object",
         "properties": {
           "card_holder_name": {
@@ -35854,7 +35854,7 @@
           }
         }
       },
-      "amount": {
+      "amount-old": {
         "type": "object",
         "title": "amount",
         "properties": {
@@ -35867,7 +35867,7 @@
             "description": "Peru supports **PEN** (Soles) and **USD**."
           },
           "extra_taxes": {
-            "$ref": "#/components/schemas/extra_taxes"
+            "$ref": "#/components/schemas/extra_taxes-old"
           },
           "iva": {
             "type": "number",
@@ -35976,23 +35976,23 @@
           "code"
         ]
       },
-      "AmountWithTaxes": {
+      "AmountWithTaxes-old": {
         "description": "Amount breakdown including extra tax components (for charge and authorization).",
         "allOf": [
           {
-            "$ref": "#/components/schemas/AmountCore"
+            "$ref": "#/components/schemas/AmountCore-old"
           },
           {
             "type": "object",
             "properties": {
               "extra_taxes": {
-                "$ref": "#/components/schemas/ExtraTaxes"
+                "$ref": "#/components/schemas/ExtraTaxes-old"
               }
             }
           }
         ]
       },
-      "AmountCore": {
+      "AmountCore-old": {
         "type": "object",
         "description": "Base amount breakdown. All values are in the terminal's configured currency.",
         "properties": {
@@ -36021,7 +36021,7 @@
           "subtotal_iva0"
         ]
       },
-      "ExtraTaxes": {
+      "ExtraTaxes-old": {
         "type": "object",
         "description": "Additional tax components. Set each field to `0` if not applicable.",
         "properties": {
@@ -36228,7 +36228,7 @@
         "description": "Amount breakdown including tip (used exclusively for pos_tip endpoint).",
         "allOf": [
           {
-            "$ref": "#/components/schemas/AmountWithTaxes"
+            "$ref": "#/components/schemas/AmountWithTaxes-old"
           },
           {
             "type": "object",
@@ -36344,7 +36344,7 @@
           "size"
         ]
       },
-      "PrintJobRequest": {
+      "PrintJobRequest-old": {
         "type": "object",
         "properties": {
           "commands": {
@@ -36354,7 +36354,7 @@
             "items": {
               "oneOf": [
                 {
-                  "$ref": "#/components/schemas/CommandText"
+                  "$ref": "#/components/schemas/CommandText-old"
                 },
                 {
                   "$ref": "#/components/schemas/CommandColumns"
@@ -36412,7 +36412,7 @@
           "commands"
         ]
       },
-      "CommandText": {
+      "CommandText-old": {
         "type": "object",
         "properties": {
           "type": {
@@ -36887,6 +36887,93 @@
           "status",
           "externalReference"
         ]
+      },
+      "Card": {
+        "type": "object",
+        "title": "Card",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "number": {
+            "type": "string",
+            "pattern": "^[0-9]{14,19}$"
+          },
+          "expiryMonth": {
+            "type": "string"
+          },
+          "expiryYear": {
+            "type": "string"
+          },
+          "cvv": {
+            "type": "string",
+            "description": "Card verification value. Optional by default, but configurable as required at the merchant level — if CVV validation is enabled and this field is omitted, the transaction will be declined with a CVV required error.\n\nIt is also optional for processing external subscriptions (PCI-compliant merchants only) in Mexico 🇲🇽, Colombia 🇨🇴, Perú 🇵🇪, and Chile 🇨🇱, exclusively when `subsequentRecurrence` is sent in the `transactionMode` field.",
+            "pattern": "^[0-9]{3,4}$"
+          },
+          "cryptogram": {
+            "type": "string",
+            "description": "**BETA** — Only available in Chile 🇨🇱 and Peru 🇵🇪.\n\nCryptogram required when using a network token, obtained from digital wallets or issuer token services. **It must be between 20 and 28 alphanumeric characters long.**\n\n- It does not replace the CVV; sending the CVV is still recommended.\n- If only the cryptogram is provided without CVV, the acceptance rate may vary.",
+            "minLength": 20,
+            "maxLength": 28
+          }
+        },
+        "required": [
+          "name",
+          "number",
+          "expiryMonth",
+          "expiryYear"
+        ],
+        "example": {
+          "name": "John Doe",
+          "number": "5451951574925480",
+          "expiryMonth": "08",
+          "expiryYear": "28",
+          "cvv": "121"
+        }
+      },
+      "networkToken1": {
+        "type": "object",
+        "title": "networkToken",
+        "description": "**PRODUCT IN BETA VERSION**\n\n**Required when `isNetworkToken` is `true`.**\n\nOnly available in Chile 🇨🇱 and Perú 🇵🇪.\n\nAdditional metadata required when processing transactions with network tokenized cards. These fields help identify the device, wallet, and authentication context used during token provisioning or transaction initiation.",
+        "properties": {
+          "deviceType": {
+            "type": "string",
+            "description": "Describes the type of device from which the tokenized transaction originated."
+          },
+          "requestorId": {
+            "type": "string",
+            "description": "The unique identifier assigned to the token requestor by the card network (Visa or Mastercard)."
+          },
+          "source": {
+            "type": "string",
+            "description": "Indicates the source of the token."
+          },
+          "walletId": {
+            "type": "string",
+            "enum": [
+              "01",
+              "04"
+            ],
+            "description": "Identifier of the digital wallet used for the transaction.\n* `01`: Apple Pay.\n* `04`: Default value for other wallets."
+          },
+          "authenticationLevel": {
+            "type": "string",
+            "description": "Indicates the level of authentication performed during token provisioning or transaction."
+          },
+          "mvv": {
+            "type": "string",
+            "description": "The 10-digit Merchant Verification Value (MVV). Applicable to Visa transactions only.",
+            "maxLength": 10,
+            "example": "6355661111"
+          }
+        },
+        "example": {
+          "deviceType": "some device",
+          "requestorId": "98987676501",
+          "source": "01",
+          "walletId": "01",
+          "authenticationLevel": "02"
+        }
       }
     },
     "responses": {

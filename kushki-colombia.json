@@ -17187,7 +17187,7 @@
                         }
                       },
                       "currency": {
-                        "$ref": "#/components/schemas/currency2"
+                        "$ref": "#/components/schemas/currency-old"
                       },
                       "taxEnabled": {
                         "type": "boolean"
@@ -17903,7 +17903,7 @@
                           }
                         },
                         "currency": {
-                          "$ref": "#/components/schemas/currency2"
+                          "$ref": "#/components/schemas/currency-old"
                         },
                         "taxEnabled": {
                           "type": "boolean"
@@ -18660,7 +18660,7 @@
                         }
                       },
                       "currency": {
-                        "$ref": "#/components/schemas/currency2"
+                        "$ref": "#/components/schemas/currency-old"
                       },
                       "taxEnabled": {
                         "type": "boolean"
@@ -22353,14 +22353,14 @@
                       "type": "array",
                       "description": "List of Kushki platform components and their current operational status.",
                       "items": {
-                        "$ref": "#/components/schemas/StatusComponent"
+                        "$ref": "#/components/schemas/StatusComponent-old"
                       }
                     },
                     "billpocket": {
                       "type": "array",
                       "description": "List of BillPocket platform components and their current operational status.",
                       "items": {
-                        "$ref": "#/components/schemas/StatusComponent"
+                        "$ref": "#/components/schemas/StatusComponent-old"
                       }
                     }
                   },
@@ -22466,7 +22466,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse4"
+                  "$ref": "#/components/schemas/ErrorResponse-old"
                 },
                 "examples": {
                   "GL - K002 - Unexpected error": {
@@ -22537,7 +22537,7 @@
                     "type": "string"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata-old"
                   }
                 },
                 "required": [
@@ -22562,7 +22562,7 @@
                       "type": "string"
                     },
                     "metadata": {
-                      "$ref": "#/components/schemas/Metadata5"
+                      "$ref": "#/components/schemas/Metadata-old"
                     },
                     "private_credential_id": {
                       "type": "string"
@@ -23174,7 +23174,7 @@
                     "type": "string"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata-old"
                   }
                 },
                 "required": [
@@ -23670,7 +23670,7 @@
                             "type": "number"
                           },
                           "currency": {
-                            "$ref": "#/components/schemas/currency2"
+                            "$ref": "#/components/schemas/currency-old"
                           },
                           "iva": {
                             "type": "number"
@@ -32419,7 +32419,7 @@
         "type": "object",
         "properties": {
           "currency": {
-            "$ref": "#/components/schemas/currency2"
+            "$ref": "#/components/schemas/currency-old"
           },
           "subtotalIva": {
             "type": "number",
@@ -32438,7 +32438,7 @@
             "description": "Set it to `0` in case the transaction has no ICE (Impuesto a Consumos Especiales)"
           },
           "extraTaxes": {
-            "$ref": "#/components/schemas/extraTaxes3"
+            "$ref": "#/components/schemas/extraTaxes2"
           }
         },
         "required": [
@@ -32463,7 +32463,7 @@
           }
         ]
       },
-      "currency2": {
+      "currency-old": {
         "type": "string",
         "enum": [
           "PEN",
@@ -32472,7 +32472,7 @@
         "title": "currency",
         "description": "Peru supports **PEN** (Soles) and **USD**."
       },
-      "extraTaxes3": {
+      "extraTaxes2": {
         "type": "object",
         "properties": {
           "iac": {
@@ -32511,7 +32511,7 @@
           }
         ]
       },
-      "StatusComponent": {
+      "StatusComponent-old": {
         "type": "object",
         "title": "StatusComponent",
         "description": "Represents a single platform component and its current operational status, along with uptime metrics for the reported date range.",
@@ -32622,7 +32622,7 @@
           "partial_outage"
         ]
       },
-      "ErrorResponse4": {
+      "ErrorResponse-old": {
         "type": "object",
         "title": "ErrorResponse",
         "properties": {
@@ -32642,7 +32642,7 @@
           "message"
         ]
       },
-      "Metadata5": {
+      "Metadata-old": {
         "type": "object",
         "description": "Free-form merchant data for tracking and reconciliation.",
         "properties": {
@@ -32661,7 +32661,7 @@
           }
         }
       },
-      "LinkFailure6": {
+      "LinkFailure3": {
         "type": "object",
         "description": "Unified error model for all Kushki ONE Connect endpoints.\nEvaluate `type` to classify the error source, then look up `code`\nin the Error Catalog.\n",
         "properties": {
@@ -32698,7 +32698,7 @@
           "message"
         ]
       },
-      "PrinterError7": {
+      "PrinterError4": {
         "type": "object",
         "properties": {
           "type": {

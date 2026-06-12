@@ -1,0 +1,59 @@
+name: Sync Kushki specs from Apidog
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # cada 6 horas 
+  workflow_dispatch:         # botón para correrlo a mano
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Exportar cada módulo desde Apidog
+        env:
+          TOKEN: ${{ secrets.APIDOG_TOKEN }}
+          PROJECT_ID: "1169997"
+        run: |
+          declare -A MODULES=(
+            ["kushki-peru.json"]="1032356"
+            ["kushki-mexico.json"]="1210126"
+            ["kushki-ecuador.json"]="1210131"
+            ["kushki-colombia.json"]="1210132"
+            ["kushki-chile.json"]="1210134"
+          )
+          for FILE in "${!MODULES[@]}"; do
+            MID="${MODULES[$FILE]}"
+            echo "Exportando $FILE (módulo $MID)"
+            PAYLOAD=$(jq -n --argjson mid "$MID" '{
+              scope: { type: "ALL" },
+              moduleId: $mid,
+              options: { includeApidogExtensionProperties: false, addFoldersToTags: false },
+              oasVersion: "3.0",
+              exportFormat: "JSON"
+            }')
+            curl -sS --fail-with-body -X POST \
+              "https://api.apidog.com/v1/projects/${PROJECT_ID}/export-openapi?locale=es-ES" \
+              -H "X-Apidog-Api-Version: 2024-03-28" \
+              -H "Authorization: Bearer ${TOKEN}" \
+              -H "Content-Type: application/json" \
+              --data "$PAYLOAD" | jq '.' > "$FILE"
+            if ! jq -e '.openapi and .paths' "$FILE" >/dev/null 2>&1; then
+              echo "ERROR: $FILE no es un OpenAPI válido"; exit 1
+            fi
+          done
+
+      - name: Commit solo si hubo cambios
+        run: |
+          git config user.name  "apidog-sync-bot"
+          git config user.email "actions@github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "chore: sync specs desde Apidog ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git push
+          else
+            echo "Sin cambios."
+          fi

@@ -1,10 +1,8 @@
-name: Sync Kushki specs from Apidog
-
+name: Sync Kushki specs from published docs
 on:
   schedule:
-    - cron: '0 */6 * * *'   # cada 6 horas 
+    - cron: '0 */6 * * *'   # cada 6 horas
   workflow_dispatch:         # botón para correrlo a mano
-
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -13,11 +11,30 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Exportar cada módulo desde Apidog
+      - name: Exportar cada módulo desde el sitio publicado
         env:
-          TOKEN: ${{ secrets.APIDOG_TOKEN }}
-          PROJECT_ID: "1169997"
+          DOCS_BASE: "https://docs-test.kushki.dev"
+          # Prefijo interno que usa el cliente de Apidog para llamadas API
+          # en custom domains (customDomainRequestPath en su bundle JS).
+          API_PREFIX: "/raiz5jee8eiph0eeFooV"
         run: |
+          set -euo pipefail
+
+          # --- Auto-descubrir onlineId, projectId y branchId del sitio ---
+          HOME_HTML=$(curl -sS --fail "$DOCS_BASE/")
+          extract_id() {
+            echo "$HOME_HTML" | grep -oE "$1[^0-9]{1,10}[0-9]+" | grep -oE '[0-9]+' | head -1
+          }
+          ONLINE_ID=$(extract_id 'onlineId')
+          PROJECT_ID=$(extract_id 'projectId')
+          BRANCH_ID=$(extract_id 'branchId')
+          echo "onlineId=$ONLINE_ID projectId=$PROJECT_ID branchId=$BRANCH_ID"
+          if [ -z "$ONLINE_ID" ] || [ -z "$PROJECT_ID" ] || [ -z "$BRANCH_ID" ]; then
+            echo "ERROR: no pude extraer la config del sitio publicado"; exit 1
+          fi
+
+          EXPORT_URL="${DOCS_BASE}${API_PREFIX}/api/v1/projects/${ONLINE_ID}/published-projects/export-data?branchId=${BRANCH_ID}"
+
           declare -A MODULES=(
             ["kushki-peru.json"]="1032356"
             ["kushki-mexico.json"]="1210126"
@@ -25,25 +42,33 @@ jobs:
             ["kushki-colombia.json"]="1210132"
             ["kushki-chile.json"]="1210134"
           )
+
           for FILE in "${!MODULES[@]}"; do
             MID="${MODULES[$FILE]}"
             echo "Exportando $FILE (módulo $MID)"
-            PAYLOAD=$(jq -n --argjson mid "$MID" '{
-              scope: { type: "ALL" },
-              moduleId: $mid,
-              options: { includeApidogExtensionProperties: false, addFoldersToTags: false },
-              oasVersion: "3.0",
-              exportFormat: "JSON"
-            }')
-            curl -sS --fail-with-body -X POST \
-              "https://api.apidog.com/v1/projects/${PROJECT_ID}/export-openapi?locale=es-ES" \
-              -H "X-Apidog-Api-Version: 2024-03-28" \
-              -H "Authorization: Bearer ${TOKEN}" \
-              -H "Content-Type: application/json" \
-              --data "$PAYLOAD" | jq '.' > "$FILE"
+            PAYLOAD=$(jq -n \
+              --arg id "$ONLINE_ID" \
+              --argjson mid "$MID" \
+              --argjson branch "$BRANCH_ID" \
+              --argjson project "$PROJECT_ID" '{
+                type: "openapi",
+                id: $id,
+                version: "3.0",
+                moduleId: $mid,
+                excludeExtension: true,
+                excludeTagsWithFolder: false,
+                branchId: $branch,
+                projectId: $project
+              }')
+            # jq -S ordena las keys -> diffs estables entre corridas
+            curl -sS --fail-with-body -X POST "$EXPORT_URL" \
+              -H "Content-Type: application/json;charset=UTF-8" \
+              -H "X-Project-Id: ${PROJECT_ID}" \
+              --data "$PAYLOAD" | jq -S '.' > "$FILE"
             if ! jq -e '.openapi and .paths' "$FILE" >/dev/null 2>&1; then
               echo "ERROR: $FILE no es un OpenAPI válido"; exit 1
             fi
+            echo "  -> $(jq '.paths | length' "$FILE") paths"
           done
 
       - name: Commit solo si hubo cambios
@@ -52,7 +77,7 @@ jobs:
           git config user.email "actions@github.com"
           if [ -n "$(git status --porcelain)" ]; then
             git add -A
-            git commit -m "chore: sync specs desde Apidog ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git commit -m "chore: sync specs desde docs publicados ($(date -u +%Y-%m-%dT%H:%MZ))"
             git push
           else
             echo "Sin cambios."

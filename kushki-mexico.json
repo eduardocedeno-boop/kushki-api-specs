@@ -2614,7 +2614,8 @@
           },
           "fullResponse": {
             "enum": [
-              "v2"
+              "v2",
+              "v3"
             ]
           },
           "ignoreWarnings": {
@@ -44874,6 +44875,46 @@
                       },
                       "subscriptionId": "1658356540437000"
                     }
+                  },
+                  "fullResponse v3": {
+                    "summary": "fullResponse v3",
+                    "value": {
+                      "details": {
+                        "amount": {
+                          "currency": "MXN",
+                          "ice": 0,
+                          "iva": 0,
+                          "subtotalIva": 0,
+                          "subtotalIva0": 150
+                        },
+                        "binCard": "44565280",
+                        "binInfo": {
+                          "bank": "BBVA MÉXICO",
+                          "type": "credit"
+                        },
+                        "cardHolderName": "Carlos Ramírez",
+                        "contactDetails": {
+                          "documentNumber": "RAMC850101HDFMRL09",
+                          "documentType": "CURP",
+                          "email": "carlos.ramirez@ejemplo.com",
+                          "firstName": "Carlos",
+                          "lastName": "Ramírez",
+                          "phoneNumber": "+525512345678"
+                        },
+                        "created": "2026-06-02",
+                        "lastFourDigits": "9860",
+                        "maskedCreditCard": "44565280XXXX9860",
+                        "merchantId": "20000000103625273000",
+                        "merchantName": "Tu comercio",
+                        "paymentBrand": "Visa",
+                        "periodicity": "monthly",
+                        "planName": "Premium",
+                        "processorBankName": "BBVA MÉXICO",
+                        "startDate": "2026-07-01",
+                        "validationTicketNumber": "819247872865232808"
+                      },
+                      "subscriptionId": "1780428956212148"
+                    }
                   }
                 },
                 "schema": {
@@ -44923,6 +44964,10 @@
                           "type": "string"
                         },
                         "startDate": {
+                          "type": "string"
+                        },
+                        "validationTicketNumber": {
+                          "description": "Ticket number of the validation charge transaction performed when the subscription was created. Only present when the request was made with `fullResponse: v3`.",
                           "type": "string"
                         }
                       },
@@ -45135,6 +45180,37 @@
                       "startDate": 1574726400,
                       "subscriptionId": "1574693127852000"
                     }
+                  },
+                  "fullResponse v3": {
+                    "summary": "fullResponse v3",
+                    "value": {
+                      "amount": {
+                        "currency": "MXN",
+                        "ice": 0,
+                        "iva": 0,
+                        "subtotalIva": 0,
+                        "subtotalIva0": 150
+                      },
+                      "bin": "545195",
+                      "cardHolderName": "Carlos Ramírez",
+                      "cardType": "credit",
+                      "contactDetails": {
+                        "email": "carlos.ramirez@ejemplo.com",
+                        "firstName": "Carlos",
+                        "lastName": "Ramírez"
+                      },
+                      "created": 1780428956,
+                      "lastFourDigits": "5480",
+                      "maskedCardNumber": "545195XXXXXX5480",
+                      "merchantId": "20000000103625273000",
+                      "metadata": {},
+                      "paymentBrand": "MASTERCARD",
+                      "periodicity": "monthly",
+                      "planName": "Premium",
+                      "startDate": 1759276800,
+                      "subscriptionId": "1780428956212148",
+                      "validationTicketNumber": "292735057772257184"
+                    }
                   }
                 },
                 "schema": {
@@ -45223,6 +45299,10 @@
                       "type": "number"
                     },
                     "subscriptionId": {
+                      "type": "string"
+                    },
+                    "validationTicketNumber": {
+                      "description": "Ticket number of the validation charge transaction performed when the subscription was created. Only present when the request was made with `fullResponse: v3`.",
                       "type": "string"
                     }
                   },

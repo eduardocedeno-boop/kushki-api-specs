@@ -854,17 +854,13 @@
     },
     "schemas": {
       "Amount": {
+        "description": "Amount object for Peru 🇵🇪. Supports `PEN` and `USD`.",
         "example": {
-          "currency": "USD",
-          "extraTaxes": {
-            "agenciaDeViaje": 0,
-            "iac": 0,
-            "tasaAeroportuaria": 0
-          },
+          "currency": "PEN",
           "ice": 0,
           "iva": 0,
           "subtotalIva": 0,
-          "subtotalIva0": 10
+          "subtotalIva0": 59.9
         },
         "properties": {
           "currency": {
@@ -874,15 +870,15 @@
             "$ref": "#/components/schemas/extraTaxes"
           },
           "ice": {
-            "description": "Set it to `0` in case the transaction has no ICE (Impuesto a Consumos Especiales)",
+            "description": "Set it to `0` in case the transaction has no ICE.",
             "type": "number"
           },
           "iva": {
-            "description": "Set it to `0` in case the transaction has no taxes",
+            "description": "Set it to `0` in case the transaction has no taxes.",
             "type": "number"
           },
           "subtotalIva": {
-            "description": "Set it to `0` in case the transaction has no taxes",
+            "description": "Set it to `0` in case the transaction has no taxes.",
             "type": "number"
           },
           "subtotalIva0": {
@@ -897,7 +893,11 @@
           "iva",
           "ice"
         ],
-        "type": "object"
+        "title": "Amount",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "Amount-CL-old": {
         "properties": {
@@ -947,27 +947,36 @@
         ]
       },
       "Amount-cash-in": {
+        "description": "Amount object for Cash-In transactions in Peru 🇵🇪.",
+        "example": {
+          "currency": "PEN",
+          "ice": 0,
+          "iva": 0,
+          "subtotalIva": 0,
+          "subtotalIva0": 59.9
+        },
         "properties": {
           "currency": {
-            "$ref": "#/components/schemas/currency-old"
-          },
-          "extraTaxes": {
-            "$ref": "#/components/schemas/extraTaxes-old"
+            "description": "Peru Cash-In uses `PEN`.",
+            "enum": [
+              "PEN"
+            ],
+            "type": "string"
           },
           "ice": {
-            "description": "Set it to `0` in case the transaction has no ICE (Impuesto a Consumos Especiales)",
+            "description": "Set it to `0` in case the transaction has no ICE.",
             "type": "number"
           },
           "iva": {
-            "description": "Set it to `0` in case the transaction has no taxes",
+            "description": "Set it to `0` in case the transaction has no taxes.",
             "type": "number"
           },
           "subtotalIva": {
-            "description": "Set it to `0` in case the transaction has no taxes",
+            "description": "Set it to `0` in case the transaction has no taxes.",
             "type": "number"
           },
           "subtotalIva0": {
-            "description": "Set the total amount of the transaction here in case it has no taxes. Otherwise, set it to `0`",
+            "description": "Set the total amount here in case it has no taxes. Otherwise, set it to `0`.",
             "type": "number"
           }
         },
@@ -977,20 +986,10 @@
           "iva",
           "ice"
         ],
+        "title": "Amount-cash-in",
         "type": "object",
-        "x-examples": [
-          {
-            "currency": "MXN",
-            "extraTaxes": {
-              "agenciaDeViaje": 0,
-              "iac": 0,
-              "tasaAeroportuaria": 0
-            },
-            "ice": 0,
-            "iva": 0,
-            "subtotalIva": 0,
-            "subtotalIva0": 10
-          }
+        "x-apidog-tags": [
+          "pe"
         ]
       },
       "Amount-old": {
@@ -1041,41 +1040,21 @@
           }
         ]
       },
-      "Amount1": {
-        "description": "Amount object for Ecuador 🇪🇨, Perú 🇵🇪, Colombia 🇨🇴, and México 🇲🇽. For Chile use `Amount-CL`. For Cash-In use `Amount-cash-in`.",
-        "example": {
-          "currency": "USD",
-          "extraTaxes": {
-            "agenciaDeViaje": 0,
-            "iac": 0,
-            "tasaAeroportuaria": 0
-          },
-          "ice": 0,
-          "iva": 0,
-          "subtotalIva": 0,
-          "subtotalIva0": 10
-        },
+      "AmountCore": {
         "properties": {
           "currency": {
-            "$ref": "#/components/schemas/currency10"
-          },
-          "extraTaxes": {
-            "$ref": "#/components/schemas/extraTaxes11"
+            "$ref": "#/components/schemas/currency"
           },
           "ice": {
-            "description": "Set it to `0` in case the transaction has no ICE (Impuesto a Consumos Especiales).",
             "type": "number"
           },
           "iva": {
-            "description": "Set it to `0` in case the transaction has no taxes.",
             "type": "number"
           },
           "subtotalIva": {
-            "description": "Set it to `0` in case the transaction has no taxes.",
             "type": "number"
           },
           "subtotalIva0": {
-            "description": "Set the total amount of the transaction here in case it has no taxes. Otherwise, set it to `0`.",
             "type": "number"
           }
         },
@@ -1086,8 +1065,11 @@
           "iva",
           "ice"
         ],
-        "title": "Amount",
-        "type": "object"
+        "title": "AmountCore",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "AmountCore-old": {
         "description": "Base amount breakdown. All values are in the terminal's configured currency.",
@@ -1118,6 +1100,41 @@
         ],
         "type": "object"
       },
+      "AmountWithTaxes": {
+        "description": "Amount object for Terminal transactions in Peru 🇵🇪.",
+        "properties": {
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "extraTaxes": {
+            "$ref": "#/components/schemas/extraTaxes"
+          },
+          "ice": {
+            "type": "number"
+          },
+          "iva": {
+            "type": "number"
+          },
+          "subtotalIva": {
+            "type": "number"
+          },
+          "subtotalIva0": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "currency",
+          "subtotalIva",
+          "subtotalIva0",
+          "iva",
+          "ice"
+        ],
+        "title": "AmountWithTaxes",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
       "AmountWithTaxes-old": {
         "allOf": [
           {
@@ -1133,6 +1150,41 @@
           }
         ],
         "description": "Amount breakdown including extra tax components (for charge and authorization)."
+      },
+      "AmountWithTip": {
+        "properties": {
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "ice": {
+            "type": "number"
+          },
+          "iva": {
+            "type": "number"
+          },
+          "subtotalIva": {
+            "type": "number"
+          },
+          "subtotalIva0": {
+            "type": "number"
+          },
+          "tip": {
+            "description": "Tip amount.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "currency",
+          "subtotalIva",
+          "subtotalIva0",
+          "iva",
+          "ice"
+        ],
+        "title": "AmountWithTip",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "AmountWithTip-old": {
         "allOf": [
@@ -1152,6 +1204,142 @@
           }
         ],
         "description": "Amount breakdown including tip (used exclusively for pos_tip endpoint)."
+      },
+      "AnalyticsListResponse": {
+        "example": {
+          "data": [
+            {
+              "created": 1718000000000,
+              "currency": "PEN",
+              "lastFourDigits": "5480",
+              "paymentBrand": "VISA",
+              "requestAmount": 59.9,
+              "ticketNumber": "12345678901234",
+              "transactionId": "txn_abc123",
+              "transactionStatus": "APPROVAL",
+              "transactionType": "SALE"
+            }
+          ],
+          "total": 1
+        },
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/AnalyticsTransactionItem"
+            },
+            "type": "array"
+          },
+          "total": {
+            "description": "Total number of matching transactions.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "total",
+          "data"
+        ],
+        "title": "AnalyticsListResponse",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "AnalyticsTransactionItem": {
+        "properties": {
+          "binCard": {
+            "type": "string"
+          },
+          "cardHolderName": {
+            "type": "string"
+          },
+          "channel": {
+            "$ref": "#/components/schemas/Channel"
+          },
+          "country": {
+            "type": "string"
+          },
+          "created": {
+            "description": "Unix timestamp in milliseconds.",
+            "type": "number"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "documentNumber": {
+            "type": "string"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/documentType"
+          },
+          "email": {
+            "type": "string"
+          },
+          "lastFourDigits": {
+            "type": "string"
+          },
+          "merchantName": {
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          },
+          "paymentBrand": {
+            "type": "string"
+          },
+          "paymentMethod": {
+            "$ref": "#/components/schemas/payment_method"
+          },
+          "paymentSubmethod": {
+            "$ref": "#/components/schemas/payment_submethod"
+          },
+          "processorName": {
+            "type": "string"
+          },
+          "requestAmount": {
+            "type": "number"
+          },
+          "subscriptionId": {
+            "type": "string"
+          },
+          "ticketNumber": {
+            "type": "string"
+          },
+          "transactionId": {
+            "type": "string"
+          },
+          "transactionStatus": {
+            "type": "string"
+          },
+          "transactionType": {
+            "$ref": "#/components/schemas/transactionType"
+          }
+        },
+        "title": "AnalyticsTransactionItem",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "BadRequestResponse": {
+        "properties": {
+          "code": {
+            "example": "K001",
+            "type": "string"
+          },
+          "message": {
+            "example": "El cuerpo de la petición es inválido",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "BadRequestResponse",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "BadRequestResponse-old": {
         "description": "",
@@ -1184,14 +1372,14 @@
       },
       "Billing-Address": {
         "example": {
-          "address1": "Eloy Alfaro 139 y Catalina Aldaz",
-          "address2": "centro 123",
-          "city": "Quito",
-          "country": "Ecuador",
-          "name": "John Doe",
-          "phone": "+593912345678",
-          "region": "Pichincha",
-          "zipcode": "170402"
+          "address1": "Av. Larco 1301",
+          "address2": "Miraflores",
+          "city": "Lima",
+          "country": "Peru",
+          "name": "Juan Pérez",
+          "phone": "+51987654321",
+          "region": "Lima",
+          "zipcode": "15074"
         },
         "properties": {
           "address1": {
@@ -1235,7 +1423,10 @@
           "country"
         ],
         "title": "Billing Address",
-        "type": "object"
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "Billing-Address-old": {
         "properties": {
@@ -1293,78 +1484,23 @@
           }
         ]
       },
-      "Billing-Address14": {
-        "example": {
-          "address1": "Eloy Alfaro 139 y Catalina Aldaz",
-          "address2": "centro 123",
-          "city": "Quito",
-          "country": "Ecuador",
-          "name": "John Doe",
-          "phone": "+593912345678",
-          "region": "Pichincha",
-          "zipcode": "170402"
-        },
-        "properties": {
-          "address1": {
-            "type": "string"
-          },
-          "address2": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          },
-          "region": {
-            "type": "string"
-          },
-          "secondaryAddress": {
-            "type": "string"
-          },
-          "userEmail": {
-            "format": "email",
-            "type": "string"
-          },
-          "zipcode": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "name",
-          "phone",
-          "address1",
-          "city",
-          "region",
-          "country"
-        ],
-        "title": "Billing Address",
-        "type": "object"
-      },
       "Card": {
         "example": {
           "cvv": "121",
           "expiryMonth": "08",
           "expiryYear": "28",
-          "name": "John Doe",
+          "name": "Juan Pérez",
           "number": "5451951574925480"
         },
         "properties": {
           "cryptogram": {
-            "description": "**BETA** — Only available in Chile 🇨🇱 and Peru 🇵🇪.\n\nCryptogram required when using a network token, obtained from digital wallets or issuer token services. **It must be between 20 and 28 alphanumeric characters long.**\n\n- It does not replace the CVV; sending the CVV is still recommended.\n- If only the cryptogram is provided without CVV, the acceptance rate may vary.",
+            "description": "**BETA** — Available in Peru 🇵🇪 and Chile 🇨🇱.\n\nCryptogram required when using a network token, obtained from digital wallets or issuer token services. **Must be between 20 and 28 alphanumeric characters long.**",
             "maxLength": 28,
             "minLength": 20,
             "type": "string"
           },
           "cvv": {
-            "description": "Card verification value. Optional by default, but configurable as required at the merchant level — if CVV validation is enabled and this field is omitted, the transaction will be declined with a CVV required error.\n\nIt is also optional for processing external subscriptions (PCI-compliant merchants only) in Mexico 🇲🇽, Colombia 🇨🇴, Perú 🇵🇪, and Chile 🇨🇱, exclusively when `subsequentRecurrence` is sent in the `transactionMode` field.",
+            "description": "Card verification value. Optional by default, but configurable as required at the merchant level.\n\nAlso optional for processing external subscriptions (PCI-compliant merchants only) in Peru 🇵🇪 exclusively when `subsequentRecurrence` is sent in the `transactionMode` field.",
             "pattern": "^[0-9]{3,4}$",
             "type": "string"
           },
@@ -1389,7 +1525,10 @@
           "expiryYear"
         ],
         "title": "Card",
-        "type": "object"
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "Card-old-old": {
         "example": {
@@ -1490,6 +1629,88 @@
         },
         "type": "object"
       },
+      "CashChargeInitRequest": {
+        "example": {
+          "amount": {
+            "currency": "PEN",
+            "ice": 0,
+            "iva": 0,
+            "subtotalIva": 0,
+            "subtotalIva0": 59.9
+          },
+          "contactDetails": {
+            "documentNumber": "12345678",
+            "documentType": "DNI",
+            "email": "usuario@ejemplo.com",
+            "firstName": "Juan",
+            "lastName": "Pérez",
+            "phoneNumber": "+51987654321"
+          }
+        },
+        "properties": {
+          "amount": {
+            "$ref": "#/components/schemas/Amount-cash-in"
+          },
+          "callbackUrl": {
+            "description": "URL where the payment confirmation will be sent.",
+            "type": "string"
+          },
+          "contactDetails": {
+            "$ref": "#/components/schemas/ContactDetails"
+          },
+          "description": {
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          },
+          "orderDetails": {
+            "$ref": "#/components/schemas/orderDetails"
+          }
+        },
+        "required": [
+          "amount",
+          "contactDetails"
+        ],
+        "title": "CashChargeInitRequest",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "CashStatusResponse": {
+        "properties": {
+          "amount": {
+            "type": "number"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "expirationDate": {
+            "type": "string"
+          },
+          "paymentUrl": {
+            "description": "URL where the customer can complete the cash payment.",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "PENDING",
+              "APPROVAL",
+              "DECLINED"
+            ],
+            "type": "string"
+          },
+          "ticketNumber": {
+            "type": "string"
+          }
+        },
+        "title": "CashStatusResponse",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
       "Channel": {
         "enum": [
           "PRESTASHOP",
@@ -1499,10 +1720,11 @@
           "WEBCHECKOUT",
           "POS"
         ],
+        "example": "PRESTASHOP",
         "title": "Channel",
         "type": "string",
-        "x-examples": [
-          "PRESTASHOP"
+        "x-apidog-tags": [
+          "pe"
         ]
       },
       "ChargebackItem-old": {
@@ -1722,75 +1944,117 @@
         },
         "type": "object"
       },
-      "ChargebackListResponse-old": {
+      "ChargebackListResponse": {
         "properties": {
           "data": {
             "items": {
-              "$ref": "#/components/schemas/ChargebackItem-old"
+              "properties": {
+                "amount": {
+                  "type": "number"
+                },
+                "chargebackId": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "currency": {
+                  "$ref": "#/components/schemas/currency"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "ticketNumber": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
             },
             "type": "array"
           },
-          "page": {
-            "description": "Current page of results.",
-            "example": 1,
-            "type": "integer"
-          },
-          "page_size": {
-            "description": "Number of records returned on this page.",
-            "example": 20,
-            "type": "integer"
-          },
           "total": {
-            "description": "Total number of records matching the applied filters.",
-            "example": 19990,
-            "type": "integer"
-          },
-          "total_pages": {
-            "description": "Total number of available pages.",
-            "example": 1000,
-            "type": "integer"
+            "type": "number"
           }
         },
-        "type": "object"
+        "required": [
+          "total",
+          "data"
+        ],
+        "title": "ChargebackListResponse",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
-      "ChargesVoidCardResponse-old": {
-        "description": "",
+      "ChargebackSearchRequest": {
+        "example": {
+          "endDate": "2025-01-31",
+          "startDate": "2025-01-01"
+        },
+        "properties": {
+          "endDate": {
+            "description": "End date in `YYYY-MM-DD` format.",
+            "type": "string"
+          },
+          "startDate": {
+            "description": "Start date in `YYYY-MM-DD` format.",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "initialized",
+              "pending",
+              "review",
+              "approval",
+              "declined",
+              "failed",
+              "expired"
+            ],
+            "type": "string"
+          },
+          "ticketNumber": {
+            "type": "string"
+          }
+        },
+        "title": "ChargebackSearchRequest",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "ChargesVoidCardResponse": {
         "example": {
           "details": {
-            "approvalCode": "string",
-            "approvedTransactionAmount": 0,
-            "binCard": "string",
-            "cardHolderName": "string",
-            "created": 0,
-            "currencyCode": "string",
-            "graceMonths": "string",
+            "approvalCode": "123456",
+            "binCard": "545195",
+            "cardHolderName": "Juan Pérez",
+            "created": 1718000000000,
+            "graceMonths": "00",
             "iceValue": 0,
             "ivaValue": 0,
-            "lastFourDigits": "string",
-            "merchantId": "string",
-            "merchantName": "string",
+            "lastFourDigits": "5480",
+            "merchantName": "Merchant Name",
             "metadata": {},
-            "method": "string",
-            "numberOfMonths": 0,
-            "paymentBrand": "string",
-            "processorBankName": "string",
-            "processorId": "string",
-            "processorName": "string",
-            "requestAmount": 0,
-            "responseCode": "string",
-            "responseText": "string",
-            "saleTicketNumber": "string",
-            "subscriptionId": "string",
+            "method": "CARD",
+            "paymentBrand": "MASTERCARD",
+            "processorBankName": "Bank Name",
+            "processorName": "Processor Name",
+            "requestAmount": 59.9,
+            "saleTicketNumber": "12345678901233",
+            "subscriptionId": "",
             "subscriptionMetadata": {},
             "subtotalIva": 0,
-            "subtotalIva0": 0,
+            "subtotalIva0": 59.9,
             "syncMode": "api",
-            "taxes": {},
-            "transactionId": "string",
-            "transactionStatus": "string",
-            "transactionType": "string"
+            "transactionId": "txn_abc123",
+            "transactionStatus": "APPROVAL",
+            "transactionType": "VOID"
           },
-          "ticketNumber": "string"
+          "ticketNumber": "12345678901234"
         },
         "properties": {
           "details": {
@@ -1895,32 +2159,6 @@
                 "type": "string"
               }
             },
-            "required": [
-              "transactionId",
-              "approvalCode",
-              "cardHolderName",
-              "lastFourDigits",
-              "binCard",
-              "processorName",
-              "processorBankName",
-              "merchantName",
-              "transactionType",
-              "paymentBrand",
-              "created",
-              "requestAmount",
-              "subtotalIva",
-              "subtotalIva0",
-              "ivaValue",
-              "iceValue",
-              "transactionStatus",
-              "metadata",
-              "subscriptionMetadata",
-              "subscriptionId",
-              "method",
-              "syncMode",
-              "saleTicketNumber",
-              "graceMonths"
-            ],
             "type": "object"
           },
           "ticketNumber": {
@@ -1931,46 +2169,11 @@
         "required": [
           "ticketNumber"
         ],
+        "title": "ChargesVoidCardResponse",
         "type": "object",
-        "x-examples": {
-          "example-1": {
-            "details": {
-              "approvalCode": "string",
-              "approvedTransactionAmount": 0,
-              "binCard": "string",
-              "cardHolderName": "string",
-              "created": 0,
-              "currencyCode": "string",
-              "graceMonths": "string",
-              "iceValue": 0,
-              "ivaValue": 0,
-              "lastFourDigits": "string",
-              "merchantId": "string",
-              "merchantName": "string",
-              "metadata": {},
-              "method": "string",
-              "numberOfMonths": 0,
-              "paymentBrand": "string",
-              "processorBankName": "string",
-              "processorId": "string",
-              "processorName": "string",
-              "requestAmount": 0,
-              "responseCode": "string",
-              "responseText": "string",
-              "saleTicketNumber": "string",
-              "subscriptionId": "string",
-              "subscriptionMetadata": {},
-              "subtotalIva": 0,
-              "subtotalIva0": 0,
-              "syncMode": "api",
-              "taxes": {},
-              "transactionId": "string",
-              "transactionStatus": "string",
-              "transactionType": "string"
-            },
-            "ticketNumber": "string"
-          }
-        }
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "ColumnItem-old": {
         "properties": {
@@ -2337,38 +2540,40 @@
       },
       "ContactDetails": {
         "example": {
-          "documentNumber": "123456789",
-          "documentType": "CC",
-          "email": "user@example.com",
-          "firstName": "John",
-          "lastName": "Doe",
-          "phoneNumber": "+593912345678",
-          "secondLastName": ""
+          "documentNumber": "12345678",
+          "documentType": "DNI",
+          "email": "usuario@ejemplo.com",
+          "firstName": "Juan",
+          "lastName": "Pérez",
+          "phoneNumber": "+51987654321",
+          "secondLastName": "García"
         },
         "properties": {
           "documentNumber": {
+            "example": "12345678",
             "type": "string"
           },
           "documentType": {
             "$ref": "#/components/schemas/documentType"
           },
           "email": {
-            "example": "user@example.com",
+            "example": "usuario@ejemplo.com",
             "type": "string"
           },
           "firstName": {
-            "example": "John",
+            "example": "Juan",
             "type": "string"
           },
           "lastName": {
-            "example": "Doe",
+            "example": "Pérez",
             "type": "string"
           },
           "phoneNumber": {
-            "example": "+593988734644",
+            "example": "+51987654321",
             "type": "string"
           },
           "secondLastName": {
+            "example": "García",
             "type": "string"
           }
         },
@@ -2380,7 +2585,11 @@
           "documentNumber",
           "phoneNumber"
         ],
-        "type": "object"
+        "title": "ContactDetails",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "ContactDetails-old": {
         "properties": {
@@ -2439,54 +2648,6 @@
           }
         ]
       },
-      "ContactDetails4": {
-        "example": {
-          "documentNumber": "123456789",
-          "documentType": "CC",
-          "email": "user@example.com",
-          "firstName": "John",
-          "lastName": "Doe",
-          "phoneNumber": "+593912345678",
-          "secondLastName": ""
-        },
-        "properties": {
-          "documentNumber": {
-            "type": "string"
-          },
-          "documentType": {
-            "$ref": "#/components/schemas/documentType12"
-          },
-          "email": {
-            "example": "user@example.com",
-            "type": "string"
-          },
-          "firstName": {
-            "example": "John",
-            "type": "string"
-          },
-          "lastName": {
-            "example": "Doe",
-            "type": "string"
-          },
-          "phoneNumber": {
-            "example": "+593988734644",
-            "type": "string"
-          },
-          "secondLastName": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "firstName",
-          "lastName",
-          "email",
-          "documentType",
-          "documentNumber",
-          "phoneNumber"
-        ],
-        "title": "ContactDetails",
-        "type": "object"
-      },
       "Country-old": {
         "enum": [
           "Peru"
@@ -2497,7 +2658,7 @@
           "Peru"
         ]
       },
-      "Currency-old": {
+      "Currency": {
         "default": "USD",
         "description": "The currency available for Ecuador is **USD**.\n\n| **COUNTRY** | **USD** |\n|---|:---:|\n| **Ecuador** | ✅ |\n",
         "enum": [
@@ -2510,15 +2671,15 @@
         ]
       },
       "Deferred": {
-        "description": "\nUse the `deferred` object to create deferred transactions in Ecuador 🇪🇨 and Mexico 🇲🇽. In Chile 🇨🇱, Colombia 🇨🇴, and Peru 🇵🇪, the `deferred` object is also used for deferred transactions **only when the merchant is integrated under Kushki’s acquiring model**\n\n\n\n\n\n",
+        "description": "Use the `deferred` object in Peru 🇵🇪 **only when the merchant is integrated under Kushki's acquiring model**.\n\nSend the values returned by the [Request Deferred Options](https://api-docs.kushkipagos.com/docs/online-payments/card/operations/get-a-card-v-1-deferred) endpoint. If it returns `all` for Issuer Installments, send `01` in `creditType`.",
         "example": {
           "creditType": "01",
-          "graceMonths": "02",
-          "months": 3
+          "graceMonths": "00",
+          "months": 6
         },
         "properties": {
           "creditType": {
-            "description": "Send `03` for Mexico's Months Without Interest (MSI) and Chile's Merchant Installments (Cuotas Comercio).\n\nIf [Request Deferred Options](https://api-docs.kushkipagos.com/docs/online-payments/card/operations/get-a-card-v-1-deferred) method returns `all` for Issuer Installments (in **Chile**, **Colombia**, and **Peru**), you must send `01` when using the **Kushki Acquiring** model.\n\nFor all other cases, send the specific value returned in the `type` field of the [Request Deferred Options](https://api-docs.kushkipagos.com/docs/online-payments/card/operations/get-a-card-v-1-deferred) response.",
+            "description": "Send the `type` value returned by the Request Deferred Options endpoint. Use `01` when the endpoint returns `all`.",
             "pattern": "^[0-9]{2}$",
             "type": "string"
           },
@@ -2527,7 +2688,6 @@
             "type": "string"
           },
           "months": {
-            "description": "For merchant's installments in Chile: 2-12",
             "type": "number"
           }
         },
@@ -2536,7 +2696,11 @@
           "creditType",
           "months"
         ],
-        "type": "object"
+        "title": "Deferred",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "Deferred-old": {
         "description": "Use the `deferred` object to create deferred transactions in Peru 🇵🇪 when the merchant is integrated under Kushki's acquiring model.\n\n:::warning\nAlways call [Request Deferred Options](../operations/deferred) before initiating a deferred charge. Valid `creditType` and `months` values depend on the card BIN.\n:::\n\nFor Kushki Acquiring model, send `creditType: \"01\"` when the endpoint returns `all`.",
@@ -2574,35 +2738,27 @@
           }
         }
       },
-      "Deferred2": {
-        "description": "Use the `deferred` object to create deferred transactions in Ecuador 🇪🇨 and Mexico 🇲🇽. In Chile 🇨🇱, Colombia 🇨🇴, and Peru 🇵🇪, the `deferred` object is also used for deferred transactions **only when the merchant is integrated under Kushki's acquiring model**.",
-        "example": {
-          "creditType": "01",
-          "graceMonths": "02",
-          "months": 3
-        },
+      "ErrorResponse": {
+        "description": "Response error",
         "properties": {
-          "creditType": {
-            "description": "Send `03` for Mexico's Months Without Interest (MSI) and Chile's Merchant Installments (Cuotas Comercio).\n\nIf [Request Deferred Options](https://api-docs.kushkipagos.com/docs/online-payments/card/operations/get-a-card-v-1-deferred) method returns `all` for Issuer Installments (in **Chile**, **Colombia**, and **Peru**), you must send `01` when using the **Kushki Acquiring** model.\n\nFor all other cases, send the specific value returned in the `type` field of the Request Deferred Options response.",
-            "pattern": "^[0-9]{2}$",
+          "code": {
+            "example": "K001",
             "type": "string"
           },
-          "graceMonths": {
-            "pattern": "^[0-9]{2}$",
+          "message": {
+            "example": "El cuerpo de la petición es inválido",
             "type": "string"
-          },
-          "months": {
-            "description": "For merchant's installments in Chile 🇨🇱: 2-12.",
-            "type": "number"
           }
         },
         "required": [
-          "graceMonths",
-          "creditType",
-          "months"
+          "code",
+          "message"
         ],
-        "title": "Deferred",
-        "type": "object"
+        "title": "ErrorResponse",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "ErrorResponse-old": {
         "properties": {
@@ -2727,6 +2883,29 @@
         },
         "type": "object"
       },
+      "GetConfigurationRequest": {
+        "example": {
+          "currency": "PEN",
+          "totalAmount": 59.9
+        },
+        "properties": {
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "totalAmount": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "totalAmount",
+          "currency"
+        ],
+        "title": "GetConfigurationRequest",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
       "GetConfigurationRequest-old": {
         "description": "The properties that are shared amongst all versions of the Multi-Merchant model.",
         "properties": {
@@ -2755,6 +2934,27 @@
             "totalAmount": 0
           }
         }
+      },
+      "InvalidBinResponse": {
+        "properties": {
+          "code": {
+            "example": "K003",
+            "type": "string"
+          },
+          "message": {
+            "example": "Tarjeta no habilitada por el emisor",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "InvalidBinResponse",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "InvalidBinResponse-old": {
         "description": "",
@@ -2791,7 +2991,10 @@
         ],
         "example": "es",
         "title": "Language",
-        "type": "string"
+        "type": "string",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "Language-old": {
         "enum": [
@@ -2801,6 +3004,29 @@
         "example": "es",
         "title": "Language",
         "type": "string"
+      },
+      "LinkFailure": {
+        "description": "Error response for Terminal link failures.",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "details": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "LinkFailure",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "LinkFailure-old": {
         "description": "Unified error model for all Kushki ONE Connect endpoints.\nEvaluate `type` to classify the error source, then look up `code`\nin the Error Catalog.\n",
@@ -2859,117 +3085,85 @@
             "type": "string"
           }
         },
-        "type": "object"
-      },
-      "Metadata-old": {
-        "description": "Free-form merchant data for tracking and reconciliation.",
-        "properties": {
-          "customer_email": {
-            "example": "cliente@ejemplo.com",
-            "format": "email",
-            "type": "string"
-          },
-          "device": {
-            "example": "SUNMI-P3",
-            "type": "string"
-          },
-          "reference": {
-            "example": "ORD-20240317-001",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "Metadata3": {
-        "example": {
-          "key0": "value0",
-          "key1": "value1",
-          "key2": "value2"
-        },
-        "properties": {
-          "key0": {
-            "example": "value0",
-            "type": "string"
-          },
-          "key1": {
-            "example": "value1",
-            "type": "string"
-          },
-          "key2": {
-            "example": "value2",
-            "type": "string"
-          }
-        },
         "title": "Metadata",
-        "type": "object"
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
-      "PrintJobRequest-old": {
+      "PayoutsWebhooksItem": {
         "properties": {
-          "commands": {
-            "description": "Ordered list of print commands. Array order = physical paper order.",
+          "events": {
             "items": {
-              "discriminator": {
-                "propertyName": "type"
-              },
-              "oneOf": [
-                {
-                  "$ref": "#/components/schemas/CommandText-old"
-                },
-                {
-                  "$ref": "#/components/schemas/CommandColumns-old"
-                },
-                {
-                  "$ref": "#/components/schemas/CommandDivider-old"
-                },
-                {
-                  "$ref": "#/components/schemas/CommandFeed-old"
-                },
-                {
-                  "$ref": "#/components/schemas/CommandSpace-old"
-                },
-                {
-                  "$ref": "#/components/schemas/CommandCut-old"
-                },
-                {
-                  "$ref": "#/components/schemas/CommandImage-old"
-                },
-                {
-                  "$ref": "#/components/schemas/CommandQR-old"
-                },
-                {
-                  "$ref": "#/components/schemas/CommandBarcode-old"
-                }
-              ]
+              "enum": [
+                "approvedTransaction",
+                "declinedTransaction"
+              ],
+              "type": "string"
             },
-            "minItems": 1,
             "type": "array"
           },
-          "externalReference": {
-            "description": "Free-form reference for traceability. Returned as-is in webhook and status responses.",
-            "example": "Order-4421",
-            "type": "string"
+          "headers": {
+            "$ref": "#/components/schemas/headers"
           },
-          "printJobId": {
-            "description": "Client-defined idempotency ID. The terminal auto-generates a UUID if omitted.\n\n<!-- theme: info -->\n> Always provide this to prevent duplicate prints on network retries.\n",
-            "example": "RECEIPT-20240317-001",
-            "type": "string"
+          "urls": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "title": "PayoutsWebhooksItem",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "PrintJobRequest": {
+        "properties": {
+          "copies": {
+            "default": 1,
+            "description": "Number of copies to print.",
+            "type": "number"
           },
-          "skipIfBusy": {
-            "default": false,
-            "description": "When `true`, returns `HTTP 409` immediately if the print queue is busy.\n\n<!-- theme: danger -->\n> Do **not** set to `true` for payment receipts.\n",
-            "type": "boolean"
-          },
-          "webhookUrl": {
-            "description": "URL that receives the async result. Must be reachable from the terminal's network.",
-            "example": "https://pos.yourstore.com/webhooks/print",
-            "format": "uri",
+          "ticketNumber": {
+            "description": "Ticket number of the transaction to print.",
             "type": "string"
           }
         },
         "required": [
-          "commands"
+          "ticketNumber"
         ],
-        "type": "object"
+        "title": "PrintJobRequest",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "PrintJobStatus": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "jobId": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "PENDING",
+              "PRINTING",
+              "COMPLETED",
+              "FAILED"
+            ],
+            "type": "string"
+          }
+        },
+        "title": "PrintJobStatus",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "PrintJobStatus-old": {
         "properties": {
@@ -3006,6 +3200,31 @@
           "status"
         ],
         "type": "object"
+      },
+      "PrintWebhookPayload": {
+        "properties": {
+          "jobId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "terminalSerial": {
+            "type": "string"
+          },
+          "ticketNumber": {
+            "type": "string"
+          },
+          "timestamp": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "title": "PrintWebhookPayload",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "PrintWebhookPayload-old": {
         "description": "Payload delivered by the terminal to `webhookUrl` when a job finishes.",
@@ -3045,6 +3264,25 @@
         ],
         "type": "object"
       },
+      "PrinterError": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "PrinterError",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
       "PrinterError-old": {
         "properties": {
           "code": {
@@ -3083,6 +3321,50 @@
           "message"
         ],
         "type": "object"
+      },
+      "Promotions": {
+        "example": {
+          "description": "10% de descuento",
+          "discount": {
+            "amount": 50,
+            "currency": "PEN",
+            "minimumPurchaseAmount": 349.99
+          },
+          "promotionId": "promo_abc123",
+          "status": "active"
+        },
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "discount": {
+            "properties": {
+              "amount": {
+                "example": 50,
+                "type": "number"
+              },
+              "currency": {
+                "$ref": "#/components/schemas/currency"
+              },
+              "minimumPurchaseAmount": {
+                "example": 349.99,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "promotionId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "title": "Promotions",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "Promotions-old": {
         "description": "",
@@ -3221,6 +3503,29 @@
           }
         },
         "type": "object"
+      },
+      "SettlementDateRangeRequest": {
+        "properties": {
+          "endDate": {
+            "description": "End date in `YYYY-MM-DD` format.",
+            "example": "2025-01-31",
+            "type": "string"
+          },
+          "startDate": {
+            "description": "Start date in `YYYY-MM-DD` format.",
+            "example": "2025-01-01",
+            "type": "string"
+          }
+        },
+        "required": [
+          "startDate",
+          "endDate"
+        ],
+        "title": "SettlementDateRangeRequest",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "SettlementDateRangeRequest-old": {
         "description": "Request body for querying settlement records by date range.",
@@ -3528,6 +3833,47 @@
         "title": "SettlementRecord",
         "type": "object"
       },
+      "SettlementResponse": {
+        "properties": {
+          "data": {
+            "items": {
+              "properties": {
+                "amount": {
+                  "type": "number"
+                },
+                "currency": {
+                  "$ref": "#/components/schemas/currency"
+                },
+                "settlementDate": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "ticketNumber": {
+                  "type": "string"
+                },
+                "transactionId": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "message": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "title": "SettlementResponse",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
       "SettlementResponse-old": {
         "description": "Settlement records matching the query. When querying by `ticketNumber`, `data` contains exactly one element.",
         "properties": {
@@ -3574,6 +3920,23 @@
         "title": "SettlementResponse",
         "type": "object"
       },
+      "SettlementTicketRequest": {
+        "properties": {
+          "ticketNumber": {
+            "description": "Ticket number of the transaction to settle.",
+            "example": "12345678901234",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ticketNumber"
+        ],
+        "title": "SettlementTicketRequest",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
       "SettlementTicketRequest-old": {
         "description": "Request body for querying a settlement record by ticket number. Returns a single record in the `data` array.",
         "properties": {
@@ -3591,14 +3954,14 @@
       },
       "Shipping-Address": {
         "example": {
-          "address1": "Eloy Alfaro 139 y Catalina Aldaz",
-          "address2": "centro 123",
-          "city": "Quito",
-          "country": "Ecuador",
-          "name": "John Doe",
-          "phone": "+593912345678",
-          "region": "Pichincha",
-          "zipcode": "170402"
+          "address1": "Av. Larco 1301",
+          "address2": "Miraflores",
+          "city": "Lima",
+          "country": "Peru",
+          "name": "Juan Pérez",
+          "phone": "+51987654321",
+          "region": "Lima",
+          "zipcode": "15074"
         },
         "properties": {
           "address1": {
@@ -3641,7 +4004,10 @@
           "country"
         ],
         "title": "Shipping Address",
-        "type": "object"
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "Shipping-Address-old": {
         "example": {
@@ -3715,60 +4081,6 @@
           }
         }
       },
-      "Shipping-Address13": {
-        "example": {
-          "address1": "Eloy Alfaro 139 y Catalina Aldaz",
-          "address2": "centro 123",
-          "city": "Quito",
-          "country": "Ecuador",
-          "name": "John Doe",
-          "phone": "+593912345678",
-          "region": "Pichincha",
-          "zipcode": "170402"
-        },
-        "properties": {
-          "address1": {
-            "type": "string"
-          },
-          "address2": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          },
-          "region": {
-            "type": "string"
-          },
-          "secondaryAddress": {
-            "type": "string"
-          },
-          "userEmail": {
-            "type": "string"
-          },
-          "zipcode": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "name",
-          "phone",
-          "address1",
-          "city",
-          "region",
-          "country"
-        ],
-        "title": "Shipping Address",
-        "type": "object"
-      },
       "Shipping_Address-old": {
         "properties": {
           "address1": {
@@ -3825,116 +4137,90 @@
           }
         ]
       },
-      "StatusComponent-old": {
-        "description": "Represents a single platform component and its current operational status, along with uptime metrics for the reported date range.",
+      "SmartLinkAmount": {
+        "description": "Amount object used in Smart Link requests for Peru 🇵🇪.",
+        "example": {
+          "currency": "PEN",
+          "ice": 0,
+          "iva": 0,
+          "subtotalIva": 0,
+          "subtotalIva0": 59.9
+        },
         "properties": {
-          "created_at": {
-            "description": "ISO 8601 timestamp of when the component was created.",
-            "example": "2017-08-09T20:41:18Z",
-            "format": "date-time",
-            "type": "string"
+          "currency": {
+            "$ref": "#/components/schemas/currency"
           },
-          "description": {
-            "description": "Optional description of the component. Returns `null` when no description has been set.",
-            "example": null,
-            "nullable": true,
-            "type": "string"
+          "extraTaxes": {
+            "$ref": "#/components/schemas/extraTaxes"
           },
-          "group": {
-            "description": "Indicates whether this component acts as a group container for child components.",
-            "example": false,
-            "type": "boolean"
-          },
-          "major_outage": {
-            "description": "Number of major outage incidents recorded during the reporting period.",
-            "example": 0,
-            "minimum": 0,
+          "ice": {
             "type": "number"
           },
-          "name": {
-            "description": "Display name of the platform component.",
-            "example": "BlueSnap (US)",
-            "type": "string"
-          },
-          "only_show_if_degraded": {
-            "description": "When `true`, this component is only visible on the status page if it is experiencing an incident.",
-            "example": false,
-            "type": "boolean"
-          },
-          "partial_outage": {
-            "description": "Number of partial outage incidents recorded during the reporting period.",
-            "example": 0,
-            "minimum": 0,
+          "iva": {
             "type": "number"
           },
-          "position": {
-            "description": "Display order of the component within the platform's status page. Lower values appear first.",
-            "example": 1,
+          "subtotalIva": {
             "type": "number"
           },
-          "range_end": {
-            "description": "End of the reporting period for uptime metrics, in `YYYY-MM-DD` format.",
-            "example": "2026-03-31",
-            "type": "string"
-          },
-          "range_start": {
-            "description": "Start of the reporting period for uptime metrics, in `YYYY-MM-DD` format.",
-            "example": "2026-01-01",
-            "type": "string"
-          },
-          "showcase": {
-            "description": "Indicates whether this component is highlighted on the public status page.",
-            "example": true,
-            "type": "boolean"
-          },
-          "start_date": {
-            "description": "The date from which this component started tracking uptime, in `YYYY-MM-DD` format. Returns an empty string if not set.",
-            "example": "2020-10-31",
-            "type": "string"
-          },
-          "status": {
-            "description": "Current operational status of the component.\n\n* `operational`: Functioning normally with no known issues.\n* `degraded_performance`: Reduced performance; component remains functional.\n* `partial_outage`: Some functionality unavailable for a subset of users.\n* `major_outage`: Component is completely unavailable or severely impacted.",
-            "enum": [
-              "operational",
-              "degraded_performance",
-              "partial_outage",
-              "major_outage"
-            ],
-            "example": "operational",
-            "type": "string"
-          },
-          "updated_at": {
-            "description": "ISO 8601 timestamp of the last update to this component's record.",
-            "example": "2024-04-04T14:57:03Z",
-            "format": "date-time",
-            "type": "string"
-          },
-          "uptime_percentage": {
-            "description": "Uptime percentage for the component during the reporting period (`range_start` to `range_end`). Value between `0` and `100`.",
-            "example": 100,
-            "maximum": 100,
-            "minimum": 0,
+          "subtotalIva0": {
             "type": "number"
           }
         },
         "required": [
-          "name",
-          "status",
-          "position",
-          "group",
-          "showcase",
-          "only_show_if_degraded",
-          "start_date",
-          "created_at",
-          "updated_at",
-          "range_start",
-          "range_end",
-          "uptime_percentage",
-          "major_outage",
-          "partial_outage"
+          "currency",
+          "subtotalIva",
+          "subtotalIva0",
+          "iva",
+          "ice"
         ],
-        "title": "StatusComponent",
-        "type": "object"
+        "title": "SmartLinkAmount",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "Submerchant": {
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "cityCode": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "countryAns": {
+            "type": "string"
+          },
+          "idAffiliation": {
+            "type": "string"
+          },
+          "is_crypto_currency": {
+            "default": false,
+            "type": "boolean"
+          },
+          "mcc": {
+            "type": "string"
+          },
+          "socialReason": {
+            "type": "string"
+          },
+          "softDescriptor": {
+            "type": "string"
+          },
+          "zipCode": {
+            "type": "string"
+          }
+        },
+        "title": "Submerchant",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "Submerchant-old": {
         "properties": {
@@ -4015,38 +4301,25 @@
       "Subscription": {
         "example": {
           "amount": {
-            "currency": "USD",
-            "extraTaxes": {
-              "agenciaDeViaje": 0,
-              "iac": 0,
-              "tasaAeroportuaria": 0
-            },
+            "currency": "PEN",
             "ice": 0,
             "iva": 0,
             "subtotalIva": 0,
-            "subtotalIva0": 0
+            "subtotalIva0": 59.9
           },
           "contactDetails": {
-            "documentNumber": "string",
-            "documentType": "CC",
-            "email": "user@example.com",
-            "firstName": "John",
-            "lastName": "Doe",
-            "phoneNumber": "+593988734644",
-            "secondLastName": "string"
+            "documentNumber": "12345678",
+            "documentType": "DNI",
+            "email": "usuario@ejemplo.com",
+            "firstName": "Juan",
+            "lastName": "Pérez",
+            "phoneNumber": "+51987654321"
           },
-          "endDate": "2022-09-29",
-          "ignoreWarnings": true,
+          "endDate": "2026-01-01",
           "language": "es",
-          "metadata": {
-            "key0": "value0",
-            "key1": "value1",
-            "key2": "value2"
-          },
-          "periodicity": "daily",
+          "periodicity": "monthly",
           "planName": "Premium",
-          "retryConfiguration": "Three days in a row starting at startDate",
-          "startDate": "2018-09-29",
+          "startDate": "2025-01-01",
           "token": "AbCDef123456Z7Ghi8901234jkLMNopQ"
         },
         "properties": {
@@ -4057,13 +4330,12 @@
             "$ref": "#/components/schemas/ContactDetails"
           },
           "endDate": {
-            "description": "`YYYY-MM-DD` \n\n**Note:** Use a future date regarding to `startDate`",
-            "example": "2022-09-29",
+            "description": "`YYYY-MM-DD`\n\n**Note:** Use a future date after `startDate`.",
+            "example": "2026-01-01",
             "format": "date",
             "type": "string"
           },
           "fullResponse": {
-            "description": "Controls the verbosity of the response.\n\n- `v2`: Returns the standard response with a `details` object and `subscriptionId`.\n- `v3`: Returns the full response including additional fields such as `validationTicketNumber` inside the `details` object.\n\n<!-- theme: warning -->\n> #### V3 response compatibility\n>\n> When using `fullResponse: v3`, the `details` object may include **new or deprecated fields without prior notice**. Avoid building hard dependencies on the exact set of fields returned. Always handle unexpected or missing fields gracefully.",
             "enum": [
               "v2",
               "v3"
@@ -4071,7 +4343,7 @@
             "type": "string"
           },
           "ignoreWarnings": {
-            "description": "Set this parameter to `true` if you want to continue creating the subscription despite the warning rules",
+            "description": "Set to `true` to continue creating the subscription despite warning rules.",
             "type": "boolean"
           },
           "language": {
@@ -4081,7 +4353,7 @@
             "$ref": "#/components/schemas/Metadata"
           },
           "periodicity": {
-            "description": "Use `custom` for one-click subscriptions",
+            "description": "Use `custom` for one-click subscriptions.",
             "enum": [
               "daily",
               "weekly",
@@ -4103,17 +4375,18 @@
             "type": "string"
           },
           "processorTransactionType": {
-            "description": "Only for Oneclick Mall Captura Diferida. Is used to identify when a capture is made. ",
+            "description": "Only for Oneclick Mall Captura Diferida.",
             "enum": [
               "CAPTURE"
-            ]
+            ],
+            "type": "string"
           },
           "retryConfiguration": {
-            "description": "Use this object if you want to configure retries different from default. **Default:** 3 times per day, for 3 consecutive days starting from the collection day originally defined in the `startDate` field.",
+            "description": "Use this object to configure retries different from default. **Default:** 3 times per day, for 3 consecutive days starting from `startDate`.",
             "properties": {
               "retryType": {
                 "default": "schedule",
-                "description": "**Schedule:** Specific interval to retry starting at `startDate`. **Ex.** Every 3 days.\n\n**Fixed:** Specific days of the month to retry. **Ex.** 10th, 20th, 30th.",
+                "description": "* **schedule** — Specific interval to retry starting at `startDate`. Ex: every 3 days.\n* **fixed** — Specific days of the month to retry. Ex: 10th, 20th, 30th.",
                 "enum": [
                   "schedule",
                   "fixed"
@@ -4121,9 +4394,7 @@
                 "type": "string"
               },
               "value": {
-                "description": "**Examples:**\n\n* \"schedule\": [3]\n* \"fixed\": [10,20,30]",
                 "items": {
-                  "default": 0,
                   "maximum": 31,
                   "minimum": 1,
                   "type": "integer"
@@ -4136,8 +4407,8 @@
             "type": "object"
           },
           "startDate": {
-            "description": "`YYYY-MM-DD` \n\n**Note:** Use future date",
-            "example": "2018-09-29",
+            "description": "`YYYY-MM-DD`\n\n**Note:** Use a future date.",
+            "example": "2025-01-01",
             "format": "date",
             "type": "string"
           },
@@ -4157,210 +4428,22 @@
           "amount",
           "startDate"
         ],
-        "type": "object"
-      },
-      "Subscription-old": {
-        "example": {
-          "amount": {
-            "currency": "PEN",
-            "extraTaxes": {
-              "agenciaDeViaje": 0,
-              "iac": 0,
-              "tasaAeroportuaria": 0
-            },
-            "ice": 0,
-            "iva": 0,
-            "subtotalIva": 0,
-            "subtotalIva0": 0
-          },
-          "contactDetails": {
-            "documentNumber": "12345678",
-            "documentType": "DNI",
-            "email": "user@example.com",
-            "firstName": "John",
-            "lastName": "Doe",
-            "phoneNumber": "+51912345678",
-            "secondLastName": "string"
-          },
-          "endDate": "2022-09-29",
-          "ignoreWarnings": true,
-          "language": "es",
-          "metadata": {
-            "key0": "value0",
-            "key1": "value1",
-            "key2": "value2"
-          },
-          "periodicity": "daily",
-          "planName": "Premium",
-          "retryConfiguration": "Three days in a row starting at startDate",
-          "startDate": "2018-09-29",
-          "token": "AbCDef123456Z7Ghi8901234jkLMNopQ"
-        },
-        "properties": {
-          "amount": {
-            "properties": {},
-            "type": "object"
-          },
-          "contactDetails": {
-            "properties": {},
-            "type": "object"
-          },
-          "endDate": {
-            "description": "`YYYY-MM-DD`\n\n**Note:** Use a future date regarding to `startDate`",
-            "example": "2022-09-29",
-            "format": "date",
-            "type": "string"
-          },
-          "fullResponse": {
-            "enum": [
-              "v2"
-            ]
-          },
-          "ignoreWarnings": {
-            "description": "Set this parameter to `true` if you want to continue creating the subscription despite the warning rules",
-            "type": "boolean"
-          },
-          "language": {
-            "properties": {},
-            "type": "object"
-          },
-          "metadata": {
-            "properties": {},
-            "type": "object"
-          },
-          "periodicity": {
-            "description": "Use `custom` for one-click subscriptions",
-            "enum": [
-              "daily",
-              "weekly",
-              "biweekly",
-              "monthly",
-              "threefortnights",
-              "bimonthly",
-              "quarterly",
-              "fourmonths",
-              "halfYearly",
-              "yearly",
-              "custom"
-            ],
-            "example": "monthly",
-            "type": "string"
-          },
-          "planName": {
-            "example": "Premium",
-            "type": "string"
-          },
-          "processorTransactionType": {
-            "description": "Only for Oneclick Mall Captura Diferida. Is used to identify when a capture is made.",
-            "enum": [
-              "CAPTURE"
-            ]
-          },
-          "retryConfiguration": {
-            "description": "Use this object if you want to configure retries different from default. **Default:** 3 times per day, for 3 consecutive days starting from the collection day originally defined in the `startDate` field.",
-            "properties": {
-              "retryType": {
-                "default": "schedule",
-                "description": "**Schedule:** Specific interval to retry starting at `startDate`. **Ex.** Every 3 days.\n\n**Fixed:** Specific days of the month to retry. **Ex.** 10th, 20th, 30th.",
-                "enum": [
-                  "schedule",
-                  "fixed"
-                ],
-                "type": "string"
-              },
-              "value": {
-                "description": "**Examples:**\n\n* \"schedule\": [3]\n* \"fixed\": [10,20,30]",
-                "items": {
-                  "default": 0,
-                  "maximum": 31,
-                  "minimum": 1,
-                  "type": "integer"
-                },
-                "minItems": 1,
-                "type": "array",
-                "uniqueItems": true
-              }
-            },
-            "type": "object"
-          },
-          "startDate": {
-            "description": "`YYYY-MM-DD`\n\n**Note:** Use future date",
-            "example": "2018-09-29",
-            "format": "date",
-            "type": "string"
-          },
-          "threeDomainSecure": {
-            "properties": {},
-            "type": "object"
-          },
-          "token": {
-            "example": "AbCDef123456Z7Ghi8901234jkLMNopQ",
-            "type": "string"
-          }
-        },
-        "required": [
-          "token",
-          "planName",
-          "periodicity",
-          "contactDetails",
-          "amount",
-          "startDate"
-        ],
+        "title": "Subscription",
         "type": "object",
-        "x-examples": {
-          "example-1": {
-            "amount": {
-              "currency": "PEN",
-              "extraTaxes": {
-                "agenciaDeViaje": 0,
-                "iac": 0,
-                "tasaAeroportuaria": 0
-              },
-              "ice": 0,
-              "iva": 0,
-              "subtotalIva": 0,
-              "subtotalIva0": 0
-            },
-            "contactDetails": {
-              "documentNumber": "12345678",
-              "documentType": "DNI",
-              "email": "user@example.com",
-              "firstName": "John",
-              "lastName": "Doe",
-              "phoneNumber": "+51912345678",
-              "secondLastName": "string"
-            },
-            "endDate": "2022-09-29",
-            "ignoreWarnings": true,
-            "language": "es",
-            "metadata": {
-              "key0": "value0",
-              "key1": "value1",
-              "key2": "value2"
-            },
-            "periodicity": "daily",
-            "planName": "Premium",
-            "retryConfiguration": "Three days in a row starting at startDate",
-            "startDate": "2018-09-29",
-            "token": "AbCDef123456Z7Ghi8901234jkLMNopQ"
-          }
-        }
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "SubscriptionAdjustmentRequest": {
         "example": {
           "amount": {
-            "currency": "USD",
-            "extraTaxes": {
-              "agenciaDeViaje": 0,
-              "iac": 0,
-              "tasaAeroportuaria": 0
-            },
+            "currency": "PEN",
             "ice": 0,
             "iva": 0,
             "subtotalIva": 0,
-            "subtotalIva0": 0
+            "subtotalIva0": 59.9
           },
-          "periods": 1
+          "periods": 3
         },
         "properties": {
           "amount": {
@@ -4372,22 +4455,18 @@
                 "$ref": "#/components/schemas/extraTaxes"
               },
               "ice": {
-                "description": "Set it to `0` in case the transaction has no ICE (Impuesto a consumos especiales)",
                 "minimum": 0,
                 "type": "number"
               },
               "iva": {
-                "description": "Set it to `0` in case the transaction has no taxes",
                 "minimum": 0,
                 "type": "number"
               },
               "subtotalIva": {
-                "description": "Set it to `0` in case the transaction has no taxes",
                 "minimum": 0,
                 "type": "number"
               },
               "subtotalIva0": {
-                "description": "Set the total amount of the transaction here in case it has no taxes. Otherwise, set it to `0`",
                 "minimum": 0,
                 "type": "number"
               }
@@ -4410,7 +4489,10 @@
           "periods"
         ],
         "title": "SubscriptionAdjustmentRequest",
-        "type": "object"
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "SubscriptionAdjustmentRequest-old": {
         "example": {
@@ -4842,6 +4924,50 @@
         "title": "SubscriptionTransaction",
         "type": "object"
       },
+      "SubscriptionTransactionsResponse": {
+        "properties": {
+          "data": {
+            "items": {
+              "properties": {
+                "created": {
+                  "type": "number"
+                },
+                "currency": {
+                  "$ref": "#/components/schemas/currency"
+                },
+                "planName": {
+                  "type": "string"
+                },
+                "requestAmount": {
+                  "type": "number"
+                },
+                "subscriptionId": {
+                  "type": "string"
+                },
+                "ticketNumber": {
+                  "type": "string"
+                },
+                "transactionId": {
+                  "type": "string"
+                },
+                "transactionStatus": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "title": "SubscriptionTransactionsResponse",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
       "SubscriptionTransactionsResponse-old": {
         "description": "Full details of a subscription, including card and plan metadata, plus the list of transactions charged within the requested date range.",
         "properties": {
@@ -5117,38 +5243,10 @@
       },
       "SubscriptionUpdate": {
         "example": {
-          "amount": {
-            "currency": "USD",
-            "extraTaxes": {
-              "agenciaDeViaje": 0,
-              "iac": 0,
-              "tasaAeroportuaria": 0
-            },
-            "ice": 0,
-            "iva": 0,
-            "subtotalIva": 0,
-            "subtotalIva0": 0
-          },
-          "contactDetails": {
-            "documentNumber": "string",
-            "documentType": "CC",
-            "email": "user@example.com",
-            "firstName": "John",
-            "lastName": "Doe",
-            "phoneNumber": "+593988734644",
-            "secondLastName": "string"
-          },
-          "endDate": "2018-09-29",
-          "language": "es",
-          "metadata": {
-            "key0": "value0",
-            "key1": "value1",
-            "key2": "value2"
-          },
-          "periodicity": "daily",
+          "endDate": "2026-01-01",
+          "periodicity": "monthly",
           "planName": "Premium",
-          "retryConfiguration": "Three days in a row starting at startDate",
-          "startDate": "2018-09-29"
+          "startDate": "2025-01-01"
         },
         "properties": {
           "amount": {
@@ -5158,8 +5256,8 @@
             "$ref": "#/components/schemas/ContactDetails"
           },
           "endDate": {
-            "description": "`YYYY-MM-DD`\n\n**Note:** Use future date",
-            "example": "2023-09-29",
+            "description": "`YYYY-MM-DD` — Use a future date after `startDate`.",
+            "example": "2026-01-01",
             "format": "date",
             "type": "string"
           },
@@ -5170,7 +5268,7 @@
             "$ref": "#/components/schemas/Metadata"
           },
           "periodicity": {
-            "description": "Use `custom` for one-click subscriptions",
+            "description": "Use `custom` for one-click subscriptions.",
             "enum": [
               "daily",
               "weekly",
@@ -5181,7 +5279,6 @@
               "yearly",
               "custom"
             ],
-            "example": "monthly",
             "type": "string"
           },
           "planName": {
@@ -5189,11 +5286,8 @@
             "type": "string"
           },
           "retryConfiguration": {
-            "description": "Use this object if you want to configure retries different than default",
             "properties": {
               "retryType": {
-                "default": "schedule",
-                "description": "**Schedule:** Number of days to retry starting at `startDate`. **Ex.** 5 days in a row.\n\n**Fixed:** Specific days of the month to retry. **Ex.** 10th, 20th, 30th.",
                 "enum": [
                   "scheduled",
                   "fixed"
@@ -5201,9 +5295,7 @@
                 "type": "string"
               },
               "value": {
-                "description": "**Examples:**\n\n* \"schedule\": [5]\n* \"fixed\": [10,20,30]",
                 "items": {
-                  "default": 3,
                   "maximum": 31,
                   "minimum": 1,
                   "type": "integer"
@@ -5216,14 +5308,17 @@
             "type": "object"
           },
           "startDate": {
-            "description": "`YYYY-MM-DD`\n\n**Note:** Use future date",
-            "example": "2018-09-29",
+            "description": "`YYYY-MM-DD` — Use a future date.",
+            "example": "2025-01-01",
             "format": "date",
             "type": "string"
           }
         },
         "title": "SubscriptionUpdate",
-        "type": "object"
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "SubscriptionUpdate-old": {
         "example": {
@@ -5375,6 +5470,154 @@
           }
         }
       },
+      "TerminalCardData": {
+        "properties": {
+          "cvv": {
+            "type": "string"
+          },
+          "expiryMonth": {
+            "type": "string"
+          },
+          "expiryYear": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "number": {
+            "type": "string"
+          }
+        },
+        "title": "TerminalCardData",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "TerminalCardDetails": {
+        "description": "Card details returned in Terminal transaction responses.",
+        "properties": {
+          "binCard": {
+            "type": "string"
+          },
+          "cardHolderName": {
+            "type": "string"
+          },
+          "expiryMonth": {
+            "type": "string"
+          },
+          "expiryYear": {
+            "type": "string"
+          },
+          "lastFourDigits": {
+            "type": "string"
+          },
+          "paymentBrand": {
+            "type": "string"
+          }
+        },
+        "title": "TerminalCardDetails",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "TerminalContactDetails": {
+        "properties": {
+          "documentNumber": {
+            "type": "string"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/documentType"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          }
+        },
+        "title": "TerminalContactDetails",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "TerminalPosDetails": {
+        "description": "POS terminal details returned in Terminal transaction responses.",
+        "properties": {
+          "merchantId": {
+            "type": "string"
+          },
+          "merchantName": {
+            "type": "string"
+          },
+          "processorName": {
+            "type": "string"
+          },
+          "terminalSerial": {
+            "type": "string"
+          }
+        },
+        "title": "TerminalPosDetails",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "TransactionResponse": {
+        "properties": {
+          "approvalCode": {
+            "type": "string"
+          },
+          "cardHolderName": {
+            "type": "string"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "lastFourDigits": {
+            "type": "string"
+          },
+          "paymentBrand": {
+            "type": "string"
+          },
+          "processorName": {
+            "type": "string"
+          },
+          "requestAmount": {
+            "type": "number"
+          },
+          "ticketNumber": {
+            "type": "string"
+          },
+          "transactionId": {
+            "type": "string"
+          },
+          "transactionStatus": {
+            "enum": [
+              "APPROVAL",
+              "DECLINED"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "ticketNumber",
+          "transactionStatus"
+        ],
+        "title": "TransactionResponse",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
       "TransactionResponse-old": {
         "description": "Response returned for `charge`, `authorization`, and `pos_tip`.",
         "properties": {
@@ -5420,6 +5663,32 @@
           }
         },
         "type": "object"
+      },
+      "TransactionSearchRequest": {
+        "example": {
+          "ticketNumber": "12345678901234"
+        },
+        "properties": {
+          "endDate": {
+            "description": "`YYYY-MM-DD`",
+            "type": "string"
+          },
+          "startDate": {
+            "description": "`YYYY-MM-DD`",
+            "type": "string"
+          },
+          "ticketNumber": {
+            "type": "string"
+          },
+          "transactionId": {
+            "type": "string"
+          }
+        },
+        "title": "TransactionSearchRequest",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "TransactionSearchRequest-old": {
         "properties": {
@@ -5484,6 +5753,118 @@
           "size"
         ],
         "type": "object"
+      },
+      "TransferInitRequest": {
+        "properties": {
+          "bankId": {
+            "description": "Bank identifier. Use the value returned by the bank list endpoint.",
+            "type": "string"
+          },
+          "documentNumber": {
+            "type": "string"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/documentType"
+          },
+          "token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "token",
+          "bankId"
+        ],
+        "title": "TransferInitRequest",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "TransferStatusResponse": {
+        "properties": {
+          "amount": {
+            "type": "number"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "status": {
+            "enum": [
+              "PENDING",
+              "APPROVAL",
+              "DECLINED"
+            ],
+            "type": "string"
+          },
+          "ticketNumber": {
+            "type": "string"
+          }
+        },
+        "title": "TransferStatusResponse",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "TransferTokenRequest": {
+        "properties": {
+          "amount": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "callbackUrl": {
+            "description": "URL where the bank will redirect the user after completing the transfer.",
+            "type": "string"
+          },
+          "contactDetails": {
+            "$ref": "#/components/schemas/ContactDetails"
+          },
+          "documentNumber": {
+            "type": "string"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/documentType"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          },
+          "userType": {
+            "enum": [
+              "NATURAL",
+              "JURIDICA"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "contactDetails"
+        ],
+        "title": "TransferTokenRequest",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
+      "UnexpectedErrorResponse": {
+        "properties": {
+          "code": {
+            "example": "K002",
+            "type": "string"
+          },
+          "message": {
+            "example": "Ha ocurrido un error inesperado",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "UnexpectedErrorResponse",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "UnexpectedErrorResponse-old": {
         "example": {
@@ -5614,7 +5995,7 @@
       },
       "binInfo": {
         "example": {
-          "bank": "BANCO CONTINENTAL",
+          "bank": "BANCO DE CRÉDITO DEL PERÚ",
           "type": "credit"
         },
         "properties": {
@@ -5641,7 +6022,10 @@
           "type"
         ],
         "title": "binInfo",
-        "type": "object"
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "binInfo-old": {
         "example": {
@@ -5784,7 +6168,7 @@
         }
       },
       "citMit": {
-        "description": "⛔️ Not available for domestic transactions in Mexico 🇲🇽.\n\nCIT = _Customer-Initiated Transaction_. MIT = _Merchant-Initiated Transaction_. Only required for Mastercard as an **informative** field when processing external subscriptions (with `externalSubscriptionID` or `transactionMode` flows).\n\n**CIT**\n- `C101` — Credential-on-file (ad hoc)\n- `C102` — Standing Order (variable amount / fixed frequency)\n- `C103` — Subscription (fixed amount / fixed frequency)\n- `C104` — Installment\n\n**MIT**\n- `M101` — Unscheduled Credential-on-file\n- `M102` — Standing Order (variable amount / fixed frequency)\n- `M103` — Subscription (fixed amount / fixed frequency)\n- `M104` — Installment\n- `M205` — Partial Shipment\n- `M206` — Related/Delayed Charge\n- `M207` — No-show\n- `M208` — Resubmission",
+        "description": "CIT = _Customer-Initiated Transaction_. MIT = _Merchant-Initiated Transaction_.\n\nOnly required for Mastercard as an **informative** field when processing external subscriptions (with `externalSubscriptionID` or `transactionMode` flows).\n\n**CIT**\n- `C101` — Credential-on-file (ad hoc)\n- `C102` — Standing Order (variable amount / fixed frequency)\n- `C103` — Subscription (fixed amount / fixed frequency)\n- `C104` — Installment\n\n**MIT**\n- `M101` — Unscheduled Credential-on-file\n- `M102` — Standing Order (variable amount / fixed frequency)\n- `M103` — Subscription (fixed amount / fixed frequency)\n- `M104` — Installment\n- `M205` — Partial Shipment\n- `M206` — Related/Delayed Charge\n- `M207` — No-show\n- `M208` — Resubmission",
         "enum": [
           "C101",
           "C102",
@@ -5800,29 +6184,13 @@
           "M208"
         ],
         "title": "citMit",
-        "type": "string"
+        "type": "string",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "citMit-old": {
         "description": "CIT=_Customer_-_Initiated Transaction_. MIT=_Merchant_-_Initiated Transactions_. Only required for Mastercard as an **informative** field when you are going **to process external subscriptions** (with `externalSubscriptionID` or `transactionMode` flows)\n<br>\n\n**CIT**\n- `C101` (Credential-on-file [ad hoc])\n- `C102` (Standing Order [variable amount/fixed frequency])\n- `C103` (Subscription [fixed amount/fixed frequency])\n- `C104` (Installment)\n**MIT**\n- `M101` (Unscheduled Credential-on-file)\n- `M102` (Standing Order [variable amount/fixed frequency])\n- `M103` (Subscription [fixed amount/fixed frequency])\n- `M104` (Installment)\n- `M205` (Partial Shipment)\n- `M206` (Related/Delayed Charge)\n- `M207` (No-show)",
-        "enum": [
-          "C101",
-          "C102",
-          "C103",
-          "C104",
-          "M101",
-          "M102",
-          "M103",
-          "M104",
-          "M205",
-          "M206",
-          "M207",
-          "M208"
-        ],
-        "title": "citMit",
-        "type": "string"
-      },
-      "citMit9": {
-        "description": "⛔️ Not available for domestic transactions in Mexico 🇲🇽.\n\nCIT = _Customer-Initiated Transaction_. MIT = _Merchant-Initiated Transaction_. Only required for Mastercard as an **informative** field when processing external subscriptions (with `externalSubscriptionID` or `transactionMode` flows).\n\n**CIT**\n- `C101` — Credential-on-file (ad hoc)\n- `C102` — Standing Order (variable amount / fixed frequency)\n- `C103` — Subscription (fixed amount / fixed frequency)\n- `C104` — Installment\n\n**MIT**\n- `M101` — Unscheduled Credential-on-file\n- `M102` — Standing Order (variable amount / fixed frequency)\n- `M103` — Subscription (fixed amount / fixed frequency)\n- `M104` — Installment\n- `M205` — Partial Shipment\n- `M206` — Related/Delayed Charge\n- `M207` — No-show\n- `M208` — Resubmission",
         "enum": [
           "C101",
           "C102",
@@ -5897,18 +6265,17 @@
         }
       },
       "currency": {
-        "description": "Below, you can find the currencies available for each country\n\n| **COUNTRY** | **USD** | **PEN** | **COP** | **MXN** | **CLP** | **UF** | \n|---|:---:|:---:|:---:|:---:|:---:|:---:|\n| **Ecuador** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |\n| **Perú** | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |\n| **Colombia** | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ |\n| **México** | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |\n| **Chile** | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ |",
+        "description": "Available currencies for Peru 🇵🇪.\n\n| **Currency** | **Code** |\n|---|---|\n| Peruvian Sol | `PEN` |\n| US Dollar | `USD` |",
         "enum": [
-          "COP",
-          "CLP",
-          "UF",
           "PEN",
-          "MXN",
           "USD"
         ],
-        "example": "USD",
+        "example": "PEN",
         "title": "currency",
-        "type": "string"
+        "type": "string",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "currency-CL-old": {
         "default": "CLP",
@@ -5950,20 +6317,6 @@
         "title": "currency",
         "type": "string"
       },
-      "currency10": {
-        "description": "Below, you can find the currencies available for each country.\n\n| **COUNTRY** | **USD** | **PEN** | **COP** | **MXN** | **CLP** | **UF** |\n|---|:---:|:---:|:---:|:---:|:---:|:---:|\n| **Ecuador** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |\n| **Perú** | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |\n| **Colombia** | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ |\n| **México** | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |\n| **Chile** | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ |",
-        "enum": [
-          "USD",
-          "COP",
-          "CLP",
-          "UF",
-          "PEN",
-          "MXN"
-        ],
-        "example": "USD",
-        "title": "currency",
-        "type": "string"
-      },
       "deferred-old": {
         "description": "Required when `is_deferred` = `true`",
         "example": {
@@ -5989,25 +6342,20 @@
         }
       },
       "documentType": {
-        "description": "* CC: Identity Document (applies to Colombia 🇨🇴, Chile 🇨🇱, and Mexico 🇲🇽)\n* NIT: Tax Id number in Colombia 🇨🇴\n* CE: Foreign resident card in Colombia 🇨🇴 and Peru 🇵🇪\n* TI: Identity Card in Colombia 🇨🇴\n* PP: Passport (applies to Colombia 🇨🇴 and Chile 🇨🇱)\n* PAS: Passport in Peru 🇵🇪 and Ecuador 🇪🇨\n* RUC: Tax Id number in Ecuador 🇪🇨 and Peru 🇵🇪 \n* CURP: Unique Population Registry Code in Mexico 🇲🇽\n* RFC: Tax Id number in Mexico 🇲🇽\n* RUT: Tax Id number in Chile 🇨🇱\n* DNI: Identity Document in Peru\n* CI: Identity Card in Ecuador 🇪🇨",
+        "description": "Document types available in Peru 🇵🇪:\n\n* **DNI**: Documento Nacional de Identidad\n* **CE**: Carné de Extranjería\n* **PAS**: Pasaporte\n* **RUC**: Registro Único de Contribuyentes\n* **DE**: Documento Extranjero",
         "enum": [
-          "CC",
-          "NIT",
-          "CE",
-          "TI",
-          "PP",
-          "RUC",
-          "CURP",
-          "RFC",
-          "RUT",
           "DNI",
+          "CE",
           "PAS",
-          "CI",
+          "RUC",
           "DE"
         ],
-        "example": "NIT",
+        "example": "DNI",
         "title": "documentType",
-        "type": "string"
+        "type": "string",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "documentType-old": {
         "description": "* **DNI**: Documento Nacional de Identidad 🇵🇪\n* **CE**: Carné de Extranjería 🇵🇪\n* **PAS**: Pasaporte 🇵🇪\n* **RUC**: Registro Único de Contribuyentes 🇵🇪",
@@ -6017,27 +6365,6 @@
           "PAS",
           "RUC"
         ],
-        "title": "documentType",
-        "type": "string"
-      },
-      "documentType12": {
-        "description": "* **CC**: Identity Document (Colombia 🇨🇴, Chile 🇨🇱, Mexico 🇲🇽)\n* **NIT**: Tax Id number in Colombia 🇨🇴\n* **CE**: Foreign resident card in Colombia 🇨🇴 and Peru 🇵🇪\n* **TI**: Identity Card in Colombia 🇨🇴\n* **PP**: Passport in Colombia 🇨🇴 and Chile 🇨🇱\n* **PAS**: Passport in Peru 🇵🇪 and Ecuador 🇪🇨\n* **RUC**: Tax Id number in Ecuador 🇪🇨 and Peru 🇵🇪\n* **CURP**: Unique Population Registry Code in Mexico 🇲🇽\n* **RFC**: Tax Id number in Mexico 🇲🇽\n* **RUT**: Tax Id number in Chile 🇨🇱\n* **DNI**: Identity Document in Peru 🇵🇪\n* **CI**: Identity Card in Ecuador 🇪🇨\n* **DE**: Foreign Document",
-        "enum": [
-          "CC",
-          "NIT",
-          "CE",
-          "TI",
-          "PP",
-          "RUC",
-          "CURP",
-          "RFC",
-          "RUT",
-          "DNI",
-          "PAS",
-          "CI",
-          "DE"
-        ],
-        "example": "NIT",
         "title": "documentType",
         "type": "string"
       },
@@ -6054,10 +6381,6 @@
           "tasaAeroportuaria": 0
         },
         "properties": {
-          "IVAagenciaDeViaje": {
-            "description": "It's commonly used in airlines in Colombia.",
-            "type": "number"
-          },
           "agenciaDeViaje": {
             "description": "It's commonly used in airlines.",
             "type": "number"
@@ -6065,17 +6388,8 @@
           "iac": {
             "type": "number"
           },
-          "municipalTax": {
-            "type": "number"
-          },
           "propina": {
             "description": "It's commonly used in restaurants.",
-            "type": "number"
-          },
-          "reducedStateTax": {
-            "type": "number"
-          },
-          "stateTax": {
             "type": "number"
           },
           "tasaAeroportuaria": {
@@ -6086,7 +6400,11 @@
             "type": "number"
           }
         },
-        "type": "object"
+        "title": "extraTaxes",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "extraTaxes-old": {
         "properties": {
@@ -6127,48 +6445,6 @@
           }
         ]
       },
-      "extraTaxes11": {
-        "example": {
-          "agenciaDeViaje": 0,
-          "iac": 0,
-          "tasaAeroportuaria": 0
-        },
-        "properties": {
-          "IVAagenciaDeViaje": {
-            "description": "It's commonly used in airlines in Colombia 🇨🇴.",
-            "type": "number"
-          },
-          "agenciaDeViaje": {
-            "description": "It's commonly used in airlines.",
-            "type": "number"
-          },
-          "iac": {
-            "type": "number"
-          },
-          "municipalTax": {
-            "type": "number"
-          },
-          "propina": {
-            "description": "It's commonly used in restaurants.",
-            "type": "number"
-          },
-          "reducedStateTax": {
-            "type": "number"
-          },
-          "stateTax": {
-            "type": "number"
-          },
-          "tasaAeroportuaria": {
-            "description": "It's commonly used in airlines.",
-            "type": "number"
-          },
-          "tip": {
-            "type": "number"
-          }
-        },
-        "title": "extraTaxes",
-        "type": "object"
-      },
       "extra_taxes-old": {
         "example": {
           "airport_tax": 500,
@@ -6207,8 +6483,8 @@
       "headers": {
         "example": [
           {
-            "label": "json",
-            "value": "12"
+            "label": "Authorization",
+            "value": "Bearer your-token"
           }
         ],
         "items": {
@@ -6223,7 +6499,10 @@
           "type": "object"
         },
         "title": "headers",
-        "type": "array"
+        "type": "array",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "headers-old": {
         "items": {
@@ -6250,26 +6529,41 @@
           }
         ]
       },
-      "headers15": {
-        "example": [
-          {
-            "label": "json",
-            "value": "12"
-          }
-        ],
-        "items": {
-          "properties": {
-            "label": {
-              "type": "string"
-            },
-            "value": {
-              "type": "string"
-            }
+      "messageFields": {
+        "properties": {
+          "f39": {
+            "description": "Generic response codes from card Visa or Mastercard. It could be received both for approved or declined transactions.",
+            "type": "string"
           },
-          "type": "object"
+          "f48": {
+            "description": "Response codes. Only for Mastercard.",
+            "properties": {
+              "s22": {
+                "description": "It corresponds to the `citMit` code sent in the request. Only for Mastercard.",
+                "properties": {
+                  "se5": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "s84": {
+                "description": "It's the MAC code (Merchant Advice Code) from Mastercard for declined transactions.",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "restricted": {
+            "description": "Returned when the transaction has been blocked by Kushki.",
+            "type": "boolean"
+          }
         },
-        "title": "headers",
-        "type": "array"
+        "title": "messageFields",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "metadata-old": {
         "properties": {
@@ -6286,32 +6580,34 @@
         "title": "metadata",
         "type": "object"
       },
-      "network-old": {
-        "description": "Contains the unique network identifier for Card on File (COF) transactions.\n\n**Availability:** This object is returned in Charges and Pre-authorizations (both Token and Tokenless) only when the `transactionMode` in the token request is set to `initialRecurrence`.",
+      "network": {
+        "description": "Contains the unique network identifier for Card on File (COF) transactions.\n\n**Availability:** Returned in Charges and Pre-authorizations only when `transactionMode` in the token request is set to `initialRecurrence`.",
         "example": {
           "scheme": "mastercard",
           "transactionIdentifier": "1231234561234"
         },
         "properties": {
           "scheme": {
-            "description": "Indicates the card brand or franchise processed.",
+            "description": "Indicates the card brand processed.",
             "enum": [
               "visa",
-              "mastercard",
-              "prosa"
+              "mastercard"
             ],
             "type": "string"
           },
           "transactionIdentifier": {
-            "description": "The unique transaction identifier assigned by the payment networks (Visa, Mastercard, etc.). To receive this field in the response, you must include the `franchiseTransactionCode` value within the `capabilities` array in your request.",
+            "description": "The unique transaction identifier assigned by the payment network.",
             "type": "string"
           }
         },
         "title": "network",
-        "type": "object"
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "networkToken": {
-        "description": "<b style=\"background-color:#0366d6; color:white; border-radius: 6px; padding: 3px 8px; font-size: 12px; font-weight: 600;\">PRODUCT IN BETA VERSION</b> \n<br> **Required when `isNetworkToken` is `true`**</b> \n\n\n> Only available in Chile 🇨🇱 and Perú🇵🇪.\n\nAdditional metadata required when processing transactions with network tokenized cards. These fields help identify the device, wallet, and authentication context used during token provisioning or transaction initiation.",
+        "description": "**PRODUCT IN BETA VERSION**\n\n**Required when `isNetworkToken` is `true`.**\n\nAvailable in Peru 🇵🇪 and Chile 🇨🇱.\n\nAdditional metadata required when processing transactions with network tokenized cards.",
         "example": {
           "authenticationLevel": "02",
           "deviceType": "some device",
@@ -6321,11 +6617,11 @@
         },
         "properties": {
           "authenticationLevel": {
-            "description": "Indicates the level of authentication performed during token provisioning or transaction. Used to improve authorization and reduce risk.\n",
+            "description": "Indicates the level of authentication performed during token provisioning.",
             "type": "string"
           },
           "deviceType": {
-            "description": "Describes the type of device from which the tokenized transaction originate",
+            "description": "Describes the type of device from which the tokenized transaction originated.",
             "type": "string"
           },
           "mvv": {
@@ -6335,15 +6631,15 @@
             "type": "string"
           },
           "requestorId": {
-            "description": "The unique identifier assigned to the token requestor by the card network (e.g., Visa or Mastercard). Often required for network token authentication.\n",
+            "description": "The unique identifier assigned to the token requestor by the card network.",
             "type": "string"
           },
           "source": {
-            "description": "Indicates the source of the token ",
+            "description": "Indicates the source of the token.",
             "type": "string"
           },
           "walletId": {
-            "description": "**walletId** | *string*\nIdentifier of the digital wallet used for the transaction. The accepted values are:\n* `01`: Apple Pay.\n* `04`: Default value for other Wallets.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  Identifier of the digital wallet or platform where the token was provisioned. Helps provide issuer context.\n",
+            "description": "Identifier of the digital wallet used for the transaction.\n* `01`: Apple Pay.\n* `04`: Default value for other wallets.",
             "enum": [
               "01",
               "04"
@@ -6351,7 +6647,11 @@
             "type": "string"
           }
         },
-        "type": "object"
+        "title": "networkToken",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "networkToken-old": {
         "description": "<b style=\"background-color:#0366d6; color:white; border-radius: 6px; padding: 3px 8px; font-size: 12px; font-weight: 600;\">PRODUCT IN BETA VERSION</b>\n<br> **Required when `isNetworkToken` is `true`**</b>\n\n>\n\nAdditional metadata required when processing transactions with network tokenized cards. These fields help identify the device, wallet, and authentication context used during token provisioning or transaction initiation.",
@@ -6405,166 +6705,23 @@
           }
         }
       },
-      "one-and-two-step-payment-old": {
-        "properties": {
-          "amount": {
-            "$ref": "#/components/schemas/amount-old"
-          },
-          "card": {
-            "$ref": "#/components/schemas/card-old"
-          },
-          "card_details": {
-            "$ref": "#/components/schemas/card_details-old",
-            "description": "Optional for [cardless operations](#cardless-operations)."
-          },
-          "cashback_amount": {
-            "description": "Required when `is_cashback` = `true`",
-            "type": "number"
-          },
-          "client_transaction_id": {
-            "description": "UUID v4 generated from the merchant side. It must be a unique ID per transaction.",
-            "type": "string"
-          },
-          "contact_details": {
-            "$ref": "#/components/schemas/contact_details-old"
-          },
-          "country": {
-            "description": "ISO 3166-1 alpha-3.\n\nOptional for [cardless operations](#cardless-operations).",
-            "enum": [
-              "PER"
-            ],
-            "type": "string"
-          },
-          "cvm_type": {
-            "description": "Cardholder Verification Methods.\n\n* `none`: No pin or signature verification method.\n* `pin`: Pin verification method.\n* `signature`: Signature verification method.\n\nOptional for [cardless operations](https:/",
-            "enum": [
-              "none",
-              "pin",
-              "signature"
-            ],
-            "type": "string"
-          },
-          "is_cashback": {
-            "type": "boolean"
-          },
-          "merchant_id": {
-            "type": "string"
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/metadata-old"
-          },
-          "omit_card": {
-            "description": "To perform a cardless capture, send the `omit_card` field with the value of `true` and then the other non-required fields are omitted: **(Beta in Mexico and Peru)**",
-            "type": "boolean"
-          },
-          "pos_details": {
-            "$ref": "#/components/schemas/pos_details-old"
-          },
-          "sub_merchant": {
-            "$ref": "#/components/schemas/sub_merchant-old"
-          },
-          "transaction_mode": {
-            "enum": [
-              "Authorization",
-              "Reverse",
-              "Void"
-            ],
-            "type": "string"
-          },
-          "transaction_type": {
-            "enum": [
-              "capture",
-              "preAuth",
-              "reAuthorization",
-              "charge",
-              "refund"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "card_details",
-          "amount",
-          "client_transaction_id",
-          "country",
-          "cvm_type"
-        ],
-        "type": "object",
-        "x-examples": {
-          "Example 1": {
-            "amount": {
-              "currency": "PEN",
-              "extra_taxes": {},
-              "iva": 0,
-              "subtotal_iva": 0,
-              "subtotal_iva0": 111,
-              "tip": 0
-            },
-            "card": {
-              "card_holder_name": " /"
-            },
-            "card_details": {
-              "enc_tlv": "8332743DB0D0FAA29CF0AA187558BE3EF056085299635BAD4147E5D50D70D6E01A396081D618BA3001AF8262CD8F52DC67C995D9E99E824EC7995FE20AD5E5FE850B29863A2E61D8BD6A2951A2F24CD0AEE4087020745EB48CC5B40E2AE2263D5BB47D4D508D8DC69E54C8ECC2AB6F471C299D1CAB1712CCD2E2D378A57D285E7139CCC6C98D57D8A6C30B1CE110DDE23C28C9C7FCAFEF2023AE4FC8B03BE86CA1B673D962D9E7EA",
-              "pin_ksn": "FFFF4357486333600003",
-              "reading_type": "NFC",
-              "tracks": {
-                "enc_track2": "A5A26987202B4E8F3A595E0116A85E56D842005394315A18",
-                "track_ksn": "FFFF4357486333600003"
-              }
-            },
-            "client_transaction_id": "dbdeb25b-b34a-4b6c-b664-085ea9552954",
-            "contact_details": {
-              "document_number": "",
-              "document_type": "-1",
-              "email": "",
-              "first_name": "",
-              "last_name": "",
-              "phone_number": "",
-              "second_last_name": ""
-            },
-            "country": "PER",
-            "cvm_type": "none",
-            "deferred": {
-              "amount_of_installments": 0,
-              "credit_type": "",
-              "months": "10",
-              "transaction_rate": ""
-            },
-            "is_cashback": false,
-            "is_deferred": true,
-            "pos_details": {
-              "brand": "SUNMI",
-              "has_print": true,
-              "location": {
-                "latitude": -1.2346533333333334,
-                "longitude": -78.61959166666666
-              },
-              "model": "P2-EU",
-              "terminal_id": "PB04209860189",
-              "version": "Kushki SunmiV1.1.28"
-            },
-            "transaction_mode": "Authorization",
-            "transaction_type": "charge"
-          }
-        }
-      },
       "orderDetails": {
         "example": {
           "billingDetails": {
-            "address1": "Eloy Alfaro 139 y Catalina Aldaz",
-            "city": "Quito",
-            "country": "Ecuador",
-            "name": "John Doe",
-            "phone": "+593912345678",
-            "region": "Pichincha"
+            "address1": "Av. Larco 1301",
+            "city": "Lima",
+            "country": "Peru",
+            "name": "Juan Pérez",
+            "phone": "+51987654321",
+            "region": "Lima"
           },
           "shippingDetails": {
-            "address1": "Eloy Alfaro 139 y Catalina Aldaz",
-            "city": "Quito",
-            "country": "Ecuador",
-            "name": "John Doe",
-            "phone": "+593912345678",
-            "region": "Pichincha"
+            "address1": "Av. Larco 1301",
+            "city": "Lima",
+            "country": "Peru",
+            "name": "Juan Pérez",
+            "phone": "+51987654321",
+            "region": "Lima"
           },
           "siteDomain": "example.com"
         },
@@ -6585,7 +6742,10 @@
           "billingDetails"
         ],
         "title": "orderDetails",
-        "type": "object"
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "orderDetails-old": {
         "properties": {
@@ -6629,45 +6789,6 @@
           }
         ]
       },
-      "orderDetails5": {
-        "example": {
-          "billingDetails": {
-            "address1": "Eloy Alfaro 139 y Catalina Aldaz",
-            "city": "Quito",
-            "country": "Ecuador",
-            "name": "John Doe",
-            "phone": "+593912345678",
-            "region": "Pichincha"
-          },
-          "shippingDetails": {
-            "address1": "Eloy Alfaro 139 y Catalina Aldaz",
-            "city": "Quito",
-            "country": "Ecuador",
-            "name": "John Doe",
-            "phone": "+593912345678",
-            "region": "Pichincha"
-          },
-          "siteDomain": "example.com"
-        },
-        "properties": {
-          "billingDetails": {
-            "$ref": "#/components/schemas/Billing-Address14"
-          },
-          "shippingDetails": {
-            "$ref": "#/components/schemas/Shipping-Address13"
-          },
-          "siteDomain": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "siteDomain",
-          "shippingDetails",
-          "billingDetails"
-        ],
-        "title": "orderDetails",
-        "type": "object"
-      },
       "paymentMethod-old": {
         "enum": [
           "CARD",
@@ -6677,6 +6798,18 @@
         "title": "payment_method",
         "type": "string"
       },
+      "payment_method": {
+        "enum": [
+          "CARD",
+          "CASH",
+          "TRANSFER"
+        ],
+        "title": "payment_method",
+        "type": "string",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
       "payment_method-old": {
         "enum": [
           "CARD",
@@ -6685,6 +6818,24 @@
         ],
         "title": "payment_method",
         "type": "string"
+      },
+      "payment_submethod": {
+        "enum": [
+          "CARD NO PRESENT",
+          "CARD PRESENT",
+          "SUBSCRIPTION",
+          "CHARGEBACK CARD NO PRESENT",
+          "CHARGEBACK CARD PRESENT",
+          "TRANSFER IN",
+          "TRANSFER OUT",
+          "CASH IN",
+          "CASH OUT"
+        ],
+        "title": "payment_submethod",
+        "type": "string",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "payment_submethod-old": {
         "enum": [
@@ -6809,6 +6960,58 @@
           }
         }
       },
+      "product": {
+        "example": {
+          "id": "198952AB",
+          "price": 29.9,
+          "quantity": 1,
+          "sku": "10101042",
+          "title": "Libro Digital"
+        },
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "id": {
+            "description": "The item's unique identifier according to your system.",
+            "type": "string"
+          },
+          "price": {
+            "description": "The item unit price in the base unit of the `currency` code.",
+            "type": "number"
+          },
+          "quantity": {
+            "description": "Quantity of the item.",
+            "type": "number"
+          },
+          "sku": {
+            "description": "Stock-keeping Unit ID.",
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": {
+            "description": "The item's name.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "price",
+          "sku",
+          "quantity"
+        ],
+        "title": "product",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
+      },
       "product-old": {
         "example": {
           "id": "198952AB",
@@ -6923,33 +7126,27 @@
         "type": "object"
       },
       "threeDomainSecure": {
-        "description": "Send this object if you have your own 3DS authentication engine. **Applies to 🇲🇽 Mexico, 🇵🇪 Peru, 🇨🇱 Chile, 🇪🇨 Ecuador, and 🇨🇴Colombia.**\n\n**VISA (Required)**:\n* cavv\n* eci\n* specificationVersion\n\n**Mastercard (Required)**:\n* directoryServerTransactionID\n* eci\n* ucaf\n* specificationVersion\n* collectionIndicator\n\n**Electronic Commerce Indicator (ECI) allowed values:**\n\n* Visa\n  * eci: `05` and `06` represent a secure transaction.\n  * eci: `07` represents a risky transaction. For processing risky transactions, also set the `acceptRisk` field to `true`. **By sending `true`, in the `acceptRisk` field, merchants will assume responsibility in case of chargebacks.**\n* Mastercard:\n  * eci: `01` and `02` represent a secure transaction.\n  * eci: `00` represents a risky transaction. For processing risky transactions, also set the `acceptRisk` field to `true`. **By sending `true`, in the `acceptRisk` field, merchants will assume responsibility in case of chargebacks.**\n\n\n\n<!-- theme: warning -->\n> #### Important notice about support for version 1 of 3D Secure!\n>**NOTE**: Support for 3D Secure 1.0.2 and related technology ended in October 2022. Merchants will need to migrate to version 2 of the protocol to avoid any impact on their transactions.\n",
+        "description": "Send this object if you have your own 3DS authentication engine. **Available in Peru 🇵🇪.**\n\n**VISA (Required fields)**: `cavv`, `eci`, `specificationVersion`\n\n**Mastercard (Required fields)**: `directoryServerTransactionID`, `eci`, `ucaf`, `specificationVersion`, `collectionIndicator`\n\n**Electronic Commerce Indicator (ECI) allowed values:**\n* **Visa:** `05` and `06` = secure. `07` = risky (set `acceptRisk: true` — merchant assumes chargeback liability).\n* **Mastercard:** `01` and `02` = secure. `00` = risky (set `acceptRisk: true` — merchant assumes chargeback liability).",
         "example": {
-          "threeDomainSecure": {
-            "acceptRisk": true,
-            "cavv": "AAABBoVBaZKAR3BkdkFpELpWIiE=",
-            "eci": "07",
-            "specificationVersion": "2.2.0"
-          }
+          "acceptRisk": true,
+          "cavv": "AAABBoVBaZKAR3BkdkFpELpWIiE=",
+          "eci": "07",
+          "specificationVersion": "2.2.0"
         },
         "properties": {
           "acceptRisk": {
             "default": false,
-            "description": "Indicates whether risky transactions are required to be processed or not. For processing high-risk transactions, set this parameter to `true` and send `07` in the case of Visa or `00` for Mastercard in the `eci` field. **By sending `true` in this field, merchants will assume responsibility for chargebacks.**",
-            "enum": [
-              true,
-              false
-            ],
+            "description": "Set to `true` to process risky transactions. Merchant assumes chargeback responsibility.",
             "type": "boolean"
           },
           "cavv": {
-            "description": "**Required only for Visa.** Cardholder Authentication Verification Value. For Visa Secure transactions, the issuer's access control generates a CAVV. **Base 64 encoded.**",
+            "description": "**Required only for Visa.** Cardholder Authentication Verification Value. Base 64 encoded.",
             "maxLength": 28,
             "minLength": 28,
             "type": "string"
           },
           "collectionIndicator": {
-            "description": "**Required only for Mastercard**\n\n* 0 (for ECI 00) = 3DS authentication failed or could not be attempted, this may be due to technical problems, the user entered the authentication code wrong, etc.\n* 1 (for ECI 01) = The issuer is not ready, however the transaction has a liability shift because the merchant did request 3DS.\n* 2 (for ECI 02) = Transaction authenticated by the issuer with liability shift.",
+            "description": "**Required only for Mastercard.**\n* `0` (ECI 00) — 3DS failed or could not be attempted.\n* `1` (ECI 01) — Issuer not ready, but liability shift applies.\n* `2` (ECI 02) — Transaction authenticated by issuer with liability shift.",
             "enum": [
               "0",
               "1",
@@ -6960,20 +7157,20 @@
             "type": "string"
           },
           "directoryServerTransactionID": {
-            "description": "**Only required for Mastercard.** Transaction ID of the 3D Secure provider's directory server. Applies only for version 2 of 3DS.",
+            "description": "**Required only for Mastercard.** Transaction ID of the 3DS provider's directory server.",
             "example": "b23e0264-1209-41L6-Jca4-b82143c1a782",
             "maxLength": 36,
             "minLength": 36,
             "type": "string"
           },
           "eci": {
-            "description": "The Electronic Commerce Indicator (ECI) is a value returned by the directory servers (i.e. Visa, Mastercard, JCB and American Express) indicating the result of the attempted authentication.",
+            "description": "Electronic Commerce Indicator returned by directory servers.",
             "enum": [
+              "00",
               "01",
               "02",
               "05",
               "06",
-              "00",
               "07"
             ],
             "example": "06",
@@ -6982,18 +7179,15 @@
             "type": "string"
           },
           "specificationVersion": {
-            "description": "3DS protocol version to implement\n\n**NOTE: Support for 3D Secure 1.0.2 and related technology ended in October 2022. Merchants will need to migrate to version 2 of the protocol to avoid any impact on their transactions.**",
+            "description": "3DS protocol version.",
             "enum": [
               "2.0.0",
               "2.2.0"
             ],
-            "maxLength": 5,
-            "minLength": 5,
-            "pattern": "[1-2].[0-9].[0-9]",
             "type": "string"
           },
           "ucaf": {
-            "description": "**Required only for Mastercard.** Universal Cardholder Authentication Field. **It´s the equivalent to the CAVV. Base 64 encoded.**",
+            "description": "**Required only for Mastercard.** Universal Cardholder Authentication Field. Base 64 encoded.",
             "maxLength": 32,
             "type": "string"
           }
@@ -7007,7 +7201,10 @@
           "directoryServerTransactionID"
         ],
         "title": "threeDomainSecure",
-        "type": "object"
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "threeDomainSecure-old": {
         "description": "Send this object if you have your own 3DS authentication engine.\n\n**VISA (Required)**:\n* cavv\n* eci\n* specificationVersion\n\n**Mastercard (Required)**:\n* directoryServerTransactionID\n* eci\n* ucaf\n* specificationVersion\n* collectionIndicator\n\n**Electronic Commerce Indicator (ECI) allowed values:**\n\n* Visa\n  * eci: `05` and `06` represent a secure transaction.\n  * eci: `07` represents a risky transaction. For processing risky transactions, also set the `acceptRisk` field to `true`. **By sending `true`, in the `acceptRisk` field, merchants will assume responsibility in case of chargebacks.**\n* Mastercard:\n  * eci: `01` and `02` represent a secure transaction.\n  * eci: `00` represents a risky transaction. For processing risky transactions, also set the `acceptRisk` field to `true`. **By sending `true`, in the `acceptRisk` field, merchants will assume responsibility in case of chargebacks.**\n\n<!-- theme: warning -->\n> #### Important notice about support for version 1 of 3D Secure!\n>**NOTE**: Support for 3D Secure 1.0.2 and related technology ended in October 2022. Merchants will need to migrate to version 2 of the protocol to avoid any impact on their transactions.",
@@ -7096,87 +7293,6 @@
         "title": "threeDomainSecure",
         "type": "object"
       },
-      "threeDomainSecure6": {
-        "description": "Send this object if you have your own 3DS authentication engine. **Applies to 🇲🇽 Mexico, 🇵🇪 Peru, 🇨🇱 Chile, 🇪🇨 Ecuador, and 🇨🇴 Colombia.**\n\n**VISA (Required fields)**:\n* `cavv`, `eci`, `specificationVersion`\n\n**Mastercard (Required fields)**:\n* `directoryServerTransactionID`, `eci`, `ucaf`, `specificationVersion`, `collectionIndicator`\n\n**Electronic Commerce Indicator (ECI) allowed values:**\n\n* **Visa:** `05` and `06` = secure. `07` = risky (set `acceptRisk: true` — merchant assumes chargeback liability).\n* **Mastercard:** `01` and `02` = secure. `00` = risky (set `acceptRisk: true` — merchant assumes chargeback liability).\n\n> ⚠️ Support for 3D Secure 1.0.2 ended in October 2022. Migrate to version 2 to avoid transaction impact.",
-        "example": {
-          "acceptRisk": true,
-          "cavv": "AAABBoVBaZKAR3BkdkFpELpWIiE=",
-          "eci": "07",
-          "specificationVersion": "2.2.0"
-        },
-        "properties": {
-          "acceptRisk": {
-            "default": false,
-            "description": "Set to `true` to process risky transactions. Send `07` (Visa) or `00` (Mastercard) in `eci`. **Merchant assumes chargeback responsibility.**",
-            "type": "boolean"
-          },
-          "cavv": {
-            "description": "**Required only for Visa.** Cardholder Authentication Verification Value. Base 64 encoded.",
-            "maxLength": 28,
-            "minLength": 28,
-            "type": "string"
-          },
-          "collectionIndicator": {
-            "description": "**Required only for Mastercard.**\n* `0` (ECI 00) — 3DS failed or could not be attempted.\n* `1` (ECI 01) — Issuer not ready, but liability shift applies.\n* `2` (ECI 02) — Transaction authenticated by issuer with liability shift.",
-            "enum": [
-              "0",
-              "1",
-              "2"
-            ],
-            "maxLength": 1,
-            "minLength": 1,
-            "type": "string"
-          },
-          "directoryServerTransactionID": {
-            "description": "**Required only for Mastercard.** Transaction ID of the 3DS provider's directory server. Applies only for 3DS version 2.",
-            "example": "b23e0264-1209-41L6-Jca4-b82143c1a782",
-            "maxLength": 36,
-            "minLength": 36,
-            "type": "string"
-          },
-          "eci": {
-            "description": "Electronic Commerce Indicator returned by directory servers (Visa, Mastercard, JCB, Amex) indicating the result of the authentication attempt.",
-            "enum": [
-              "00",
-              "01",
-              "02",
-              "05",
-              "06",
-              "07"
-            ],
-            "example": "06",
-            "maxLength": 2,
-            "minLength": 2,
-            "type": "string"
-          },
-          "specificationVersion": {
-            "description": "3DS protocol version. Support for 1.0.2 ended in October 2022.",
-            "enum": [
-              "2.0.0",
-              "2.2.0"
-            ],
-            "maxLength": 5,
-            "minLength": 5,
-            "pattern": "[1-2].[0-9].[0-9]",
-            "type": "string"
-          },
-          "ucaf": {
-            "description": "**Required only for Mastercard.** Universal Cardholder Authentication Field (equivalent to CAVV). Base 64 encoded.",
-            "maxLength": 32,
-            "type": "string"
-          }
-        },
-        "required": [
-          "cavv",
-          "eci",
-          "specificationVersion",
-          "ucaf",
-          "collectionIndicator",
-          "directoryServerTransactionID"
-        ],
-        "title": "threeDomainSecure",
-        "type": "object"
-      },
       "transactionType": {
         "enum": [
           "SALE",
@@ -7187,7 +7303,10 @@
           "DEFERRED"
         ],
         "title": "transactionType",
-        "type": "string"
+        "type": "string",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "transactionType-old": {
         "enum": [
@@ -7202,7 +7321,7 @@
         "type": "string"
       },
       "webhooks": {
-        "description": "Send this object as another transactional notification option. If you have a **Webhook** configured through the Console, notifications will be sent to both the **API** and **Console** channels — they are not mutually exclusive.\n\nNotifications appear in the Webhooks Notifications dashboard with a `Configuration` field identifying the source.\n\n**Example:**\n```json\n{\n  \"webhooks\": [\n    {\n      \"events\": [\"approvedTransaction\", \"declinedTransaction\"],\n      \"headers\": [{\"label\": \"json\", \"value\": \"12\"}],\n      \"urls\": [\"https://your-endpoint.example.com\"]\n    }\n  ]\n}\n```",
+        "description": "Send this object as another transactional notification option. If you have a **Webhook** configured through the Console, notifications will be sent to both the **API** and **Console** channels — they are not mutually exclusive.\n\n**Example:**\n```json\n{\n  \"webhooks\": [\n    {\n      \"events\": [\"approvedTransaction\", \"declinedTransaction\"],\n      \"headers\": [{\"label\": \"Authorization\", \"value\": \"Bearer your-token\"}],\n      \"urls\": [\"https://your-endpoint.example.com\"]\n    }\n  ]\n}\n```",
         "example": {
           "events": [
             "approvedTransaction",
@@ -7210,8 +7329,8 @@
           ],
           "headers": [
             {
-              "label": "json",
-              "value": "12"
+              "label": "Authorization",
+              "value": "Bearer your-token"
             }
           ],
           "urls": [
@@ -7243,7 +7362,10 @@
           }
         },
         "title": "webhooks",
-        "type": "object"
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "webhooks-old": {
         "description": "Send this object as another transactional notification option. In case you have a **Webhook** created through the Console, the notification will be sent to both the **API** and the **Console** channels. It means they will not be mutually exclusive.\n\nThe notifications will be seen in the Webhooks Notifications dashboard, and they will have a new field called Configuration, which will identify the source of the notification.\n\n**Example:**\n\n```Example\n{\n  \"webhooks\": [\n    {\n      \"events\": [\n        \"approvedTransaction\",\n        \"declinedTransaction\"\n      ],\n      \"headers\": [\n        {\n          \"label\": \"json\",\n          \"value\": \"12\"\n        }\n      ],\n      \"urls\": [\n        \"https://eof2hhkrta4ooo1.m.pipedream.net\"\n      ]\n    }\n  ]\n}\n```",
@@ -7312,50 +7434,6 @@
           }
         }
       },
-      "webhooks7": {
-        "description": "Send this object as another transactional notification option. If you have a **Webhook** configured through the Console, notifications will be sent to both the **API** and **Console** channels — they are not mutually exclusive.\n\nNotifications appear in the Webhooks Notifications dashboard with a `Configuration` field identifying the source.\n\n**Example:**\n```json\n{\n  \"webhooks\": [\n    {\n      \"events\": [\"approvedTransaction\", \"declinedTransaction\"],\n      \"headers\": [{\"label\": \"json\", \"value\": \"12\"}],\n      \"urls\": [\"https://your-endpoint.example.com\"]\n    }\n  ]\n}\n```",
-        "example": {
-          "events": [
-            "approvedTransaction",
-            "declinedTransaction"
-          ],
-          "headers": [
-            {
-              "label": "json",
-              "value": "12"
-            }
-          ],
-          "urls": [
-            "https://your-endpoint.example.com"
-          ]
-        },
-        "properties": {
-          "events": {
-            "description": "Use events associated with the payment method. If empty, the information from the transaction request will be used.",
-            "items": {
-              "enum": [
-                "approvedTransaction",
-                "declinedTransaction"
-              ],
-              "type": "string"
-            },
-            "type": "array"
-          },
-          "headers": {
-            "$ref": "#/components/schemas/headers15"
-          },
-          "urls": {
-            "description": "URL(s) to receive notifications. Must start with `http` or `https`.",
-            "items": {
-              "example": "https://your-endpoint.example.com",
-              "type": "string"
-            },
-            "type": "array"
-          }
-        },
-        "title": "webhooks",
-        "type": "object"
-      },
       "webhooksChargeback": {
         "description": "**Chargeback notifications.** Use this object to receive webhook events for chargeback lifecycle updates.",
         "example": {
@@ -7368,8 +7446,8 @@
           ],
           "headers": [
             {
-              "label": "json",
-              "value": "12"
+              "label": "Authorization",
+              "value": "Bearer your-token"
             }
           ],
           "urls": [
@@ -7410,7 +7488,10 @@
           "urls"
         ],
         "title": "webhooksChargeback",
-        "type": "object"
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "webhooksChargeback-old": {
         "description": "**Chargeback notifications**",
@@ -7487,62 +7568,6 @@
             "subtotalIva0": 10
           }
         }
-      },
-      "webhooksChargeback8": {
-        "description": "**Chargeback notifications.** Use this object to receive webhook events for chargeback lifecycle updates.",
-        "example": {
-          "events": [
-            "initialized",
-            "pending",
-            "review",
-            "approval",
-            "declined"
-          ],
-          "headers": [
-            {
-              "label": "json",
-              "value": "12"
-            }
-          ],
-          "urls": [
-            "https://your-endpoint.example.com"
-          ]
-        },
-        "properties": {
-          "events": {
-            "description": "If empty, all allowed events will be notified.",
-            "items": {
-              "enum": [
-                "initialized",
-                "pending",
-                "review",
-                "approval",
-                "declined",
-                "failed",
-                "expired"
-              ],
-              "type": "string"
-            },
-            "type": "array"
-          },
-          "headers": {
-            "$ref": "#/components/schemas/headers15"
-          },
-          "urls": {
-            "description": "URL(s) to receive notifications. Must start with `http` or `https`.",
-            "items": {
-              "example": "https://your-endpoint.example.com",
-              "type": "string"
-            },
-            "type": "array"
-          }
-        },
-        "required": [
-          "events",
-          "urls"
-        ],
-        "title": "webhooksChargeback",
-        "type": "object"
       },
       "webhooksItem-old": {
         "description": "Send this array as another transactional notification option. Each element in the array is a webhook configuration object. In case you have a **Webhook** created through the Console, the notification will be sent to both the **API** and the **Console** channels. It means they will not be mutually exclusive.\n\nThe notifications will be seen in the Webhooks Notifications dashboard, and they will have a new field called Configuration, which will identify the source of the notification.\n\n\n**Example:**\n\n```Example\n{\n  \"webhooks\": [\n    {\n      \"events\": [\n        \"approvedTransaction\",\n        \"declinedTransaction\"\n      ],\n      \"headers\": [\n        {\n          \"label\": \"json\",\n          \"value\": \"12\"\n        }\n      ],\n      \"urls\": [\n        \"https://eof2hhkrta4ooo1.m.pipedream.net\"\n      ]\n    }\n  ]\n}\n```",
@@ -8538,9 +8563,7 @@
                           "merchant_name": {
                             "type": "string"
                           },
-                          "metadata": {
-                            "$ref": "#/components/schemas/Metadata-old"
-                          },
+                          "metadata": {},
                           "method": {
                             "type": "string"
                           },
@@ -10787,9 +10810,7 @@
                     "format": "uuid",
                     "type": "string"
                   },
-                  "metadata": {
-                    "$ref": "#/components/schemas/Metadata-old"
-                  }
+                  "metadata": {}
                 },
                 "required": [
                   "amount",
@@ -13687,7 +13708,7 @@
               "schema": {
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/Amount1"
+                    "$ref": "#/components/schemas/Amount"
                   },
                   "capabilities": {
                     "description": "Include the `franchiseTransactionCode` parameter to request the **Transaction Identifier (TID)** assigned by the payment networks (e.g., Visa, Mastercard). When this value is sent in the array, the response will include the `transactionIdentifier` field within the `network` object, which is primarily used for transaction reconciliation with the franchises\n```json\n\"capabilities\": [\n    \"franchiseTransactionCode\"\n  ]\n```",
@@ -13700,13 +13721,13 @@
                     "type": "array"
                   },
                   "citMit": {
-                    "$ref": "#/components/schemas/citMit9"
+                    "$ref": "#/components/schemas/citMit"
                   },
                   "contactDetails": {
-                    "$ref": "#/components/schemas/ContactDetails4"
+                    "$ref": "#/components/schemas/ContactDetails"
                   },
                   "deferred": {
-                    "$ref": "#/components/schemas/Deferred2"
+                    "$ref": "#/components/schemas/Deferred"
                   },
                   "externalReferenceId": {
                     "description": "Transaction ID generated from the merchant side. **The only special characters accepted in this field are `-` and `_`**.",
@@ -13730,14 +13751,14 @@
                     "type": "string"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata3"
+                    "$ref": "#/components/schemas/Metadata"
                   },
                   "months": {
                     "description": "",
                     "type": "integer"
                   },
                   "orderDetails": {
-                    "$ref": "#/components/schemas/orderDetails5"
+                    "$ref": "#/components/schemas/orderDetails"
                   },
                   "originalTransactionID": {
                     "description": "The unique identifier of the original transaction, used exclusively in **external subscription flows** where Kushki processes on-demand charges and tokenization is handled externally.\n\n* **Condition**: Must be sent if the `externalSubscriptionID` field is present.\n\n#### Network-Specific Rules\n| Card Network | Validation Rule |\n| :--- | :--- |\n| **Visa** | Exactly 15 numeric digits. |\n| **Mastercard (MC)** | Alphanumeric value between 1 and 22 characters. |\n\n> **Note**\n> Ensure the value matches the exact format required by the processor to avoid transaction errors.",
@@ -13756,16 +13777,16 @@
                     "type": "object"
                   },
                   "threeDomainSecure": {
-                    "$ref": "#/components/schemas/threeDomainSecure6"
+                    "$ref": "#/components/schemas/threeDomainSecure"
                   },
                   "token": {
                     "type": "string"
                   },
                   "webhooks": {
-                    "$ref": "#/components/schemas/webhooks7"
+                    "$ref": "#/components/schemas/webhooks-old"
                   },
                   "webhooksChargeback": {
-                    "$ref": "#/components/schemas/webhooksChargeback8"
+                    "$ref": "#/components/schemas/webhooksChargeback"
                   }
                 },
                 "required": [
@@ -16403,7 +16424,8 @@
         "tags": [
           "Online Payments/Card Payments",
           "pe"
-        ]
+        ],
+        "x-apidog-slug": "token"
       }
     },
     "/card/v1/validation": {
@@ -17142,9 +17164,7 @@
                     ],
                     "type": "string"
                   },
-                  "webhooks": {
-                    "$ref": "#/components/schemas/webhooks"
-                  },
+                  "webhooks": {},
                   "webhooksChargeback": {
                     "$ref": "#/components/schemas/webhooksChargeback"
                   }
@@ -20178,9 +20198,7 @@
                     "format": "uuid",
                     "type": "string"
                   },
-                  "metadata": {
-                    "$ref": "#/components/schemas/Metadata-old"
-                  }
+                  "metadata": {}
                 },
                 "required": [
                   "amount",
@@ -20336,16 +20354,12 @@
                   "properties": {
                     "billpocket": {
                       "description": "List of BillPocket platform components and their current operational status.",
-                      "items": {
-                        "$ref": "#/components/schemas/StatusComponent-old"
-                      },
+                      "items": {},
                       "type": "array"
                     },
                     "kushki": {
                       "description": "List of Kushki platform components and their current operational status.",
-                      "items": {
-                        "$ref": "#/components/schemas/StatusComponent-old"
-                      },
+                      "items": {},
                       "type": "array"
                     }
                   },
@@ -21067,7 +21081,7 @@
                   }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/ChargebackListResponse-old"
+                  "$ref": "#/components/schemas/ChargebackListResponse"
                 }
               }
             },
@@ -21926,9 +21940,7 @@
                   "merchant_id": {
                     "type": "string"
                   },
-                  "metadata": {
-                    "$ref": "#/components/schemas/Metadata-old"
-                  }
+                  "metadata": {}
                 },
                 "required": [
                   "merchant_id"
@@ -21962,9 +21974,7 @@
                     "credential_id": {
                       "type": "string"
                     },
-                    "metadata": {
-                      "$ref": "#/components/schemas/Metadata-old"
-                    },
+                    "metadata": {},
                     "private_credential_id": {
                       "type": "string"
                     },
@@ -22902,9 +22912,7 @@
                   "merchantId": {
                     "type": "string"
                   },
-                  "metadata": {
-                    "$ref": "#/components/schemas/Metadata-old"
-                  }
+                  "metadata": {}
                 },
                 "required": [
                   "merchantId"
@@ -25145,9 +25153,7 @@
                     ],
                     "type": "string"
                   },
-                  "metadata": {
-                    "$ref": "#/components/schemas/Metadata-old"
-                  },
+                  "metadata": {},
                   "token": {
                     "type": "string"
                   },
@@ -29034,9 +29040,7 @@
                     "format": "uuid",
                     "type": "string"
                   },
-                  "metadata": {
-                    "$ref": "#/components/schemas/Metadata-old"
-                  }
+                  "metadata": {}
                 },
                 "required": [
                   "amount",
@@ -32518,33 +32522,36 @@
                     "value": {
                       "details": {
                         "amount": {
-                          "currency": "CLP",
+                          "currency": "PEN",
                           "ice": 0,
                           "iva": 0,
                           "subtotalIva": 0,
-                          "subtotalIva0": 20
+                          "subtotalIva0": 59.9
                         },
                         "binCard": "44565280",
                         "binInfo": {
-                          "bank": "Jyske Bank",
-                          "type": "prepaid"
+                          "bank": "BANCO DE CRÉDITO DEL PERÚ",
+                          "type": "credit"
                         },
-                        "cardHolderName": "Diana Mantilla",
+                        "cardHolderName": "Juan Pérez",
                         "contactDetails": {
-                          "email": "pruebas@kushki.com",
-                          "firstName": "Kushki",
-                          "lastName": "Pruebas"
+                          "documentNumber": "12345678",
+                          "documentType": "DNI",
+                          "email": "usuario@ejemplo.com",
+                          "firstName": "Juan",
+                          "lastName": "Pérez",
+                          "phoneNumber": "+51987654321"
                         },
                         "created": "2026-06-02",
                         "lastFourDigits": "9860",
                         "maskedCreditCard": "44565280XXXX9860",
                         "merchantId": "20000000103625273000",
-                        "merchantName": "DIANA MANTILLA CL Branch Chile",
+                        "merchantName": "Tu comercio",
                         "paymentBrand": "Visa",
-                        "periodicity": "custom",
-                        "planName": "Kushki Pruebas",
-                        "processorBankName": "Jyske Bank",
-                        "startDate": "2025-10-01",
+                        "periodicity": "monthly",
+                        "planName": "Premium",
+                        "processorBankName": "BANCO DE CRÉDITO DEL PERÚ",
+                        "startDate": "2026-07-01",
                         "validationTicketNumber": "819247872865232808"
                       },
                       "subscriptionId": "1780428956212148"
@@ -32777,6 +32784,37 @@
                       "startDate": 1574726400,
                       "subscriptionId": "1574693127852000"
                     }
+                  },
+                  "fullResponse v3": {
+                    "summary": "fullResponse v3",
+                    "value": {
+                      "amount": {
+                        "currency": "PEN",
+                        "ice": 0,
+                        "iva": 0,
+                        "subtotalIva": 0,
+                        "subtotalIva0": 59.9
+                      },
+                      "bin": "545195",
+                      "cardHolderName": "Juan Pérez",
+                      "cardType": "credit",
+                      "contactDetails": {
+                        "email": "usuario@ejemplo.com",
+                        "firstName": "Juan",
+                        "lastName": "Pérez"
+                      },
+                      "created": 1780428956,
+                      "lastFourDigits": "5480",
+                      "maskedCardNumber": "545195XXXXXX5480",
+                      "merchantId": "20000000103625273000",
+                      "metadata": {},
+                      "paymentBrand": "MASTERCARD",
+                      "periodicity": "monthly",
+                      "planName": "Premium",
+                      "startDate": 1759276800,
+                      "subscriptionId": "1780428956212148",
+                      "validationTicketNumber": "292735057772257184"
+                    }
                   }
                 },
                 "schema": {
@@ -32865,6 +32903,10 @@
                       "type": "number"
                     },
                     "subscriptionId": {
+                      "type": "string"
+                    },
+                    "validationTicketNumber": {
+                      "description": "Ticket number of the validation charge transaction performed when the subscription was created. Only present when the request was made with `fullResponse: v3`.",
                       "type": "string"
                     }
                   },
@@ -35477,9 +35519,7 @@
                   }
                 }
               },
-              "schema": {
-                "$ref": "#/components/schemas/PrintJobRequest-old"
-              }
+              "schema": {}
             }
           },
           "required": true
@@ -35860,9 +35900,7 @@
                     "format": "uuid",
                     "type": "string"
                   },
-                  "metadata": {
-                    "$ref": "#/components/schemas/Metadata-old"
-                  }
+                  "metadata": {}
                 },
                 "required": [
                   "amount",
@@ -36113,9 +36151,7 @@
                     "format": "uuid",
                     "type": "string"
                   },
-                  "metadata": {
-                    "$ref": "#/components/schemas/Metadata-old"
-                  }
+                  "metadata": {}
                 },
                 "required": [
                   "amount",
@@ -36248,9 +36284,7 @@
                     "format": "uuid",
                     "type": "string"
                   },
-                  "metadata": {
-                    "$ref": "#/components/schemas/Metadata-old"
-                  }
+                  "metadata": {}
                 },
                 "required": [
                   "amount",
@@ -36440,9 +36474,7 @@
                   }
                 }
               },
-              "schema": {
-                "$ref": "#/components/schemas/PrintJobRequest-old"
-              }
+              "schema": {}
             }
           },
           "required": true
@@ -38882,7 +38914,6 @@
                     "$ref": "#/components/schemas/Metadata"
                   },
                   "webhooks": {
-                    "$ref": "#/components/schemas/webhooks",
                     "description": "Send this object as another transactional notification option. In case you have a **Webhook** created through the Console, the notification will be sent to both the **API** and the **Console** channels. It means they will not be mutually exclusive.\n\nThe notifications will be seen in the Webhooks Notifications dashboard, and they will have a new field called Configuration, which will identify the source of the notification.\n\n**Example:**\n\n```Example\n{\n  \"webhooks\": [\n    {\n      \"events\": [\n        \"approvedTransaction\"\n      ],\n      \"headers\": [\n        {\n          \"label\": \"json\",\n          \"value\": \"12\"\n        }\n      ],\n      \"urls\": [\n        \"https://eof2hhkrta4ooo1.m.pipedream.net\"\n      ]\n    }\n  ]\n}\n```"
                   }
                 },

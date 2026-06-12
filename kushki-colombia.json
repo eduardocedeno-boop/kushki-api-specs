@@ -1467,25 +1467,6 @@
         },
         "type": "object"
       },
-      "Metadata-old": {
-        "description": "Free-form merchant data for tracking and reconciliation.",
-        "properties": {
-          "customer_email": {
-            "example": "cliente@ejemplo.com",
-            "format": "email",
-            "type": "string"
-          },
-          "device": {
-            "example": "SUNMI-P3",
-            "type": "string"
-          },
-          "reference": {
-            "example": "ORD-20240317-001",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "PrintJobRequest": {
         "properties": {
           "commands": {
@@ -2213,117 +2194,6 @@
           }
         ]
       },
-      "StatusComponent-old": {
-        "description": "Represents a single platform component and its current operational status, along with uptime metrics for the reported date range.",
-        "properties": {
-          "created_at": {
-            "description": "ISO 8601 timestamp of when the component was created.",
-            "example": "2017-08-09T20:41:18Z",
-            "format": "date-time",
-            "type": "string"
-          },
-          "description": {
-            "description": "Optional description of the component. Returns `null` when no description has been set.",
-            "example": null,
-            "nullable": true,
-            "type": "string"
-          },
-          "group": {
-            "description": "Indicates whether this component acts as a group container for child components.",
-            "example": false,
-            "type": "boolean"
-          },
-          "major_outage": {
-            "description": "Number of major outage incidents recorded during the reporting period.",
-            "example": 0,
-            "minimum": 0,
-            "type": "number"
-          },
-          "name": {
-            "description": "Display name of the platform component.",
-            "example": "BlueSnap (US)",
-            "type": "string"
-          },
-          "only_show_if_degraded": {
-            "description": "When `true`, this component is only visible on the status page if it is experiencing an incident.",
-            "example": false,
-            "type": "boolean"
-          },
-          "partial_outage": {
-            "description": "Number of partial outage incidents recorded during the reporting period.",
-            "example": 0,
-            "minimum": 0,
-            "type": "number"
-          },
-          "position": {
-            "description": "Display order of the component within the platform's status page. Lower values appear first.",
-            "example": 1,
-            "type": "number"
-          },
-          "range_end": {
-            "description": "End of the reporting period for uptime metrics, in `YYYY-MM-DD` format.",
-            "example": "2026-03-31",
-            "type": "string"
-          },
-          "range_start": {
-            "description": "Start of the reporting period for uptime metrics, in `YYYY-MM-DD` format.",
-            "example": "2026-01-01",
-            "type": "string"
-          },
-          "showcase": {
-            "description": "Indicates whether this component is highlighted on the public status page.",
-            "example": true,
-            "type": "boolean"
-          },
-          "start_date": {
-            "description": "The date from which this component started tracking uptime, in `YYYY-MM-DD` format. Returns an empty string if not set.",
-            "example": "2020-10-31",
-            "type": "string"
-          },
-          "status": {
-            "description": "Current operational status of the component.\n\n* `operational`: Functioning normally with no known issues.\n* `degraded_performance`: Reduced performance; component remains functional.\n* `partial_outage`: Some functionality unavailable for a subset of users.\n* `major_outage`: Component is completely unavailable or severely impacted.",
-            "enum": [
-              "operational",
-              "degraded_performance",
-              "partial_outage",
-              "major_outage"
-            ],
-            "example": "operational",
-            "type": "string"
-          },
-          "updated_at": {
-            "description": "ISO 8601 timestamp of the last update to this component's record.",
-            "example": "2024-04-04T14:57:03Z",
-            "format": "date-time",
-            "type": "string"
-          },
-          "uptime_percentage": {
-            "description": "Uptime percentage for the component during the reporting period (`range_start` to `range_end`). Value between `0` and `100`.",
-            "example": 100,
-            "maximum": 100,
-            "minimum": 0,
-            "type": "number"
-          }
-        },
-        "required": [
-          "name",
-          "status",
-          "position",
-          "group",
-          "showcase",
-          "only_show_if_degraded",
-          "start_date",
-          "created_at",
-          "updated_at",
-          "range_start",
-          "range_end",
-          "uptime_percentage",
-          "major_outage",
-          "partial_outage"
-        ],
-        "title": "StatusComponent",
-        "type": "object"
-      },
       "Subscription": {
         "example": {
           "amount": {
@@ -2376,7 +2246,8 @@
           },
           "fullResponse": {
             "enum": [
-              "v2"
+              "v2",
+              "v3"
             ]
           },
           "ignoreWarnings": {
@@ -3601,18 +3472,17 @@
         "type": "string"
       },
       "currency1": {
-        "description": "Below, you can find the currencies available for each country\n\n| **COUNTRY** | **USD** | **PEN** | **COP** | **MXN** | **CLP** | **UF** | \n|---|:---:|:---:|:---:|:---:|:---:|:---:|\n| **Ecuador** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |\n| **Perú** | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |\n| **Colombia** | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ |\n| **México** | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |\n| **Chile** | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ |",
+        "description": "Available currencies for Peru 🇵🇪.\n\n| **Currency** | **Code** |\n|---|---|\n| Peruvian Sol | `PEN` |\n| US Dollar | `USD` |",
         "enum": [
-          "COP",
-          "CLP",
-          "UF",
           "PEN",
-          "MXN",
           "USD"
         ],
-        "example": "USD",
+        "example": "PEN",
         "title": "currency",
-        "type": "string"
+        "type": "string",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "documentType": {
         "description": "* **CC**: Cédula de Ciudadanía 🇨🇴\n* **NIT**: Número de Identificación Tributaria 🇨🇴\n* **CE**: Cédula de Extranjería 🇨🇴\n* **TI**: Tarjeta de Identidad 🇨🇴\n* **PP**: Passport 🇨🇴",
@@ -3676,10 +3546,6 @@
           "tasaAeroportuaria": 0
         },
         "properties": {
-          "IVAagenciaDeViaje": {
-            "description": "It's commonly used in airlines in Colombia.",
-            "type": "number"
-          },
           "agenciaDeViaje": {
             "description": "It's commonly used in airlines.",
             "type": "number"
@@ -3687,17 +3553,8 @@
           "iac": {
             "type": "number"
           },
-          "municipalTax": {
-            "type": "number"
-          },
           "propina": {
             "description": "It's commonly used in restaurants.",
-            "type": "number"
-          },
-          "reducedStateTax": {
-            "type": "number"
-          },
-          "stateTax": {
             "type": "number"
           },
           "tasaAeroportuaria": {
@@ -3708,7 +3565,11 @@
             "type": "number"
           }
         },
-        "type": "object"
+        "title": "extraTaxes",
+        "type": "object",
+        "x-apidog-tags": [
+          "pe"
+        ]
       },
       "headers": {
         "items": {
@@ -16791,16 +16652,12 @@
                   "properties": {
                     "billpocket": {
                       "description": "List of BillPocket platform components and their current operational status.",
-                      "items": {
-                        "$ref": "#/components/schemas/StatusComponent-old"
-                      },
+                      "items": {},
                       "type": "array"
                     },
                     "kushki": {
                       "description": "List of Kushki platform components and their current operational status.",
-                      "items": {
-                        "$ref": "#/components/schemas/StatusComponent-old"
-                      },
+                      "items": {},
                       "type": "array"
                     }
                   },
@@ -18385,9 +18242,7 @@
                   "merchant_id": {
                     "type": "string"
                   },
-                  "metadata": {
-                    "$ref": "#/components/schemas/Metadata-old"
-                  }
+                  "metadata": {}
                 },
                 "required": [
                   "merchant_id"
@@ -18422,9 +18277,7 @@
                     "credential_id": {
                       "type": "string"
                     },
-                    "metadata": {
-                      "$ref": "#/components/schemas/Metadata-old"
-                    },
+                    "metadata": {},
                     "private_credential_id": {
                       "type": "string"
                     },
@@ -19347,9 +19200,7 @@
                   "merchantId": {
                     "type": "string"
                   },
-                  "metadata": {
-                    "$ref": "#/components/schemas/Metadata-old"
-                  }
+                  "metadata": {}
                 },
                 "required": [
                   "merchantId"
@@ -25844,6 +25695,46 @@
                       },
                       "subscriptionId": "1658356540437000"
                     }
+                  },
+                  "fullResponse v3": {
+                    "summary": "fullResponse v3",
+                    "value": {
+                      "details": {
+                        "amount": {
+                          "currency": "COP",
+                          "ice": 0,
+                          "iva": 0,
+                          "subtotalIva": 0,
+                          "subtotalIva0": 50000
+                        },
+                        "binCard": "44565280",
+                        "binInfo": {
+                          "bank": "BANCOLOMBIA",
+                          "type": "credit"
+                        },
+                        "cardHolderName": "Andrés García",
+                        "contactDetails": {
+                          "documentNumber": "1023456789",
+                          "documentType": "CC",
+                          "email": "andres.garcia@ejemplo.com",
+                          "firstName": "Andrés",
+                          "lastName": "García",
+                          "phoneNumber": "+573112345678"
+                        },
+                        "created": "2026-06-02",
+                        "lastFourDigits": "9860",
+                        "maskedCreditCard": "44565280XXXX9860",
+                        "merchantId": "20000000103625273000",
+                        "merchantName": "Tu comercio",
+                        "paymentBrand": "Visa",
+                        "periodicity": "monthly",
+                        "planName": "Premium",
+                        "processorBankName": "BANCOLOMBIA",
+                        "startDate": "2026-07-01",
+                        "validationTicketNumber": "819247872865232808"
+                      },
+                      "subscriptionId": "1780428956212148"
+                    }
                   }
                 },
                 "schema": {
@@ -25893,6 +25784,10 @@
                           "type": "string"
                         },
                         "startDate": {
+                          "type": "string"
+                        },
+                        "validationTicketNumber": {
+                          "description": "Ticket number of the validation charge transaction performed when the subscription was created. Only present when the request was made with `fullResponse: v3`.",
                           "type": "string"
                         }
                       },
@@ -26105,6 +26000,37 @@
                       "startDate": 1574726400,
                       "subscriptionId": "1574693127852000"
                     }
+                  },
+                  "fullResponse v3": {
+                    "summary": "fullResponse v3",
+                    "value": {
+                      "amount": {
+                        "currency": "COP",
+                        "ice": 0,
+                        "iva": 0,
+                        "subtotalIva": 0,
+                        "subtotalIva0": 50000
+                      },
+                      "bin": "545195",
+                      "cardHolderName": "Andrés García",
+                      "cardType": "credit",
+                      "contactDetails": {
+                        "email": "andres.garcia@ejemplo.com",
+                        "firstName": "Andrés",
+                        "lastName": "García"
+                      },
+                      "created": 1780428956,
+                      "lastFourDigits": "5480",
+                      "maskedCardNumber": "545195XXXXXX5480",
+                      "merchantId": "20000000103625273000",
+                      "metadata": {},
+                      "paymentBrand": "MASTERCARD",
+                      "periodicity": "monthly",
+                      "planName": "Premium",
+                      "startDate": 1759276800,
+                      "subscriptionId": "1780428956212148",
+                      "validationTicketNumber": "292735057772257184"
+                    }
                   }
                 },
                 "schema": {
@@ -26193,6 +26119,10 @@
                       "type": "number"
                     },
                     "subscriptionId": {
+                      "type": "string"
+                    },
+                    "validationTicketNumber": {
+                      "description": "Ticket number of the validation charge transaction performed when the subscription was created. Only present when the request was made with `fullResponse: v3`.",
                       "type": "string"
                     }
                   },

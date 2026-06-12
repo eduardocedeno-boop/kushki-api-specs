@@ -18524,6 +18524,25 @@
           ]
         }
       },
+      "citMit": {
+        "type": "string",
+        "enum": [
+          "C101",
+          "C102",
+          "C103",
+          "C104",
+          "M101",
+          "M102",
+          "M103",
+          "M104",
+          "M205",
+          "M206",
+          "M207",
+          "M208"
+        ],
+        "title": "citMit",
+        "description": "CIT=_Customer_-_Initiated Transaction_. MIT=_Merchant_-_Initiated Transactions_. Only required for Mastercard as an **informative** field when you are going **to process external subscriptions** (with `externalSubscriptionID` or `transactionMode` flows)\n<br>\n\n**CIT**\n- `C101` (Credential-on-file [ad hoc])\n- `C102` (Standing Order [variable amount/fixed frequency])\n- `C103` (Subscription [fixed amount/fixed frequency])\n- `C104` (Installment)\n**MIT**\n- `M101` (Unscheduled Credential-on-file)\n- `M102` (Standing Order [variable amount/fixed frequency])\n- `M103` (Subscription [fixed amount/fixed frequency])\n- `M104` (Installment)\n- `M205` (Partial Shipment)\n- `M206` (Related/Delayed Charge)\n- `M207` (No-show)"
+      },
       "network": {
         "type": "object",
         "title": "network",
@@ -20168,6 +20187,15 @@
         "description": "Merchant's private credential. Obtained from the Kushki dashboard.",
         "name": "private-merchant-id",
         "in": "header"
+      },
+      "oauth22": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "/",
+            "scopes": {}
+          }
+        }
       }
     }
   },

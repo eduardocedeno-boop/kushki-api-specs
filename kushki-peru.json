@@ -31960,6 +31960,553 @@
           }
         }
       },
+      "paymentMethod": {
+        "type": "string",
+        "title": "payment_method",
+        "enum": [
+          "CARD",
+          "CASH",
+          "TRANSFER"
+        ]
+      },
+      "currency-cash-in": {
+        "type": "string",
+        "x-stoplight": {
+          "id": "9hy72mp4q0xqf"
+        },
+        "title": "currency",
+        "default": "USD",
+        "enum": [
+          "USD",
+          "COP",
+          "CLP",
+          "UF",
+          "PEN",
+          "MXN"
+        ],
+        "description": "Below, you can find the currencies available for each country\n\n| **COUNTRY** | **USD** | **PEN** | **COP** | **MXN** | **CLP** | **UF** | \n|---|:---:|:---:|:---:|:---:|:---:|:---:|\n| **Ecuador** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |\n| **Perú** | ❌  | ✅ | ❌ | ❌ | ❌ | ❌ |\n| **Colombia** | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ |\n| **México** | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |\n| **Chile** | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ |",
+        "example": "USD"
+      },
+      "currency-CL": {
+        "type": "string",
+        "x-stoplight": {
+          "id": "end959poipmzo"
+        },
+        "title": "currency",
+        "enum": [
+          "CLP",
+          "UF"
+        ],
+        "default": "CLP",
+        "example": "CLP"
+      },
+      "Submerchant": {
+        "title": "Submerchant",
+        "x-stoplight": {
+          "id": "8kc01os55dl5h"
+        },
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "1ddbj6ultaz66"
+            }
+          },
+          "city": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "vobrmav34fvhy"
+            }
+          },
+          "cityCode": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "02u0lmdi6cs6g"
+            }
+          },
+          "code": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "z5k6n8rgfna28"
+            }
+          },
+          "countryAns": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "g2249vaovk6tv"
+            }
+          },
+          "idAffiliation": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "2aw3q57o849d3"
+            }
+          },
+          "mcc": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "k8jar1s8uvxpd"
+            }
+          },
+          "socialReason": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "h03ocreshjt4e"
+            }
+          },
+          "softDescriptor": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "etpdv20wao1gj"
+            }
+          },
+          "zipCode": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "eygmry2ggrjhr"
+            }
+          },
+          " is_crypto_currency ": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "2sqdbvkbae0pc"
+            },
+            "default": false
+          }
+        }
+      },
+      "Shipping-Address": {
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "name": "John Doe",
+            "phone": "+593912345678",
+            "address1": "Eloy Alfaro 139 y Catalina Aldaz",
+            "address2": "centro 123",
+            "city": "Quito",
+            "region": "Pichincha",
+            "country": "Ecuador",
+            "zipcode": "170402"
+          }
+        },
+        "title": "Shipping Address",
+        "required": [
+          "name",
+          "phone",
+          "address1",
+          "city",
+          "region",
+          "country"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "address1": {
+            "type": "string"
+          },
+          "address2": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "zipcode": {
+            "type": "string"
+          },
+          "secondaryAddress": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ikfgbsy2fzhbh"
+            }
+          },
+          "userEmail": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "7ve6owfuajydx"
+            }
+          }
+        },
+        "example": {
+          "name": "John Doe",
+          "phone": "+593912345678",
+          "address1": "Eloy Alfaro 139 y Catalina Aldaz",
+          "address2": "centro 123",
+          "city": "Quito",
+          "region": "Pichincha",
+          "country": "Ecuador",
+          "zipcode": "170402"
+        }
+      },
+      "Promotions": {
+        "description": "",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "promotionId": "string",
+            "status": "string",
+            "description": "string",
+            "discount": {
+              "amount": 50,
+              "currency": "USD",
+              "minimumPurchaseAmount": 349.99
+            }
+          }
+        },
+        "properties": {
+          "promotionId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "discount": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "example": 50
+              },
+              "currency": {
+                "type": "object",
+                "properties": {}
+              },
+              "minimumPurchaseAmount": {
+                "type": "number",
+                "example": 349.99
+              }
+            }
+          }
+        },
+        "example": {
+          "promotionId": "string",
+          "status": "string",
+          "description": "string",
+          "discount": {
+            "amount": 50,
+            "currency": "USD",
+            "minimumPurchaseAmount": 349.99
+          }
+        }
+      },
+      "InvalidBinResponse": {
+        "description": "",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "code": "K003",
+            "message": "Tarjeta no habilitada por el emisor"
+          }
+        },
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "K003"
+          },
+          "message": {
+            "type": "string",
+            "example": "Tarjeta no habilitada por el emisor"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "example": {
+          "code": "K003",
+          "message": "Tarjeta no habilitada por el emisor"
+        }
+      },
+      "GetConfigurationRequest": {
+        "description": "The properties that are shared amongst all versions of the Multi-Merchant model.",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "totalAmount": 0,
+            "currency": "USD"
+          }
+        },
+        "properties": {
+          "totalAmount": {
+            "type": "number"
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "USD",
+              "COP",
+              "CLP",
+              "UF",
+              "PEN"
+            ]
+          }
+        },
+        "required": [
+          "totalAmount",
+          "currency"
+        ]
+      },
+      "ChargesVoidCardResponse": {
+        "description": "",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "ticketNumber": "string",
+            "details": {
+              "responseCode": "string",
+              "responseText": "string",
+              "approvedTransactionAmount": 0,
+              "transactionId": "string",
+              "approvalCode": "string",
+              "cardHolderName": "string",
+              "lastFourDigits": "string",
+              "binCard": "string",
+              "processorName": "string",
+              "processorBankName": "string",
+              "merchantName": "string",
+              "currencyCode": "string",
+              "taxes": {},
+              "transactionType": "string",
+              "numberOfMonths": 0,
+              "processorId": "string",
+              "merchantId": "string",
+              "paymentBrand": "string",
+              "created": 0,
+              "requestAmount": 0,
+              "subtotalIva": 0,
+              "subtotalIva0": 0,
+              "ivaValue": 0,
+              "iceValue": 0,
+              "transactionStatus": "string",
+              "metadata": {},
+              "subscriptionMetadata": {},
+              "subscriptionId": "string",
+              "method": "string",
+              "syncMode": "api",
+              "saleTicketNumber": "string",
+              "graceMonths": "string"
+            }
+          }
+        },
+        "properties": {
+          "ticketNumber": {
+            "type": "string",
+            "pattern": "^[0-9]{10,18}$"
+          },
+          "details": {
+            "type": "object",
+            "required": [
+              "transactionId",
+              "approvalCode",
+              "cardHolderName",
+              "lastFourDigits",
+              "binCard",
+              "processorName",
+              "processorBankName",
+              "merchantName",
+              "transactionType",
+              "paymentBrand",
+              "created",
+              "requestAmount",
+              "subtotalIva",
+              "subtotalIva0",
+              "ivaValue",
+              "iceValue",
+              "transactionStatus",
+              "metadata",
+              "subscriptionMetadata",
+              "subscriptionId",
+              "method",
+              "syncMode",
+              "saleTicketNumber",
+              "graceMonths"
+            ],
+            "properties": {
+              "responseCode": {
+                "type": "string"
+              },
+              "responseText": {
+                "type": "string"
+              },
+              "approvedTransactionAmount": {
+                "type": "number"
+              },
+              "transactionId": {
+                "type": "string"
+              },
+              "approvalCode": {
+                "type": "string"
+              },
+              "cardHolderName": {
+                "type": "string"
+              },
+              "lastFourDigits": {
+                "type": "string"
+              },
+              "binCard": {
+                "type": "string"
+              },
+              "processorName": {
+                "type": "string"
+              },
+              "processorBankName": {
+                "type": "string"
+              },
+              "merchantName": {
+                "type": "string"
+              },
+              "currencyCode": {
+                "type": "string"
+              },
+              "taxes": {
+                "type": "object",
+                "properties": {}
+              },
+              "transactionType": {
+                "type": "string"
+              },
+              "numberOfMonths": {
+                "type": "number"
+              },
+              "processorId": {
+                "type": "string"
+              },
+              "merchantId": {
+                "type": "string"
+              },
+              "paymentBrand": {
+                "type": "string"
+              },
+              "created": {
+                "type": "number"
+              },
+              "requestAmount": {
+                "type": "number"
+              },
+              "subtotalIva": {
+                "type": "number"
+              },
+              "subtotalIva0": {
+                "type": "number"
+              },
+              "ivaValue": {
+                "type": "number"
+              },
+              "iceValue": {
+                "type": "number"
+              },
+              "transactionStatus": {
+                "type": "string"
+              },
+              "metadata": {
+                "type": "object",
+                "properties": {}
+              },
+              "subscriptionMetadata": {
+                "type": "object",
+                "properties": {}
+              },
+              "subscriptionId": {
+                "type": "string"
+              },
+              "method": {
+                "type": "string"
+              },
+              "syncMode": {
+                "type": "string"
+              },
+              "saleTicketNumber": {
+                "type": "string"
+              },
+              "graceMonths": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": [
+          "ticketNumber"
+        ],
+        "example": {
+          "ticketNumber": "string",
+          "details": {
+            "responseCode": "string",
+            "responseText": "string",
+            "approvedTransactionAmount": 0,
+            "transactionId": "string",
+            "approvalCode": "string",
+            "cardHolderName": "string",
+            "lastFourDigits": "string",
+            "binCard": "string",
+            "processorName": "string",
+            "processorBankName": "string",
+            "merchantName": "string",
+            "currencyCode": "string",
+            "taxes": {},
+            "transactionType": "string",
+            "numberOfMonths": 0,
+            "processorId": "string",
+            "merchantId": "string",
+            "paymentBrand": "string",
+            "created": 0,
+            "requestAmount": 0,
+            "subtotalIva": 0,
+            "subtotalIva0": 0,
+            "ivaValue": 0,
+            "iceValue": 0,
+            "transactionStatus": "string",
+            "metadata": {},
+            "subscriptionMetadata": {},
+            "subscriptionId": "string",
+            "method": "string",
+            "syncMode": "api",
+            "saleTicketNumber": "string",
+            "graceMonths": "string"
+          }
+        }
+      },
+      "BadRequestResponse": {
+        "description": "",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "code": "K001",
+            "message": "El cuerpo de la petición es inválido"
+          }
+        },
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "K001"
+          },
+          "message": {
+            "type": "string",
+            "example": "El cuerpo de la petición es inválido"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "BadRequestResponse",
+        "example": {
+          "code": "K001",
+          "message": "El cuerpo de la petición es inválido"
+        }
+      },
       "payment_method": {
         "type": "string",
         "enum": [
@@ -33648,6 +34195,18 @@
         "title": "Language",
         "example": "es"
       },
+      "Currency": {
+        "type": "string",
+        "enum": [
+          "USD"
+        ],
+        "title": "currency",
+        "default": "USD",
+        "description": "The currency available for Ecuador is **USD**.\n\n| **COUNTRY** | **USD** |\n|---|:---:|\n| **Ecuador** | ✅ |\n",
+        "x-examples": [
+          "USD"
+        ]
+      },
       "network": {
         "type": "object",
         "title": "network",
@@ -33860,6 +34419,53 @@
         "required": [
           "code",
           "message"
+        ]
+      },
+      "Amount-CL": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "subtotalIva": {
+            "type": "number",
+            "description": "Set it to `0` in case the transaction has no taxes"
+          },
+          "subtotalIva0": {
+            "type": "number",
+            "description": "Set the total amount of the transaction here in case it has no taxes. Otherwise, set it to `0`"
+          },
+          "iva": {
+            "type": "number",
+            "description": "Set it to `0` in case the transaction has no taxes"
+          },
+          "ice": {
+            "type": "number",
+            "description": "Set it to `0` in case the transaction has no ICE (Impuesto a Consumos Especiales)"
+          },
+          "extraTaxes": {
+            "$ref": "#/components/schemas/extraTaxes"
+          }
+        },
+        "required": [
+          "subtotalIva",
+          "subtotalIva0",
+          "iva",
+          "ice"
+        ],
+        "x-examples": [
+          {
+            "currency": "CLP",
+            "subtotalIva": 0,
+            "subtotalIva0": 10,
+            "iva": 0,
+            "ice": 0,
+            "extraTaxes": {
+              "iac": 0,
+              "tasaAeroportuaria": 0,
+              "agenciaDeViaje": 0
+            }
+          }
         ]
       },
       "networkToken": {
@@ -36284,6 +36890,399 @@
       }
     },
     "responses": {
+      "trait:invalidBin:402": {
+        "description": "Invalid Bin",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        }
+      },
+      "trait:badRequest:400": {
+        "description": "Bad Request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        }
+      },
+      "trait:fetchedList:200": {
+        "description": "Fetch a transactions list",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "has_more": {
+                  "type": "boolean",
+                  "x-examples": [
+                    true
+                  ]
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "subtotalIVA0": {
+                        "type": "number",
+                        "x-examples": [
+                          10
+                        ]
+                      },
+                      "date": {
+                        "type": "string",
+                        "x-examples": [
+                          "2017-03-24T18:52:34.000Z"
+                        ]
+                      },
+                      "lastFourDigitsOfCard": {
+                        "type": "string",
+                        "x-examples": [
+                          1234
+                        ]
+                      },
+                      "transactionStatus": {
+                        "type": "string",
+                        "x-examples": [
+                          "APPROVAL"
+                        ]
+                      },
+                      "transactionId": {
+                        "type": "string",
+                        "x-examples": [
+                          1234567890987654
+                        ]
+                      },
+                      "voidedBy": {
+                        "type": "string",
+                        "x-examples": [
+                          10334120439012934
+                        ]
+                      },
+                      "merchantName": {
+                        "type": "string",
+                        "x-examples": [
+                          "Some_Merchant_Name"
+                        ]
+                      },
+                      "cardHolderName": {
+                        "type": "string",
+                        "x-examples": [
+                          "John Doe"
+                        ]
+                      },
+                      "approvedTransactionAmount": {
+                        "type": "string",
+                        "x-examples": [
+                          135.5
+                        ]
+                      },
+                      "numberOfMonths": {
+                        "type": "string",
+                        "x-examples": [
+                          0
+                        ]
+                      },
+                      "ExtraTaxes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "tasaAeroportuaria": {
+                              "type": "object",
+                              "properties": {
+                                "taxid": {
+                                  "type": "string",
+                                  "x-examples": [
+                                    "4"
+                                  ]
+                                },
+                                "taxAmount": {
+                                  "type": "string",
+                                  "x-examples": [
+                                    2
+                                  ]
+                                },
+                                "taxName": {
+                                  "type": "string",
+                                  "x-examples": [
+                                    "TASA_AERO"
+                                  ]
+                                }
+                              }
+                            },
+                            "iac": {
+                              "type": "object",
+                              "properties": {
+                                "taxid": {
+                                  "type": "string",
+                                  "x-examples": [
+                                    "5"
+                                  ]
+                                },
+                                "taxAmount": {
+                                  "type": "string",
+                                  "x-examples": [
+                                    2
+                                  ]
+                                },
+                                "taxName": {
+                                  "type": "string",
+                                  "x-examples": [
+                                    "IAC"
+                                  ]
+                                }
+                              }
+                            },
+                            "agenciaDeViaje": {
+                              "type": "object",
+                              "properties": {
+                                "taxid": {
+                                  "type": "string",
+                                  "x-examples": [
+                                    "6"
+                                  ]
+                                },
+                                "taxAmount": {
+                                  "type": "string",
+                                  "x-examples": [
+                                    2
+                                  ]
+                                },
+                                "taxName": {
+                                  "type": "string",
+                                  "x-examples": [
+                                    "TASA_ADMIN_AGEN_COD"
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "required": [
+                            "tasaAeroportuaria",
+                            "iac",
+                            "agenciaDeViaje"
+                          ]
+                        }
+                      },
+                      "saleTicketNumber": {
+                        "type": "string",
+                        "x-examples": [
+                          1204493249523
+                        ]
+                      },
+                      "ivaValue": {
+                        "type": "integer",
+                        "x-examples": [
+                          15.5
+                        ]
+                      },
+                      "isDeferred": {
+                        "type": "string",
+                        "x-examples": [
+                          "Y"
+                        ]
+                      },
+                      "ticketNumber": {
+                        "type": "string",
+                        "x-examples": [
+                          1234567890987654
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "x-examples": [
+                          "123456"
+                        ]
+                      },
+                      "dateAndTimeTransaction": {
+                        "type": "string",
+                        "x-examples": [
+                          12345012469
+                        ]
+                      },
+                      "cardType": {
+                        "type": "string",
+                        "x-examples": [
+                          "Master Card"
+                        ]
+                      },
+                      "subtotalIVA": {
+                        "type": "number",
+                        "x-examples": [
+                          10
+                        ]
+                      },
+                      "requestAmount": {
+                        "type": "string",
+                        "x-examples": [
+                          130
+                        ]
+                      },
+                      "currencyCode": {
+                        "type": "string",
+                        "x-examples": [
+                          "USD"
+                        ]
+                      },
+                      "transactionType": {
+                        "type": "string",
+                        "x-examples": [
+                          "SALE"
+                        ]
+                      },
+                      "processorName": {
+                        "type": "string",
+                        "x-examples": [
+                          "Some_Processor_Name"
+                        ]
+                      },
+                      "iceValue": {
+                        "type": "number",
+                        "x-examples": [
+                          10
+                        ]
+                      },
+                      "merchantId": {
+                        "type": "string",
+                        "x-examples": [
+                          1200000432450023
+                        ]
+                      },
+                      "processorBankName": {
+                        "type": "string",
+                        "x-examples": [
+                          "Some_Bank_Name"
+                        ]
+                      },
+                      "approvalCode": {
+                        "type": "string",
+                        "x-examples": [
+                          342347
+                        ]
+                      },
+                      "Metadata": {
+                        "type": "object",
+                        "properties": {
+                          "key1": {
+                            "type": "string",
+                            "x-examples": [
+                              "value1"
+                            ]
+                          }
+                        }
+                      },
+                      "subscription_metadata": {
+                        "type": "object",
+                        "properties": {
+                          "key2": {
+                            "type": "string",
+                            "x-examples": [
+                              "value2"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "required": [
+                      "subtotalIVA0",
+                      "date",
+                      "lastFourDigitsOfCard",
+                      "transactionStatus",
+                      "transactionId",
+                      "voidedBy",
+                      "merchantName",
+                      "cardHolderName",
+                      "approvedTransactionAmount",
+                      "numberOfMonths",
+                      "saleTicketNumber",
+                      "ivaValue",
+                      "isDeferred",
+                      "ticketNumber",
+                      "id",
+                      "dateAndTimeTransaction",
+                      "cardType",
+                      "subtotalIVA",
+                      "requestAmount",
+                      "currencyCode",
+                      "transactionType",
+                      "processorName",
+                      "iceValue",
+                      "merchantId",
+                      "processorBankName",
+                      "approvalCode"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "has_more",
+                "data"
+              ]
+            }
+          }
+        }
+      },
+      "trait:created:201": {
+        "description": "Created",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ticketNumber": {
+                  "type": "string",
+                  "x-examples": [
+                    "123456789012345678"
+                  ]
+                }
+              },
+              "required": [
+                "ticketNumber"
+              ]
+            }
+          }
+        }
+      },
+      "trait:unexpectedError:500": {
+        "description": "Unexpected Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        }
+      },
+      "trait:tokenCreated:201": {
+        "description": "TokenCreated",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "x-examples": [
+                    "AbCDef123456Z7Ghi8901234jkLMNopQ"
+                  ]
+                }
+              },
+              "required": [
+                "token"
+              ]
+            }
+          }
+        }
+      },
       "BadRequest": {
         "description": "Invalid request body or validation error.",
         "content": {
@@ -36381,6 +37380,388 @@
         "description": "Merchant's private credential. Obtained from the Kushki dashboard.",
         "name": "private-merchant-id",
         "in": "header"
+      },
+      "PublicMerchantId": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Public-Merchant-Id",
+        "description": "Merchant's public credential. Obtained from the Kushki dashboard under **Credentials > Public Key**."
+      },
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "/",
+            "scopes": {}
+          }
+        }
+      }
+    },
+    "parameters": {
+      "terminalSerial": {
+        "name": "terminalSerial",
+        "in": "path",
+        "description": "Serial number of the target SmartPOS terminal.\nObtained from the Device Management System (DMS).\n",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "SN71652"
+        }
+      },
+      "headerAuthorization": {
+        "name": "Authorization",
+        "in": "header",
+        "description": "HMAC-SHA256 signature of the **raw JSON request body**, Base64-encoded.\nKey = `Business-Code`.\n\nCompute as: `Base64( HMAC-SHA256( body, businessCode ) )`\n\nOmit when the request has no body (e.g. `abort`).",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "nRvpFJZHjqLU4k8Rz2YiDvxA3mQs9oB1cW7eT0="
+        }
+      },
+      "headerTimestamp": {
+        "name": "timestamp",
+        "in": "header",
+        "description": "Current Unix timestamp in **milliseconds** (13 digits). Must be within ±5 minutes of server time.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "1700000000000"
+        }
+      }
+    },
+    "requestBodies": {
+      "one-and-two-step-payment": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "card": {
+                  "$ref": "#/components/schemas/card"
+                },
+                "card_details": {
+                  "$ref": "#/components/schemas/card_details",
+                  "description": "Optional for [cardless operations](#cardless-operations)."
+                },
+                "amount": {
+                  "$ref": "#/components/schemas/amount"
+                },
+                "client_transaction_id": {
+                  "type": "string",
+                  "description": "UUID v4 generated from the merchant side. It must be a unique ID per transaction."
+                },
+                "country": {
+                  "type": "string",
+                  "enum": [
+                    "PER"
+                  ],
+                  "description": "ISO 3166-1 alpha-3.\n\nOptional for [cardless operations](#cardless-operations)."
+                },
+                "cvm_type": {
+                  "type": "string",
+                  "enum": [
+                    "none",
+                    "pin",
+                    "signature"
+                  ],
+                  "description": "Cardholder Verification Methods.\n\n* `none`: No pin or signature verification method.\n* `pin`: Pin verification method.\n* `signature`: Signature verification method.\n\nOptional for [cardless operations](https:/"
+                },
+                "cashback_amount": {
+                  "type": "number",
+                  "description": "Required when `is_cashback` = `true`"
+                },
+                "is_cashback": {
+                  "type": "boolean"
+                },
+                "pos_details": {
+                  "$ref": "#/components/schemas/pos_details"
+                },
+                "contact_details": {
+                  "$ref": "#/components/schemas/contact_details"
+                },
+                "transaction_mode": {
+                  "type": "string",
+                  "enum": [
+                    "Authorization",
+                    "Reverse",
+                    "Void"
+                  ]
+                },
+                "transaction_type": {
+                  "type": "string",
+                  "enum": [
+                    "capture",
+                    "preAuth",
+                    "reAuthorization",
+                    "charge",
+                    "refund"
+                  ]
+                },
+                "sub_merchant": {
+                  "$ref": "#/components/schemas/sub_merchant"
+                },
+                "merchant_id": {
+                  "type": "string"
+                },
+                "omit_card": {
+                  "type": "boolean",
+                  "description": "To perform a cardless capture, send the `omit_card` field with the value of `true` and then the other non-required fields are omitted: **(Beta in Mexico and Peru)**"
+                },
+                "metadata": {
+                  "$ref": "#/components/schemas/metadata"
+                }
+              },
+              "required": [
+                "card_details",
+                "amount",
+                "client_transaction_id",
+                "country",
+                "cvm_type"
+              ],
+              "x-examples": {
+                "Example 1": {
+                  "card": {
+                    "card_holder_name": " /"
+                  },
+                  "amount": {
+                    "iva": 0,
+                    "tip": 0,
+                    "currency": "PEN",
+                    "extra_taxes": {},
+                    "subtotal_iva": 0,
+                    "subtotal_iva0": 111
+                  },
+                  "country": "PER",
+                  "cvm_type": "none",
+                  "deferred": {
+                    "months": "10",
+                    "credit_type": "",
+                    "transaction_rate": "",
+                    "amount_of_installments": 0
+                  },
+                  "is_cashback": false,
+                  "is_deferred": true,
+                  "pos_details": {
+                    "brand": "SUNMI",
+                    "model": "P2-EU",
+                    "version": "Kushki SunmiV1.1.28",
+                    "location": {
+                      "latitude": -1.2346533333333334,
+                      "longitude": -78.61959166666666
+                    },
+                    "has_print": true,
+                    "terminal_id": "PB04209860189"
+                  },
+                  "card_details": {
+                    "tracks": {
+                      "track_ksn": "FFFF4357486333600003",
+                      "enc_track2": "A5A26987202B4E8F3A595E0116A85E56D842005394315A18"
+                    },
+                    "enc_tlv": "8332743DB0D0FAA29CF0AA187558BE3EF056085299635BAD4147E5D50D70D6E01A396081D618BA3001AF8262CD8F52DC67C995D9E99E824EC7995FE20AD5E5FE850B29863A2E61D8BD6A2951A2F24CD0AEE4087020745EB48CC5B40E2AE2263D5BB47D4D508D8DC69E54C8ECC2AB6F471C299D1CAB1712CCD2E2D378A57D285E7139CCC6C98D57D8A6C30B1CE110DDE23C28C9C7FCAFEF2023AE4FC8B03BE86CA1B673D962D9E7EA",
+                    "pin_ksn": "FFFF4357486333600003",
+                    "reading_type": "NFC"
+                  },
+                  "contact_details": {
+                    "email": "",
+                    "last_name": "",
+                    "first_name": "",
+                    "phone_number": "",
+                    "document_type": "-1",
+                    "document_number": "",
+                    "second_last_name": ""
+                  },
+                  "transaction_mode": "Authorization",
+                  "transaction_type": "charge",
+                  "client_transaction_id": "dbdeb25b-b34a-4b6c-b664-085ea9552954"
+                }
+              }
+            },
+            "examples": {
+              "Preauth": {
+                "value": {
+                  "card": {
+                    "card_holder_name": "John Doe"
+                  },
+                  "amount": {
+                    "iva": 0,
+                    "tip": 0,
+                    "currency": "PEN",
+                    "extra_taxes": {
+                      "iac": 0,
+                      "ice": 0,
+                      "airport_tax": 0,
+                      "travel_agency": 0
+                    },
+                    "subtotal_iva": 0,
+                    "subtotal_iva0": 600
+                  },
+                  "country": "PER",
+                  "cvm_type": "none",
+                  "is_cashback": false,
+                  "pos_details": {
+                    "brand": "SUNMI",
+                    "model": "P2-EU",
+                    "version": "Kushki SunmiV1.1.26",
+                    "location": {
+                      "latitude": -0.22480833333333333,
+                      "longitude": -78.487955
+                    },
+                    "has_print": true,
+                    "terminal_id": "PB04216R20537"
+                  },
+                  "card_details": {
+                    "tracks": {
+                      "track_ksn": "FFFF4357486333600002",
+                      "enc_track2": "283587285CE10278E7FA50AD5C97CFFE87F472C9FE6406F8"
+                    },
+                    "enc_tlv": "CE447A062C49774934E42A7F826668C0C478E38402C158062EE794C0E471B43EA8CE49C256C2C8B157526B0B2BE74FC23F65E18D4F52B99A1A0910E6CCD9B11A32D6D537E2B6E2B011C89569DE6A3D53318080BC77E0E70B398ED3083FD7366CCF8FB4DBF34A116E6D52CFBEF26371878D842034E5029EF62DF235D2C427F04102E451773D9E8975978917E3BC531327702967052E239F8C592734AE14688E603C52B858FC1D97B763AE623603F1475FFFB065EC07AF7A29",
+                    "pin_ksn": "FFFF4357486333600002",
+                    "reading_type": "ICC"
+                  },
+                  "contact_details": {
+                    "email": "",
+                    "last_name": "",
+                    "first_name": "",
+                    "phone_number": "",
+                    "document_type": "-1",
+                    "document_number": "",
+                    "second_last_name": ""
+                  },
+                  "transaction_mode": "Authorization",
+                  "transaction_type": "preAuth",
+                  "client_transaction_id": "6680eadc-6c8d-44aa-8ca0-18e061c1472a"
+                }
+              },
+              "Capture": {
+                "value": {
+                  "card": {
+                    "card_holder_name": "John Doe"
+                  },
+                  "amount": {
+                    "iva": 0,
+                    "tip": 13000,
+                    "currency": "PEN",
+                    "extra_taxes": {},
+                    "subtotal_iva": 0,
+                    "subtotal_iva0": 200000
+                  },
+                  "country": "PER",
+                  "is_cashback": false,
+                  "pos_details": {
+                    "brand": "SUNMI",
+                    "model": "P2-EU",
+                    "version": "Kushki SunmiV1.1.18",
+                    "location": {
+                      "latitude": -1.2253600000000002,
+                      "longitude": -78.61997
+                    },
+                    "has_print": true,
+                    "terminal_id": "PB04209860189"
+                  },
+                  "card_details": {
+                    "tracks": {
+                      "track_ksn": "FFFF4357486333600003",
+                      "enc_track2": "2C5E3DC796759FAB00BB11163CC4B69B"
+                    },
+                    "enc_tlv": "E9BCEC77FACD77F942E433BE6CD27068F09ADFA082B6AE478D9BDA4EEEAFD3765300FD2EF030CD3A8DD9624E04CDFBC60B4206B9587A1A0DB5820D87D3ACAB9F8B14B35A8B8D7307AEBDCFD9D5DD8EB5DC7BFB729A1E6ABAC08D5C5A064F590F414D560C3EE964449B40D24B09703AE38FF45F328CC03A8A3ABCFBCDF0AFBCDAB674C87AC66CD842E7E9C36B6826ECAC8EB32E5E036787D4B50CD8C43F0C89918A23C396AEE4096805AE52DF13B343A6FDAC864CB27593C65B39B02239B707554357675ED96C3859",
+                    "pin_ksn": "FFFF4357486333600003",
+                    "reading_type": "ICC"
+                  },
+                  "contact_details": {
+                    "email": "",
+                    "last_name": "",
+                    "first_name": "",
+                    "phone_number": "",
+                    "document_type": "0",
+                    "document_number": "1111111",
+                    "second_last_name": ""
+                  },
+                  "transaction_mode": "Authorization",
+                  "transaction_type": "capture",
+                  "client_transaction_id": "cffd9e13-993d-4d8b-9862-3ac4c0f63dec",
+                  "transaction_reference": "d5979f96-0449-414b-9ece-b0b3681089d6"
+                }
+              },
+              "Cardless capture": {
+                "value": {
+                  "amount": {
+                    "currency": "PEN",
+                    "iva": 0,
+                    "subtotal_iva": 0,
+                    "subtotal_iva0": 60000
+                  },
+                  "transaction_mode": "Authorization",
+                  "transaction_type": "capture",
+                  "client_transaction_id": "6680eadc-6c8d-44aa-8ca0-18e061c1472a",
+                  "transaction_reference": "f2f29080-0214-42c0-95a5-77ecf3434cd7",
+                  "omit_card": true
+                }
+              },
+              "Reauthorization": {
+                "value": {
+                  "card": {
+                    "card_holder_name": "John Doe"
+                  },
+                  "amount": {
+                    "iva": 0,
+                    "tip": 0,
+                    "currency": "PEN",
+                    "extra_taxes": {
+                      "iac": 0,
+                      "ice": 0,
+                      "airport_tax": 0,
+                      "travel_agency": 0
+                    },
+                    "subtotal_iva": 0,
+                    "subtotal_iva0": 60000
+                  },
+                  "country": "PER",
+                  "cvm_type": "none",
+                  "is_cashback": false,
+                  "pos_details": {
+                    "brand": "SUNMI",
+                    "model": "P2-EU",
+                    "version": "Kushki SunmiV1.1.26",
+                    "location": {
+                      "latitude": -0.22480833333333333,
+                      "longitude": -78.487955
+                    },
+                    "has_print": true,
+                    "terminal_id": "PB04216R20537"
+                  },
+                  "card_details": {
+                    "tracks": {
+                      "track_ksn": "FFFF4357486333600002",
+                      "enc_track2": "283587285CE10278E7FA50AD5C97CFFE87F472C9FE6406F8"
+                    },
+                    "enc_tlv": "CE447A062C49774934E42A7F826668C0C478E38402C158062EE794C0E471B43EA8CE49C256C2C8B157526B0B2BE74FC23F65E18D4F52B99A1A0910E6CCD9B11A32D6D537E2B6E2B011C89569DE6A3D53318080BC77E0E70B398ED3083FD7366CCF8FB4DBF34A116E6D52CFBEF26371878D842034E5029EF62DF235D2C427F04102E451773D9E8975978917E3BC531327702967052E239F8C592734AE14688E603C52B858FC1D97B763AE623603F1475FFFB065EC07AF7A29",
+                    "pin_ksn": "FFFF4357486333600002",
+                    "reading_type": "ICC"
+                  },
+                  "transaction_mode": "Authorization",
+                  "transaction_type": "reAuthorization",
+                  "client_transaction_id": "6680eadc-6c8d-44aa-8ca0-18e061c1472a",
+                  "transaction_reference": "f2f29080-0214-42c0-95a5-77ecf3434cd7"
+                }
+              },
+              "Cardless reauthorization": {
+                "value": {
+                  "amount": {
+                    "iva": 0,
+                    "currency": "PEN",
+                    "subtotal_iva": 0,
+                    "subtotal_iva0": 600
+                  },
+                  "omit_card": true,
+                  "transaction_mode": "Authorization",
+                  "transaction_type": "reAuthorization",
+                  "client_transaction_id": "6680eadc-6c8d-44aa-8ca0-18e061c1472a",
+                  "transaction_reference": "f2f29080-0214-42c0-95a5-77ecf3434cd7"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },

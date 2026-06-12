@@ -65,7 +65,7 @@
                     "$ref": "#/components/schemas/Card"
                   },
                   "currency": {
-                    "$ref": "#/components/schemas/currency2"
+                    "$ref": "#/components/schemas/currency"
                   },
                   "totalAmount": {
                     "type": "number",
@@ -538,7 +538,7 @@
                     "description": "Send here the `transactionReference` number obtained in the charge request of your initial recurrence charge without CVV. To make a charge of this type, you must have obtained previously a card token by sending the `subsequentRecurrence` parameter."
                   },
                   "amount": {
-                    "$ref": "#/components/schemas/Amount3"
+                    "$ref": "#/components/schemas/Amount"
                   },
                   "deferred": {
                     "type": "object",
@@ -564,7 +564,7 @@
                     ]
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   },
                   "fullResponse": {
                     "enum": [
@@ -1388,7 +1388,7 @@
                       "description": "Only when `fullResponse` is `v2`",
                       "properties": {
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "approvalCode": {
                           "type": "string"
@@ -1628,7 +1628,7 @@
                       "description": "Only when `fullResponse` is `true`",
                       "properties": {
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "approvedTransactionAmount": {
                           "type": "integer"
@@ -2130,7 +2130,7 @@
                     "$ref": "#/components/schemas/Card"
                   },
                   "amount": {
-                    "$ref": "#/components/schemas/Amount3"
+                    "$ref": "#/components/schemas/Amount"
                   },
                   "isDeferred": {
                     "type": "boolean"
@@ -2143,7 +2143,7 @@
                     "$ref": "#/components/schemas/Deferred"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   },
                   "contactDetails": {
                     "$ref": "#/components/schemas/ContactDetails"
@@ -2772,7 +2772,7 @@
                       "type": "object",
                       "properties": {
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "approvalCode": {
                           "type": "string"
@@ -3070,7 +3070,7 @@
                       "description": "Only when `fullResponse` is `true`",
                       "properties": {
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "approvedTransactionAmount": {
                           "type": "integer"
@@ -3524,7 +3524,7 @@
                     ]
                   },
                   "amount": {
-                    "$ref": "#/components/schemas/Amount3"
+                    "$ref": "#/components/schemas/Amount"
                   },
                   "webhooks": {
                     "type": "object",
@@ -3557,7 +3557,7 @@
                     ]
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   },
                   "externalReferenceId": {
                     "type": "string",
@@ -3664,7 +3664,7 @@
                           "type": "string"
                         },
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "approvalCode": {
                           "type": "string"
@@ -4002,7 +4002,7 @@
                         "type": "integer"
                       },
                       "currency": {
-                        "$ref": "#/components/schemas/currency2"
+                        "$ref": "#/components/schemas/currency"
                       }
                     }
                   },
@@ -4011,7 +4011,7 @@
                     "description": "Send this object as another transactional notification option. In case you have a **Webhook** created through the Console, the notification will be sent to both the **API** and the **Console** channels. It means they will not be mutually exclusive.\n\nThe notifications will be seen in the Webhooks Notifications dashboard, and they will have a new field called Configuration, which will identify the source of the notification.\n\n**Example:**\n\n```Example\n{\n  \"webhooks\": [\n    {\n      \"events\": [\n        \"approvedTransaction\"\n      ],\n      \"headers\": [\n        {\n          \"label\": \"json\",\n          \"value\": \"12\"\n        }\n      ],\n      \"urls\": [\n        \"https://eof2hhkrta4ooo1.m.pipedream.net\"\n      ]\n    }\n  ]\n}\n```"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   },
                   "externalReferenceId": {
                     "type": "string",
@@ -4118,7 +4118,7 @@
                           "type": "string"
                         },
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "approvalCode": {
                           "type": "string"
@@ -4562,7 +4562,7 @@
                     "type": "string"
                   },
                   "amount": {
-                    "$ref": "#/components/schemas/Amount3"
+                    "$ref": "#/components/schemas/Amount"
                   },
                   "ContactDetails": {
                     "$ref": "#/components/schemas/ContactDetails"
@@ -4579,7 +4579,7 @@
                     "$ref": "#/components/schemas/threeDomainSecure"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   },
                   "months": {
                     "type": "integer",
@@ -4984,7 +4984,7 @@
                       "type": "object",
                       "properties": {
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "approvalCode": {
                           "type": "string"
@@ -5458,7 +5458,7 @@
                     "$ref": "#/components/schemas/Card"
                   },
                   "amount": {
-                    "$ref": "#/components/schemas/Amount3"
+                    "$ref": "#/components/schemas/Amount"
                   },
                   "isDeferred": {
                     "type": "boolean"
@@ -5471,7 +5471,7 @@
                     "description": ""
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   },
                   "contactDetails": {
                     "$ref": "#/components/schemas/ContactDetails"
@@ -5891,7 +5891,7 @@
                       "type": "object",
                       "properties": {
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "approvalCode": {
                           "type": "string"
@@ -6386,7 +6386,7 @@
                     "type": "string"
                   },
                   "amount": {
-                    "$ref": "#/components/schemas/Amount3"
+                    "$ref": "#/components/schemas/Amount"
                   },
                   "fullResponse": {
                     "enum": [
@@ -6537,7 +6537,7 @@
                       "type": "object",
                       "properties": {
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "approvalCode": {
                           "type": "string"
@@ -6787,7 +6787,7 @@
                     "type": "string"
                   },
                   "amount": {
-                    "$ref": "#/components/schemas/Amount3"
+                    "$ref": "#/components/schemas/Amount"
                   },
                   "fullResponse": {
                     "enum": [
@@ -6795,7 +6795,7 @@
                     ]
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   },
                   "externalReferenceId": {
                     "type": "string",
@@ -6898,7 +6898,7 @@
                           "$ref": "#/components/schemas/transactionType"
                         },
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "created": {
                           "type": "integer"
@@ -7903,7 +7903,7 @@
                     ]
                   },
                   "currency": {
-                    "$ref": "#/components/schemas/currency2"
+                    "$ref": "#/components/schemas/currency"
                   },
                   "jwt": {
                     "type": "string",
@@ -8207,7 +8207,7 @@
                       "type": "object",
                       "properties": {
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "binCard": {
                           "type": "string"
@@ -8559,13 +8559,13 @@
                     "description": "**Get this token from your front-end using the requestDeviceToken() method available in kushki.js**"
                   },
                   "amount": {
-                    "$ref": "#/components/schemas/Amount3"
+                    "$ref": "#/components/schemas/Amount"
                   },
                   "language": {
                     "$ref": "#/components/schemas/Language"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   },
                   "cvv": {
                     "type": "string",
@@ -8875,7 +8875,7 @@
                       "type": "object",
                       "properties": {
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "approvalCode": {
                           "type": "string"
@@ -9054,7 +9054,7 @@
                           "type": "string"
                         },
                         "metadata": {
-                          "$ref": "#/components/schemas/Metadata5"
+                          "$ref": "#/components/schemas/Metadata"
                         },
                         "approvedTransactionAmount": {
                           "type": "integer"
@@ -9847,7 +9847,7 @@
                 "type": "object",
                 "properties": {
                   "amount": {
-                    "$ref": "#/components/schemas/Amount3"
+                    "$ref": "#/components/schemas/Amount"
                   },
                   "name": {
                     "type": "string"
@@ -10028,7 +10028,7 @@
                       "type": "object",
                       "properties": {
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "approvalCode": {
                           "type": "string"
@@ -10346,7 +10346,7 @@
                         "description": "Set the total amount of the transaction here in case it has no taxes. Otherwise, set it to `0`"
                       },
                       "extraTaxes": {
-                        "$ref": "#/components/schemas/extraTaxes4"
+                        "$ref": "#/components/schemas/extraTaxes"
                       },
                       "currency": {
                         "type": "string",
@@ -10458,7 +10458,7 @@
                           "$ref": "#/components/schemas/transactionType"
                         },
                         "amount": {
-                          "$ref": "#/components/schemas/Amount3"
+                          "$ref": "#/components/schemas/Amount"
                         },
                         "created": {
                           "type": "integer"
@@ -12038,7 +12038,7 @@
                         "description": "Set it to `0` in case the transaction has no taxes"
                       },
                       "extraTaxes": {
-                        "$ref": "#/components/schemas/extraTaxes4"
+                        "$ref": "#/components/schemas/extraTaxes"
                       }
                     },
                     "required": [
@@ -12277,7 +12277,7 @@
                         "description": "Set it to `0` in case the transaction has no taxes"
                       },
                       "extraTaxes": {
-                        "$ref": "#/components/schemas/extraTaxes4"
+                        "$ref": "#/components/schemas/extraTaxes"
                       }
                     },
                     "required": [
@@ -14236,7 +14236,7 @@
                         "minimum": 0
                       },
                       "extraTaxes": {
-                        "$ref": "#/components/schemas/extraTaxes4"
+                        "$ref": "#/components/schemas/extraTaxes"
                       }
                     },
                     "required": [
@@ -14246,7 +14246,7 @@
                     ]
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   },
                   "webhooks": {
                     "type": "array",
@@ -14615,7 +14615,7 @@
                           "type": "integer"
                         },
                         "extraTaxes": {
-                          "$ref": "#/components/schemas/extraTaxes4"
+                          "$ref": "#/components/schemas/extraTaxes"
                         }
                       }
                     },
@@ -15292,7 +15292,7 @@
                     "$ref": "#/components/schemas/Amount-cash-in"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   },
                   "webhooks": {
                     "type": "object",
@@ -15776,7 +15776,7 @@
                       "type": "object",
                       "properties": {
                         "extraTaxes": {
-                          "$ref": "#/components/schemas/extraTaxes4"
+                          "$ref": "#/components/schemas/extraTaxes"
                         },
                         "subtotalIva0": {
                           "type": "number"
@@ -16451,7 +16451,7 @@
                         "minimum": 0
                       },
                       "extraTaxes": {
-                        "$ref": "#/components/schemas/extraTaxes4"
+                        "$ref": "#/components/schemas/extraTaxes"
                       }
                     },
                     "required": [
@@ -16461,7 +16461,7 @@
                     ]
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   },
                   "webhooks": {
                     "$ref": "#/components/schemas/webhooks"
@@ -16615,7 +16615,7 @@
                       "type": "string"
                     },
                     "metadata": {
-                      "$ref": "#/components/schemas/Metadata5"
+                      "$ref": "#/components/schemas/Metadata"
                     },
                     "currency": {
                       "type": "string"
@@ -16651,7 +16651,7 @@
                           "type": "number"
                         },
                         "extraTaxes": {
-                          "$ref": "#/components/schemas/Metadata5"
+                          "$ref": "#/components/schemas/Metadata"
                         }
                       }
                     },
@@ -17059,7 +17059,7 @@
                         "default": "unique"
                       },
                       "amount": {
-                        "$ref": "#/components/schemas/Amount"
+                        "$ref": "#/components/schemas/Amount1"
                       },
                       "paymentMethod": {
                         "type": "array",
@@ -17079,7 +17079,7 @@
                         "description": "Not required when `paymentType` is `unique`",
                         "properties": {
                           "amount": {
-                            "$ref": "#/components/schemas/Amount"
+                            "$ref": "#/components/schemas/Amount1"
                           },
                           "periodicity": {
                             "type": "string",
@@ -17187,7 +17187,7 @@
                         }
                       },
                       "currency": {
-                        "$ref": "#/components/schemas/currency"
+                        "$ref": "#/components/schemas/currency2"
                       },
                       "taxEnabled": {
                         "type": "boolean"
@@ -17833,7 +17833,7 @@
                           ]
                         },
                         "amount": {
-                          "$ref": "#/components/schemas/Amount"
+                          "$ref": "#/components/schemas/Amount1"
                         },
                         "paymentMethod": {
                           "type": "array",
@@ -17850,7 +17850,7 @@
                           "type": "object",
                           "properties": {
                             "amount": {
-                              "$ref": "#/components/schemas/Amount"
+                              "$ref": "#/components/schemas/Amount1"
                             },
                             "periodicity": {
                               "type": "string",
@@ -17903,7 +17903,7 @@
                           }
                         },
                         "currency": {
-                          "$ref": "#/components/schemas/currency"
+                          "$ref": "#/components/schemas/currency2"
                         },
                         "taxEnabled": {
                           "type": "boolean"
@@ -18537,7 +18537,7 @@
                         "description": "- Unique: For one time payment\n- Subscription: To create a recurring subscription. Only available with card\n- Mixed: To include the first two choices in the same smartlink"
                       },
                       "amount": {
-                        "$ref": "#/components/schemas/Amount"
+                        "$ref": "#/components/schemas/Amount1"
                       },
                       "paymentMethod": {
                         "type": "array",
@@ -18557,7 +18557,7 @@
                         "description": "Not required when `paymentType` is `unique`",
                         "properties": {
                           "amount": {
-                            "$ref": "#/components/schemas/Amount"
+                            "$ref": "#/components/schemas/Amount1"
                           },
                           "periodicity": {
                             "type": "string",
@@ -18660,7 +18660,7 @@
                         }
                       },
                       "currency": {
-                        "$ref": "#/components/schemas/currency"
+                        "$ref": "#/components/schemas/currency2"
                       },
                       "taxEnabled": {
                         "type": "boolean"
@@ -19735,7 +19735,7 @@
                             "x-nullable": true
                           },
                           "currency_code": {
-                            "$ref": "#/components/schemas/currency2"
+                            "$ref": "#/components/schemas/currency"
                           },
                           "description": {
                             "type": "string"
@@ -19793,7 +19793,7 @@
                                   "x-nullable": true
                                 },
                                 "currency_code": {
-                                  "$ref": "#/components/schemas/currency2"
+                                  "$ref": "#/components/schemas/currency"
                                 },
                                 "email": {
                                   "type": "string"
@@ -19943,7 +19943,7 @@
                             "type": "string"
                           },
                           "metadata": {
-                            "$ref": "#/components/schemas/Metadata5"
+                            "$ref": "#/components/schemas/Metadata"
                           },
                           "method": {
                             "type": "string"
@@ -21084,7 +21084,7 @@
                             "format": "date"
                           },
                           "converted_currency": {
-                            "$ref": "#/components/schemas/currency2"
+                            "$ref": "#/components/schemas/currency"
                           },
                           "contact_details": {
                             "type": "object",
@@ -21130,7 +21130,7 @@
                             "description": "Displays the metadata that the customer sends in the request."
                           },
                           "currency_code": {
-                            "$ref": "#/components/schemas/currency2"
+                            "$ref": "#/components/schemas/currency"
                           },
                           "credit_type": {
                             "type": "string",
@@ -22466,7 +22466,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/ErrorResponse4"
                 },
                 "examples": {
                   "GL - K002 - Unexpected error": {
@@ -22537,7 +22537,7 @@
                     "type": "string"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata5"
                   }
                 },
                 "required": [
@@ -22562,7 +22562,7 @@
                       "type": "string"
                     },
                     "metadata": {
-                      "$ref": "#/components/schemas/Metadata"
+                      "$ref": "#/components/schemas/Metadata5"
                     },
                     "private_credential_id": {
                       "type": "string"
@@ -23174,7 +23174,7 @@
                     "type": "string"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata"
+                    "$ref": "#/components/schemas/Metadata5"
                   }
                 },
                 "required": [
@@ -23670,7 +23670,7 @@
                             "type": "number"
                           },
                           "currency": {
-                            "$ref": "#/components/schemas/currency"
+                            "$ref": "#/components/schemas/currency2"
                           },
                           "iva": {
                             "type": "number"
@@ -25420,7 +25420,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse1"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "examples": {
                   "GL - K001 - The request body is invalid": {
@@ -25440,7 +25440,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse1"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "examples": {
                   "GL - K004 - Invalid merchant ID": {
@@ -25460,7 +25460,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse1"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "examples": {
                   "GL - K037 - Settlement record not found": {
@@ -25480,7 +25480,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse1"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "examples": {
                   "GL - K002 - Unexpected error": {
@@ -25721,7 +25721,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse1"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "examples": {
                   "GL - K001 - The request body is invalid": {
@@ -25741,7 +25741,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse1"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "examples": {
                   "GL - K004 - Invalid merchant ID": {
@@ -25761,7 +25761,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse1"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "examples": {
                   "GL - K037 - Subscription not found": {
@@ -25781,7 +25781,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse1"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "examples": {
                   "GL - K002 - Unexpected error": {
@@ -25860,7 +25860,7 @@
                     "example": "c5a3f3be-9d6f-4d39-8af5-58dbb589af79"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   }
                 },
                 "required": [
@@ -25991,7 +25991,7 @@
                     "example": "c5a3f3be-9d6f-4d39-8af5-58dbb589af30"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   }
                 },
                 "required": [
@@ -26368,7 +26368,7 @@
                     "example": 0
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   }
                 },
                 "required": [
@@ -27229,7 +27229,7 @@
                     "example": "c5a3f3be-9d6f-4d39-8af5-58dbb589af79"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   }
                 },
                 "required": [
@@ -27350,7 +27350,7 @@
                     "example": "c5a3f3be-9d6f-4d39-8af5-58dbb589af30"
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   }
                 },
                 "required": [
@@ -27699,7 +27699,7 @@
                     "example": 50
                   },
                   "metadata": {
-                    "$ref": "#/components/schemas/Metadata5"
+                    "$ref": "#/components/schemas/Metadata"
                   }
                 },
                 "required": [
@@ -28651,252 +28651,6 @@
   },
   "components": {
     "schemas": {
-      "Metadata": {
-        "type": "object",
-        "description": "Free-form merchant data for tracking and reconciliation.",
-        "properties": {
-          "reference": {
-            "type": "string",
-            "example": "ORD-20240317-001"
-          },
-          "customer_email": {
-            "type": "string",
-            "format": "email",
-            "example": "cliente@ejemplo.com"
-          },
-          "device": {
-            "type": "string",
-            "example": "SUNMI-P3"
-          }
-        }
-      },
-      "currency": {
-        "type": "string",
-        "enum": [
-          "PEN",
-          "USD"
-        ],
-        "title": "currency",
-        "description": "Peru supports **PEN** (Soles) and **USD**."
-      },
-      "extraTaxes": {
-        "type": "object",
-        "properties": {
-          "iac": {
-            "type": "number"
-          },
-          "tasaAeroportuaria": {
-            "type": "number",
-            "description": "It's commonly used in airlines."
-          },
-          "agenciaDeViaje": {
-            "type": "number",
-            "description": "It's commonly used in airlines."
-          },
-          "propina": {
-            "type": "number",
-            "description": "It's commonly used in restaurants."
-          },
-          "tip": {
-            "type": "number"
-          },
-          "stateTax": {
-            "type": "number"
-          },
-          "municipalTax": {
-            "type": "number"
-          },
-          "reducedStateTax": {
-            "type": "number"
-          }
-        },
-        "x-examples": [
-          {
-            "iac": 0,
-            "tasaAeroportuaria": 0,
-            "agenciaDeViaje": 0
-          }
-        ]
-      },
-      "Amount": {
-        "type": "object",
-        "properties": {
-          "currency": {
-            "$ref": "#/components/schemas/currency"
-          },
-          "subtotalIva": {
-            "type": "number",
-            "description": "Set it to `0` in case the transaction has no taxes"
-          },
-          "subtotalIva0": {
-            "type": "number",
-            "description": "Set the total amount of the transaction here in case it has no taxes. Otherwise, set it to `0`."
-          },
-          "iva": {
-            "type": "number",
-            "description": "Set it to `0` in case the transaction has no taxes"
-          },
-          "ice": {
-            "type": "number",
-            "description": "Set it to `0` in case the transaction has no ICE (Impuesto a Consumos Especiales)"
-          },
-          "extraTaxes": {
-            "$ref": "#/components/schemas/extraTaxes"
-          }
-        },
-        "required": [
-          "currency",
-          "subtotalIva",
-          "subtotalIva0",
-          "iva",
-          "ice"
-        ],
-        "x-examples": [
-          {
-            "currency": "PEN",
-            "subtotalIva": 0,
-            "subtotalIva0": 10,
-            "iva": 0,
-            "ice": 0,
-            "extraTaxes": {
-              "iac": 0,
-              "tasaAeroportuaria": 0,
-              "agenciaDeViaje": 0
-            }
-          }
-        ]
-      },
-      "StatusComponent": {
-        "type": "object",
-        "title": "StatusComponent",
-        "description": "Represents a single platform component and its current operational status, along with uptime metrics for the reported date range.",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Display name of the platform component.",
-            "example": "BlueSnap (US)"
-          },
-          "description": {
-            "type": "string",
-            "description": "Optional description of the component. Returns `null` when no description has been set.",
-            "nullable": true,
-            "example": null
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "operational",
-              "degraded_performance",
-              "partial_outage",
-              "major_outage"
-            ],
-            "description": "Current operational status of the component.\n\n* `operational`: Functioning normally with no known issues.\n* `degraded_performance`: Reduced performance; component remains functional.\n* `partial_outage`: Some functionality unavailable for a subset of users.\n* `major_outage`: Component is completely unavailable or severely impacted.",
-            "example": "operational"
-          },
-          "position": {
-            "type": "number",
-            "description": "Display order of the component within the platform's status page. Lower values appear first.",
-            "example": 1
-          },
-          "group": {
-            "type": "boolean",
-            "description": "Indicates whether this component acts as a group container for child components.",
-            "example": false
-          },
-          "showcase": {
-            "type": "boolean",
-            "description": "Indicates whether this component is highlighted on the public status page.",
-            "example": true
-          },
-          "only_show_if_degraded": {
-            "type": "boolean",
-            "description": "When `true`, this component is only visible on the status page if it is experiencing an incident.",
-            "example": false
-          },
-          "start_date": {
-            "type": "string",
-            "description": "The date from which this component started tracking uptime, in `YYYY-MM-DD` format. Returns an empty string if not set.",
-            "example": "2020-10-31"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "ISO 8601 timestamp of when the component was created.",
-            "format": "date-time",
-            "example": "2017-08-09T20:41:18Z"
-          },
-          "updated_at": {
-            "type": "string",
-            "description": "ISO 8601 timestamp of the last update to this component's record.",
-            "format": "date-time",
-            "example": "2024-04-04T14:57:03Z"
-          },
-          "range_start": {
-            "type": "string",
-            "description": "Start of the reporting period for uptime metrics, in `YYYY-MM-DD` format.",
-            "example": "2026-01-01"
-          },
-          "range_end": {
-            "type": "string",
-            "description": "End of the reporting period for uptime metrics, in `YYYY-MM-DD` format.",
-            "example": "2026-03-31"
-          },
-          "uptime_percentage": {
-            "type": "number",
-            "description": "Uptime percentage for the component during the reporting period (`range_start` to `range_end`). Value between `0` and `100`.",
-            "minimum": 0,
-            "maximum": 100,
-            "example": 100
-          },
-          "major_outage": {
-            "type": "number",
-            "description": "Number of major outage incidents recorded during the reporting period.",
-            "minimum": 0,
-            "example": 0
-          },
-          "partial_outage": {
-            "type": "number",
-            "description": "Number of partial outage incidents recorded during the reporting period.",
-            "minimum": 0,
-            "example": 0
-          }
-        },
-        "required": [
-          "name",
-          "status",
-          "position",
-          "group",
-          "showcase",
-          "only_show_if_degraded",
-          "start_date",
-          "created_at",
-          "updated_at",
-          "range_start",
-          "range_end",
-          "uptime_percentage",
-          "major_outage",
-          "partial_outage"
-        ]
-      },
-      "ErrorResponse": {
-        "type": "object",
-        "title": "ErrorResponse",
-        "properties": {
-          "code": {
-            "type": "string",
-            "description": "Kushki internal error code.",
-            "example": "K002"
-          },
-          "message": {
-            "type": "string",
-            "description": "Human-readable description of the error.",
-            "example": "Ha ocurrido un error inesperado"
-          }
-        },
-        "required": [
-          "code",
-          "message"
-        ]
-      },
       "SubscriptionTransactionsResponse": {
         "type": "object",
         "title": "SubscriptionTransactionsResponse",
@@ -29517,7 +29271,7 @@
           }
         }
       },
-      "ErrorResponse1": {
+      "ErrorResponse": {
         "type": "object",
         "title": "ErrorResponse",
         "properties": {
@@ -29583,7 +29337,7 @@
           "cvv": "121"
         }
       },
-      "currency2": {
+      "currency": {
         "type": "string",
         "enum": [
           "COP"
@@ -29592,11 +29346,11 @@
         "description": "The currency for Colombia is **COP** (Colombian Peso).",
         "default": "COP"
       },
-      "Amount3": {
+      "Amount": {
         "type": "object",
         "properties": {
           "currency": {
-            "$ref": "#/components/schemas/currency2"
+            "$ref": "#/components/schemas/currency"
           },
           "subtotalIva": {
             "type": "number",
@@ -29615,7 +29369,7 @@
             "description": "Set it to `0` in case the transaction has no ICE (Impuesto a Consumos Especiales)"
           },
           "extraTaxes": {
-            "$ref": "#/components/schemas/extraTaxes4"
+            "$ref": "#/components/schemas/extraTaxes"
           }
         },
         "required": [
@@ -29652,7 +29406,7 @@
           }
         }
       },
-      "extraTaxes4": {
+      "extraTaxes": {
         "type": "object",
         "properties": {
           "iac": {
@@ -29731,7 +29485,7 @@
           "months": 3
         }
       },
-      "Metadata5": {
+      "Metadata": {
         "type": "object",
         "description": "Free-form merchant data for tracking and reconciliation.",
         "properties": {
@@ -30489,6 +30243,58 @@
           }
         ]
       },
+      "networkToken": {
+        "type": "object",
+        "description": "<b style=\"background-color:#0366d6; color:white; border-radius: 6px; padding: 3px 8px; font-size: 12px; font-weight: 600;\">PRODUCT IN BETA VERSION</b>\n<br> **Required when `isNetworkToken` is `true`**</b>\n\n>\n\nAdditional metadata required when processing transactions with network tokenized cards. These fields help identify the device, wallet, and authentication context used during token provisioning or transaction initiation.",
+        "properties": {
+          "deviceType": {
+            "type": "string",
+            "description": "Describes the type of device from which the tokenized transaction originate"
+          },
+          "requestorId": {
+            "type": "string",
+            "description": "The unique identifier assigned to the token requestor by the card network (e.g., Visa or Mastercard). Often required for network token authentication."
+          },
+          "source": {
+            "type": "string",
+            "description": "Indicates the source of the token"
+          },
+          "walletId": {
+            "type": "string",
+            "enum": [
+              "01",
+              "04"
+            ],
+            "description": "**walletId** | *string*\nIdentifier of the digital wallet used for the transaction. The accepted values are:\n* `01`: Apple Pay.\n* `04`: Default value for other Wallets.\n\n  Identifier of the digital wallet or platform where the token was provisioned. Helps provide issuer context."
+          },
+          "authenticationLevel": {
+            "type": "string",
+            "description": "Indicates the level of authentication performed during token provisioning or transaction. Used to improve authorization and reduce risk."
+          },
+          "mvv": {
+            "type": "string",
+            "description": "The 10-digit Merchant Verification Value (MVV). Applicable to Visa transactions only.",
+            "maxLength": 10,
+            "example": "6355661111"
+          }
+        },
+        "x-examples": {
+          "Example 1": {
+            "deviceType": "some device",
+            "requestorId": "98987676501",
+            "source": "01",
+            "walletId": "ABC",
+            "authenticationLevel": "02"
+          }
+        },
+        "example": {
+          "deviceType": "some device",
+          "requestorId": "98987676501",
+          "source": "01",
+          "walletId": "01",
+          "authenticationLevel": "02"
+        }
+      },
       "Subscription": {
         "type": "object",
         "properties": {
@@ -30526,7 +30332,7 @@
             "description": "Set this parameter to `true` if you want to continue creating the subscription despite the warning rules"
           },
           "amount": {
-            "$ref": "#/components/schemas/Amount3"
+            "$ref": "#/components/schemas/Amount"
           },
           "startDate": {
             "type": "string",
@@ -30571,7 +30377,7 @@
             }
           },
           "metadata": {
-            "$ref": "#/components/schemas/Metadata5"
+            "$ref": "#/components/schemas/Metadata"
           },
           "processorTransactionType": {
             "description": "Only for Oneclick Mall Captura Diferida. Is used to identify when a capture is made.",
@@ -30707,7 +30513,7 @@
             "$ref": "#/components/schemas/ContactDetails"
           },
           "amount": {
-            "$ref": "#/components/schemas/Amount3"
+            "$ref": "#/components/schemas/Amount"
           },
           "startDate": {
             "type": "string",
@@ -30725,7 +30531,7 @@
             "$ref": "#/components/schemas/Language"
           },
           "metadata": {
-            "$ref": "#/components/schemas/Metadata5"
+            "$ref": "#/components/schemas/Metadata"
           },
           "retryConfiguration": {
             "type": "object",
@@ -30834,7 +30640,7 @@
             "type": "object",
             "properties": {
               "currency": {
-                "$ref": "#/components/schemas/currency2"
+                "$ref": "#/components/schemas/currency"
               },
               "subtotalIva": {
                 "type": "number",
@@ -30857,7 +30663,7 @@
                 "minimum": 0
               },
               "extraTaxes": {
-                "$ref": "#/components/schemas/extraTaxes4"
+                "$ref": "#/components/schemas/extraTaxes"
               }
             },
             "required": [
@@ -30962,7 +30768,7 @@
         "type": "object",
         "properties": {
           "currency": {
-            "$ref": "#/components/schemas/currency2"
+            "$ref": "#/components/schemas/currency"
           },
           "subtotalIva": {
             "type": "number",
@@ -30981,7 +30787,7 @@
             "description": "Set it to `0` in case the transaction has no ICE (Impuesto a Consumos Especiales)"
           },
           "extraTaxes": {
-            "$ref": "#/components/schemas/extraTaxes4"
+            "$ref": "#/components/schemas/extraTaxes"
           }
         },
         "required": [
@@ -32609,6 +32415,252 @@
           "externalReference"
         ]
       },
+      "Amount1": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "$ref": "#/components/schemas/currency2"
+          },
+          "subtotalIva": {
+            "type": "number",
+            "description": "Set it to `0` in case the transaction has no taxes"
+          },
+          "subtotalIva0": {
+            "type": "number",
+            "description": "Set the total amount of the transaction here in case it has no taxes. Otherwise, set it to `0`."
+          },
+          "iva": {
+            "type": "number",
+            "description": "Set it to `0` in case the transaction has no taxes"
+          },
+          "ice": {
+            "type": "number",
+            "description": "Set it to `0` in case the transaction has no ICE (Impuesto a Consumos Especiales)"
+          },
+          "extraTaxes": {
+            "$ref": "#/components/schemas/extraTaxes3"
+          }
+        },
+        "required": [
+          "currency",
+          "subtotalIva",
+          "subtotalIva0",
+          "iva",
+          "ice"
+        ],
+        "x-examples": [
+          {
+            "currency": "PEN",
+            "subtotalIva": 0,
+            "subtotalIva0": 10,
+            "iva": 0,
+            "ice": 0,
+            "extraTaxes": {
+              "iac": 0,
+              "tasaAeroportuaria": 0,
+              "agenciaDeViaje": 0
+            }
+          }
+        ]
+      },
+      "currency2": {
+        "type": "string",
+        "enum": [
+          "PEN",
+          "USD"
+        ],
+        "title": "currency",
+        "description": "Peru supports **PEN** (Soles) and **USD**."
+      },
+      "extraTaxes3": {
+        "type": "object",
+        "properties": {
+          "iac": {
+            "type": "number"
+          },
+          "tasaAeroportuaria": {
+            "type": "number",
+            "description": "It's commonly used in airlines."
+          },
+          "agenciaDeViaje": {
+            "type": "number",
+            "description": "It's commonly used in airlines."
+          },
+          "propina": {
+            "type": "number",
+            "description": "It's commonly used in restaurants."
+          },
+          "tip": {
+            "type": "number"
+          },
+          "stateTax": {
+            "type": "number"
+          },
+          "municipalTax": {
+            "type": "number"
+          },
+          "reducedStateTax": {
+            "type": "number"
+          }
+        },
+        "x-examples": [
+          {
+            "iac": 0,
+            "tasaAeroportuaria": 0,
+            "agenciaDeViaje": 0
+          }
+        ]
+      },
+      "StatusComponent": {
+        "type": "object",
+        "title": "StatusComponent",
+        "description": "Represents a single platform component and its current operational status, along with uptime metrics for the reported date range.",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Display name of the platform component.",
+            "example": "BlueSnap (US)"
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional description of the component. Returns `null` when no description has been set.",
+            "nullable": true,
+            "example": null
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "operational",
+              "degraded_performance",
+              "partial_outage",
+              "major_outage"
+            ],
+            "description": "Current operational status of the component.\n\n* `operational`: Functioning normally with no known issues.\n* `degraded_performance`: Reduced performance; component remains functional.\n* `partial_outage`: Some functionality unavailable for a subset of users.\n* `major_outage`: Component is completely unavailable or severely impacted.",
+            "example": "operational"
+          },
+          "position": {
+            "type": "number",
+            "description": "Display order of the component within the platform's status page. Lower values appear first.",
+            "example": 1
+          },
+          "group": {
+            "type": "boolean",
+            "description": "Indicates whether this component acts as a group container for child components.",
+            "example": false
+          },
+          "showcase": {
+            "type": "boolean",
+            "description": "Indicates whether this component is highlighted on the public status page.",
+            "example": true
+          },
+          "only_show_if_degraded": {
+            "type": "boolean",
+            "description": "When `true`, this component is only visible on the status page if it is experiencing an incident.",
+            "example": false
+          },
+          "start_date": {
+            "type": "string",
+            "description": "The date from which this component started tracking uptime, in `YYYY-MM-DD` format. Returns an empty string if not set.",
+            "example": "2020-10-31"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "ISO 8601 timestamp of when the component was created.",
+            "format": "date-time",
+            "example": "2017-08-09T20:41:18Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "ISO 8601 timestamp of the last update to this component's record.",
+            "format": "date-time",
+            "example": "2024-04-04T14:57:03Z"
+          },
+          "range_start": {
+            "type": "string",
+            "description": "Start of the reporting period for uptime metrics, in `YYYY-MM-DD` format.",
+            "example": "2026-01-01"
+          },
+          "range_end": {
+            "type": "string",
+            "description": "End of the reporting period for uptime metrics, in `YYYY-MM-DD` format.",
+            "example": "2026-03-31"
+          },
+          "uptime_percentage": {
+            "type": "number",
+            "description": "Uptime percentage for the component during the reporting period (`range_start` to `range_end`). Value between `0` and `100`.",
+            "minimum": 0,
+            "maximum": 100,
+            "example": 100
+          },
+          "major_outage": {
+            "type": "number",
+            "description": "Number of major outage incidents recorded during the reporting period.",
+            "minimum": 0,
+            "example": 0
+          },
+          "partial_outage": {
+            "type": "number",
+            "description": "Number of partial outage incidents recorded during the reporting period.",
+            "minimum": 0,
+            "example": 0
+          }
+        },
+        "required": [
+          "name",
+          "status",
+          "position",
+          "group",
+          "showcase",
+          "only_show_if_degraded",
+          "start_date",
+          "created_at",
+          "updated_at",
+          "range_start",
+          "range_end",
+          "uptime_percentage",
+          "major_outage",
+          "partial_outage"
+        ]
+      },
+      "ErrorResponse4": {
+        "type": "object",
+        "title": "ErrorResponse",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Kushki internal error code.",
+            "example": "K002"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable description of the error.",
+            "example": "Ha ocurrido un error inesperado"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ]
+      },
+      "Metadata5": {
+        "type": "object",
+        "description": "Free-form merchant data for tracking and reconciliation.",
+        "properties": {
+          "reference": {
+            "type": "string",
+            "example": "ORD-20240317-001"
+          },
+          "customer_email": {
+            "type": "string",
+            "format": "email",
+            "example": "cliente@ejemplo.com"
+          },
+          "device": {
+            "type": "string",
+            "example": "SUNMI-P3"
+          }
+        }
+      },
       "LinkFailure6": {
         "type": "object",
         "description": "Unified error model for all Kushki ONE Connect endpoints.\nEvaluate `type` to classify the error source, then look up `code`\nin the Error Catalog.\n",
@@ -32779,11 +32831,52 @@
       }
     },
     "securitySchemes": {
+      "oauth24": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "/",
+            "scopes": {}
+          }
+        }
+      },
       "PrivateMerchantId3": {
         "type": "apiKey",
         "description": "Merchant's private credential. Obtained from the Kushki dashboard.",
         "name": "private-merchant-id",
         "in": "header"
+      }
+    },
+    "parameters": {
+      "terminalSerial-1": {
+        "name": "terminalSerial",
+        "in": "path",
+        "description": "Serial number of the target SmartPOS terminal.\nObtained from the Device Management System (DMS).\n",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "SN71652"
+        }
+      },
+      "headerAuthorization-1": {
+        "name": "Authorization",
+        "in": "header",
+        "description": "HMAC-SHA256 signature of the **raw JSON request body**, Base64-encoded.\nKey = `Business-Code`.\n\nCompute as: `Base64( HMAC-SHA256( body, businessCode ) )`\n\nOmit when the request has no body (e.g. `abort`).",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "nRvpFJZHjqLU4k8Rz2YiDvxA3mQs9oB1cW7eT0="
+        }
+      },
+      "headerTimestamp-1": {
+        "name": "timestamp",
+        "in": "header",
+        "description": "Current Unix timestamp in **milliseconds** (13 digits). Must be within ±5 minutes of server time.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "1700000000000"
+        }
       }
     }
   },

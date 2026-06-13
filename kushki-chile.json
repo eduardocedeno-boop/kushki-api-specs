@@ -2691,7 +2691,8 @@
           },
           "fullResponse": {
             "enum": [
-              "v2"
+              "v2",
+              "v3"
             ]
           },
           "ignoreWarnings": {
@@ -26783,6 +26784,46 @@
                       },
                       "subscriptionId": "1658356540437000"
                     }
+                  },
+                  "fullResponse v3": {
+                    "summary": "fullResponse v3",
+                    "value": {
+                      "details": {
+                        "amount": {
+                          "currency": "CLP",
+                          "ice": 0,
+                          "iva": 0,
+                          "subtotalIva": 0,
+                          "subtotalIva0": 59900
+                        },
+                        "binCard": "445652",
+                        "binInfo": {
+                          "bank": "BANCO DE CHILE",
+                          "type": "credit"
+                        },
+                        "cardHolderName": "Catalina Fuentes",
+                        "contactDetails": {
+                          "documentNumber": "12345678-9",
+                          "documentType": "RUT",
+                          "email": "user@example.com",
+                          "firstName": "Catalina",
+                          "lastName": "Fuentes",
+                          "phoneNumber": "+56912345678"
+                        },
+                        "created": "2025-05-01",
+                        "lastFourDigits": "9860",
+                        "maskedCreditCard": "445652XXXXXX9860",
+                        "merchantId": "20000000103625273000",
+                        "merchantName": "Tu comercio",
+                        "paymentBrand": "VISA",
+                        "periodicity": "monthly",
+                        "planName": "Premium",
+                        "processorBankName": "",
+                        "startDate": "2025-06-01",
+                        "validationTicketNumber": "819247872865232808"
+                      },
+                      "subscriptionId": "1780428956212148"
+                    }
                   }
                 },
                 "schema": {
@@ -26832,6 +26873,10 @@
                           "type": "string"
                         },
                         "startDate": {
+                          "type": "string"
+                        },
+                        "validationTicketNumber": {
+                          "description": "Ticket number of the validation charge transaction performed when the subscription was created. Only present when the request was made with `fullResponse: v3`.",
                           "type": "string"
                         }
                       },
@@ -28017,6 +28062,37 @@
                       "startDate": 1574726400,
                       "subscriptionId": "1574693127852000"
                     }
+                  },
+                  "fullResponse v3": {
+                    "summary": "fullResponse v3",
+                    "value": {
+                      "amount": {
+                        "currency": "CLP",
+                        "ice": 0,
+                        "iva": 0,
+                        "subtotalIva": 0,
+                        "subtotalIva0": 59900
+                      },
+                      "bin": "445652",
+                      "cardHolderName": "Catalina Fuentes",
+                      "cardType": "credit",
+                      "contactDetails": {
+                        "email": "user@example.com",
+                        "firstName": "Catalina",
+                        "lastName": "Fuentes"
+                      },
+                      "created": 1780428956,
+                      "lastFourDigits": "9860",
+                      "maskedCardNumber": "445652XXXXXX9860",
+                      "merchantId": "20000000103625273000",
+                      "metadata": {},
+                      "paymentBrand": "VISA",
+                      "periodicity": "monthly",
+                      "planName": "Premium",
+                      "startDate": 1759276800,
+                      "subscriptionId": "1780428956212148",
+                      "validationTicketNumber": "292735057772257184"
+                    }
                   }
                 },
                 "schema": {
@@ -28105,6 +28181,10 @@
                       "type": "number"
                     },
                     "subscriptionId": {
+                      "type": "string"
+                    },
+                    "validationTicketNumber": {
+                      "description": "Ticket number of the validation charge transaction performed when the subscription was created. Only present when the request was made with `fullResponse: v3`.",
                       "type": "string"
                     }
                   },
